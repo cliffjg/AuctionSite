@@ -50,8 +50,12 @@ public class AdminPage extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
+//		HttpSession session1 = request.getSession();
 		
+		String userEmail = (String)session.getAttribute("userEmail");
+//		session1.setAttribute("userEmail", userEmail);
 		
+		System.out.println("TEST TEST TEST TEST TEST UserEmail: " + userEmail);
 		
 		String query = "select * from Users;";
 		
@@ -92,6 +96,9 @@ public class AdminPage extends HttpServlet {
 			
 			
 			session.setAttribute("usersArrayList", usersArrayList);
+			session.setAttribute("userEmail", userEmail);
+			
+			
 			
 			db.closeConnection(connection);
 

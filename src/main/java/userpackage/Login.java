@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +21,6 @@ import javax.servlet.http.HttpSession;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -122,20 +118,24 @@ public class Login extends HttpServlet {
             	
             	if(userEmail.equals("admin@gmail.com")) {
             		
+            		
+            		HttpSession session = request.getSession();
+					session.setAttribute("userEmail", userEmail);
+					
+					System.out.println("!User: " + userEmail + "\n");
             		//Forward to the servlet AdminPage.java 
-//            		RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminPage");
-//            		dispatcher.forward(request, response);
-            		HttpSession session1 = request.getSession();
-            		
-            		//Send admin@gmail to message page
-            		session1.setAttribute("userEmail", userEmail);
-            		
-            		RequestDispatcher dispatcher = request.getRequestDispatcher("/MessagePage");
+            		RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminPage");
             		dispatcher.forward(request, response);
-
-//            		response.sendRedirect("messagePage.jsp");
             		
-//            		response.sendRedirect("adminPage.jsp");
+            		
+//            		HttpSession session1 = request.getSession();
+//            		
+//            		//Send admin@gmail to message page
+//            		session1.setAttribute("userEmail", userEmail);
+//            		
+//            		RequestDispatcher dispatcher = request.getRequestDispatcher("/MessagePage");
+//            		dispatcher.forward(request, response);
+
             	}else {
                 	ResultSet rs1 = statement.executeQuery(query);
                 	//gets number of columns from the query 

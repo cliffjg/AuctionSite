@@ -58,7 +58,7 @@ public class MessagePage extends HttpServlet {
 //		response.sendRedirect("productPage.jsp");
 		
 //		RequestDispatcher dispatcher = request.getRequestDispatcher("/MessagePage");
-		
+
 		
 		System.out.println("In Messages java");
 		
@@ -71,12 +71,31 @@ public class MessagePage extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		String userLoggedInAs = (String) session.getAttribute("userEmail");
+//		String userLoggedInAs = (String) session.getAttribute("userEmail");
+		String userLoggedInAs = (String) session.getAttribute("admin");
+//		String userEmail = (String)session.getAttribute("userEmail");
 		
 		System.out.println("USER LOGGED IN AS: " + userLoggedInAs);
 		
 		
-		String userEmail = "michaeljackson@gmail.com";
+//		String userEmail = "michaeljackson@gmail.com";
+		
+//		String userEmail = (String) session.getAttribute("userEmail");
+		
+		
+		String userEmail = (String) request.getParameter("userEmail");
+		
+		//when reloaded userEmail is null so it resets it
+		if(userEmail == null) {
+//			request.getRequestDispatcher("login.jsp").forward(request,response);
+			
+//			userEmail = (String)session.getAttribute(userEmail);
+			userEmail = (String)session.getAttribute("userEmail");
+		}
+		
+		
+		
+		System.out.println("USEREMAIL: " + userEmail);
 //		
 		String formattedDateTime = now.format(formatter);
 //		
@@ -147,6 +166,7 @@ public class MessagePage extends HttpServlet {
 			}
 			
 			session.setAttribute("messageArrayList", messageArrayList);
+			session.setAttribute("userEmail", userEmail);
 			
 			if(userLoggedInAs.equals("admin@gmail.com")) {
 				request.getRequestDispatcher("adminMessagePage.jsp").forward(request,response);

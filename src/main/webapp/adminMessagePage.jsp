@@ -30,6 +30,12 @@
 	 			
 	 			
 	 			<%
+	 			
+	 				 String userEmail = (String)session.getAttribute("userEmail");
+	 				session.setAttribute("userEmail", userEmail);
+	 				
+	 				System.out.println("\n\nWhat is going on in this: " + userEmail);
+	 				
 
        				ArrayList<Message> messageArrayList = new ArrayList<Message>();
         			messageArrayList = (ArrayList<Message>) session.getAttribute("messageArrayList");
