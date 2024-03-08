@@ -43,32 +43,19 @@ public class ProductPage extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		doGet(request, response);
+
 		
 		HttpSession session = request.getSession();
 		
+		//get auctionID attributes from userPage.jsp
 		String auctionID = (String)session.getAttribute("auctionID");
-		
-//		String auctionID = request.getParameter("auctionID");
-		
+
+		//get bidderEmail attribute from userPage.jsp
 		String bidderEmail = (String)session.getAttribute("bidderEmail");
 
+		//get bidderPrice that they input 
 		String bidderPrice = request.getParameter("bidderPrice");
 
-//		String auctionID = session.getAttribute("auctionID").toString();
-		
-
-		
-		System.out.println("\nauctionID: " + auctionID);
-		System.out.println("bidderEmail: " + bidderEmail);
-		System.out.println("bidderPrice: $"+ bidderPrice);
-		
-//		select * from Auction where auctionID = 1 
-//				and startingBid < 20000000 
-//				and currentBid IS NULL
-//				or currentBid IS NOT NULL
-//				and currentBid < 3000001;
 		
 		//bidder price has to be greater than the startingBid or currentBid
 		String checkBidQuery = "select * from Auction where auctionID = " + auctionID + 
@@ -78,23 +65,12 @@ public class ProductPage extends HttpServlet {
 				" and currentBid IS NOT NULL" + 
 				" and currentBid < " + bidderPrice + ";";
 		
-
-				
-				System.out.println("checkBid Query: " + checkBidQuery);
 		
-//		select * from Auction where auctionID = 1 
-//				and startingBid < 20000000 
-//				and currentBid IS NULL
-//				or currentBid IS NOT NULL
-//				and currentBid < 3000001;
-//		
-
-		
-				
+		//string to update query once bid is checked to be greater than previous bid		
 		String query = "update Auction set currentBid = " + bidderPrice + ", bidderEmail = '" + bidderEmail + "' where auctionID = " + auctionID + ";";
+
 		
 		
-		System.out.println("query: " + query);
 
 		try {
 			DatabaseAccess db = new DatabaseAccess();
@@ -105,6 +81,7 @@ public class ProductPage extends HttpServlet {
 			ResultSet rs = statement.executeQuery(checkBidQuery);
 			
 			
+			//if resultSet returns null bid is not greater
 			if(!(rs.next())) {
             	
 				
@@ -114,35 +91,14 @@ public class ProductPage extends HttpServlet {
             	
             }else {
             	
+            	
             	System.out.println("\nALL GOOD PRICE ENTERED!\n");
             	
             	
             	statement.executeUpdate(query);
             	
-///////////////////////////////////Insert into BidHistory///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////BEGINNING OF INSERT INTO BIDHISTORY ////////////////////////////////////////////////////////////////////////
             	
-//            	//Count how many rows in Bidders to print History
-//            	String countQuery = "select Count(*) as row_count from Bidders where auctionID = " + auctionID +";";
-//            	ResultSet resultSet = statement.executeQuery(countQuery);
-//            	int rowCount = 0;;
-//    			if(resultSet.next()) {
-//    				rowCount = resultSet.getInt("row_count");  			
-//        			System.out.println("Row Count: " + rowCount);
-//    			}
-//    			
-//    			int addRow = rowCount + 1; 
-//    			System.out.println("addRow: " + addRow);
-//    			
-//    			//alter table Bidders add bidHistoryDetails2 varchar(150);
-//    			String addBidHistoryDetailsRow = "alter table Bidders add bidHistoryDetails" + addRow + " varchar(150);";
-//    			
-//    			System.out.println(addBidHistoryDetailsRow);
-//    		
-//    			statement.executeUpdate(addBidHistoryDetailsRow);
-//    			
-//    			
-//    			
-////    			alter table Bidders add bidHistoryDetails2 varchar(150);
             	
             	LocalDateTime currentDate;
         		LocalDateTime now = LocalDateTime.now();        		
@@ -150,17 +106,17 @@ public class ProductPage extends HttpServlet {
         		currentDate = LocalDateTime.parse(formatter.format(now), formatter);
         		
             	
-            	
-    			String date = "2024-02-4 17:49:52";
-            	
             	String insertBidHistory = "insert into BidHistory(auctionID, userEmail, bidPrice, bidDateTime) values (" + auctionID + 
             			", '" + bidderEmail + "', " + bidderPrice + ", '" + currentDate +  "');";
             	
-            	System.out.println("\n\nBid History: " + currentDate + "\n\n");
             	
             	statement.executeUpdate(insertBidHistory);
+            	
+///////////////////////////////////ENDING OF INSERT INTO BIDHISTORY ////////////////////////////////////////////////////////////////////////   
+            	
+            	
 
-////////////////////////////////////////////Lookup Bid History//////////////////////////////////////////////////////////////////////////////////////        	
+////////////////////////////////////////////BEGINNING OF LOOKUP BID HISTORY///////////////////////////////////////////////////////////////////////////        	
             	
             	
             	String queryBidHistory = "select * from BidHistory where AuctionID =" + auctionID +";";
@@ -170,29 +126,27 @@ public class ProductPage extends HttpServlet {
             	ArrayList<String> bidHistory = new ArrayList<String>();
             	
             	while(resultSet.next()) {
-//            		System.out.println(resultSet.getString("auctionID"));
-//            		System.out.println(resultSet.getString("userEmail"));
-//            		System.out.println(resultSet.getString("bidPrice"));
-//            		System.out.println(resultSet.getString("bidDateTime"));
-            		
+
             		bidHistory.add(resultSet.getString("bidPrice") + " " + resultSet.getString("userEmail") + " " + resultSet.getString("bidDateTime"));
             		
             	}
-
+            	
+            	//sends bid history to productPage.jsp for display
     			session.setAttribute("bidHistory", bidHistory);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    			
+////////////////////////////////////////////ENDING OF LOOKUP BID HISTORY///////////////////////////////////////////////////////////////////////////////
             	
     			
     			String query2 = "select * from Auction where auctionID = '" 
         				+ auctionID + "';";
             	
             	ResultSet rs2 = statement.executeQuery(query2);
+            	
             	//gets number of columns from the query 
     			//for for loop
-    			ResultSetMetaData metadata2 = rs2.getMetaData();
+//    			ResultSetMetaData metadata2 = rs2.getMetaData();
     			
     			Auction auction = null; 
-    			
     			
     			while(rs2.next()) {
     				
@@ -212,28 +166,9 @@ public class ProductPage extends HttpServlet {
          					rs2.getString("imagePath")
          			);//this end parentheses is for Auction object
 
-    				
-    				
-//    				//checks to see if bid is greater than previous bid
-////    				if(Integer.parseInt(bidderPrice) > Integer.parseInt(auction.startingBid) && 
-////    						Integer.parseInt(bidderPrice) > Integer.parseInt(auction.currentBid) ) {
-//    				if(Integer.parseInt(bidderPrice) > Integer.parseInt(auction.startingBid) ) {
-//    					
+
     					auction.setCurrentBid(rs2.getString("currentBid"));
         				auction.setBidderEmail(rs2.getString("bidderEmail"));
-//        				
-//        				System.out.println("Bid added! Bid is greater!");
-//    					
-//    				}else {
-//    					System.out.println("Bid is not greater than both starting Price and current Bid");
-//    				}
-//    				
-//    				
-//    				System.out.println("\nBidder: Price: " + Integer.parseInt(bidderPrice));
-//    				System.out.println("Starting Bid: " + Integer.parseInt(auction.startingBid) + "\n");
-////    				System.out.println("Current Bid: " + Integer.parseInt(auction.currentBid));
-    			
-    				
     				
     			}
     			
@@ -255,42 +190,9 @@ public class ProductPage extends HttpServlet {
     			response.sendRedirect("productPage.jsp");
     			
     			
-//    			int count = 1; 
-//    			
-//    			
-//    			int numberOfColumns2 = metadata2.getColumnCount();
-//    			
-//            	
-//            	String query3 = "select * from Auction;";
-//            	
-//            	ResultSet rs3 = statement.executeQuery(query3);
-//            	//gets number of columns from the query 
-//    			//for for loop
-//    			ResultSetMetaData metadata3 = rs3.getMetaData();
-//    			
-//    			
-//    			int numberOfColumns3 = metadata3.getColumnCount();
-            	
-            	
-            	
-            	
-
             	
             }
-
-            	
-
-            	
-            	
-            	
-            	
-
-    			
-    			
-            	
-            
-			
-			
+		
 			 db.closeConnection(connection);
 
 			
