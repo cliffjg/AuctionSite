@@ -168,10 +168,22 @@
 	 		
 	 		
 	 		
-
+	 		
 	</form>
 	
+	<div style="padding-left: 50px;">
+	 			<button onclick="goBack()" >Back to Admin Page</button>
+	 		
+	 		</div>
 	
+		
+	<script>
+		
+		function goBack(){
+			window.location.href = "adminPage.jsp";
+		}
+	
+	</script>
 
 </body>
 </html>
