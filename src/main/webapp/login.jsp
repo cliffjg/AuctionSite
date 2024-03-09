@@ -46,17 +46,9 @@
 					<%/*/////////////////////USER EMAIL INPUT/////////////////////////////////////////*/%>	
 					<div style="padding-bottom: 10px;">
 	 
-					 
-					<!--  
-					 
-					<input id="userEmail" name="userEmail" class="input-box" type="email"
-						placeholder="Email" value="michaeljackson@gmail.com" style="padding-top: 5px; padding-bottom: 5px;" ></input> 
-					  -->	 
-					 
 					  
 					 	<input id="userEmail" name="userEmail" class="input-box" type="email"
-							placeholder="Email" value="admin@gmail.com" style="padding-top: 5px; padding-bottom: 5px;" ></input> 
-
+							placeholder="Email" style="padding-top: 5px; padding-bottom: 5px;" ></input> 
 					 
 					</div>
 				
@@ -68,20 +60,8 @@
 				
 				
 						<input name="pass" class="password-box" type="password"
-							placeholder="Password" value="admin"
-							style="padding-top: 5px; padding-bottom: 5px;" ></input>
+							placeholder="Password" style="padding-top: 5px; padding-bottom: 5px;" ></input>
 				
-				 <!-- 
-					<input name="pass" class="password-box" type="password"
-						placeholder="Password" value="Rutgers24!o_11e75d0@"
-						style="padding-top: 5px; padding-bottom: 5px;" ></input>
-					 -->	 
-						 
-						<!--  
-						 <input name="pass" class="password-box" type="password"
-						placeholder="Password" 
-						style="padding-top: 5px; padding-bottom: 5px;" ></input>
-						  -->
 					</div>
 				
 
