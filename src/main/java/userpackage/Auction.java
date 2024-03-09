@@ -151,7 +151,7 @@ public class Auction {
 		return currentBid;
 	}
 	
-public String getBidderEmail() {
+	public String getBidderEmail() {
 		return bidderEmail;
 	}
 	
@@ -174,7 +174,6 @@ public String getBidderEmail() {
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-//		dateTime1= LocalDateTime.parse(now, formatter);
 		dateTime1= LocalDateTime.parse(formatter.format(now), formatter);;
 		dateTime2= LocalDateTime.parse(getExpirationDate(), formatter);
     		
@@ -202,61 +201,12 @@ public String getBidderEmail() {
     	minutes = (long) (milliseconds % (1000 * 60 * 60)) / (1000 * 60);
     	seconds = (long) ((milliseconds % (1000 * 60 * 60)) % (1000 * 60) / 1000);
     	        
-    	        //String remainingTime = "Time remaining: " + days + " days " + hours + " hours "  + minutes + " minutes "  + seconds+" seconds";
+    	
     	remainingTime = days + "d " + hours + "h "  + minutes + "m "  + seconds + "s ";
     	
     	return remainingTime;
 		
 	}
-	
-//	public String calculateDate() {
-//		
-//		String remainingTime;
-//		LocalDateTime dateTime1;
-//		LocalDateTime dateTime2;
-//		
-//		long days;
-//		long hours;
-//		long minutes;
-//		long seconds;
-//		long milliseconds;
-//		
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-//
-//		dateTime1= LocalDateTime.parse(rs3.getString("startDate"), formatter);
-//		dateTime2= LocalDateTime.parse(rs3.getString("expirationDate"), formatter);
-//    		
-//
-//        days = 0;
-//   		hours = 0;
-//   		minutes = 0;
-//   		seconds = 0;
-//   		milliseconds = 0;
-//        		
-//    			
-//   		days = java.time.Duration.between(dateTime1, dateTime2).toDays();
-//   		hours = java.time.Duration.between(dateTime1, dateTime2).toHours();
-//    	minutes = java.time.Duration.between(dateTime1, dateTime2).toMinutes();
-//    	seconds = java.time.Duration.between(dateTime1, dateTime2).getSeconds();
-//    	milliseconds = java.time.Duration.between(dateTime1, dateTime2).toMillis();
-//    			
-//    			
-//    	hours = 0;
-//    	minutes = 0;
-//    	seconds = 0;
-//    			
-//    			
-//    	hours = (long) (milliseconds / (1000 * 60 * 60))%24;
-//    	minutes = (long) (milliseconds % (1000 * 60 * 60)) / (1000 * 60);
-//    	seconds = (long) ((milliseconds % (1000 * 60 * 60)) % (1000 * 60) / 1000);
-//    	        
-//    	        //String remainingTime = "Time remaining: " + days + " days " + hours + " hours "  + minutes + " minutes "  + seconds+" seconds";
-//    	remainingTime = days + " days " + hours + ":"  + minutes + ":"  + seconds;
-//    	
-//    	return remainingTime;
-//		
-//	}
-	
 	
 
 
