@@ -50,12 +50,12 @@ public class AdminPage extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-//		HttpSession session1 = request.getSession();
-		
+
+		//get attribute from login.java
 		String userEmail = (String)session.getAttribute("userEmail");
-//		session1.setAttribute("userEmail", userEmail);
+
 		
-		System.out.println("TEST TEST TEST TEST TEST UserEmail: " + userEmail);
+		System.out.println("\nTEST TEST TEST TEST TEST UserEmail: " + userEmail + "\n");
 		
 		String query = "select * from Users;";
 		
@@ -68,10 +68,9 @@ public class AdminPage extends HttpServlet {
 			
 			ResultSet rs = statement.executeQuery(query);
 			
+			//ArrayList to store the user data
 			ArrayList<Users> usersArrayList = new ArrayList<Users>();
-			
-			
-			
+
 			while(rs.next()) {
 				
 				
@@ -90,16 +89,16 @@ public class AdminPage extends HttpServlet {
 				System.out.println(rs.getString("phoneNumber"));
 				System.out.println("\n");
 				
+				
 				usersArrayList.add(user);
 				
 			}
 			
-			
+			//send usersArrayList and userEmail to adminPage.jsp
 			session.setAttribute("usersArrayList", usersArrayList);
 			session.setAttribute("userEmail", userEmail);
 			
-			
-			
+					
 			db.closeConnection(connection);
 
 			
@@ -108,9 +107,7 @@ public class AdminPage extends HttpServlet {
 			 throw new IllegalStateException("Cannot connect the database!", e);
 		}
 		
-		
-		
-		
+
 		response.sendRedirect("adminPage.jsp");
 		
 		
