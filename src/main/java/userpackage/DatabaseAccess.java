@@ -25,26 +25,29 @@ public class DatabaseAccess {
 		Connection connection = null;
 		
 		try {
+			
 			//Load JDBC driver - the interface standardizing the connection procedure. 
 			//Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
 		
 		try {
-			//Create a connection to your DB
+			
 			connection = DriverManager.getConnection(connectionUrl,username, password);
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

@@ -39,8 +39,8 @@ public class CreateAccount extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		doGet(request, response);
-		
+
+		//retrieve input from user 
 		String firstName = request.getParameter("first-name").trim();
 		String lastName = request.getParameter("last-name").trim();
 		String userEmail = request.getParameter("email").trim();
@@ -51,12 +51,14 @@ public class CreateAccount extends HttpServlet {
 		System.out.println("User Email: " + userEmail);
 		System.out.println("User Password: " + userPassword);
 		
+		
 		String query = "select * from Users where userEmail = '" + userEmail + "';";
 		
-	
-		System.out.println("Query: "  + query);
 		
 		
+		//if input in userEmail or Password is null
+		//send error message to user that account was not created
+		//need to reenter input
 		if(userEmail.trim() == null || userPassword.trim() == null || userEmail.trim() == "" || userPassword.trim() == "") {
 			System.out.println("UserEmail: " + userEmail);
 			System.out.println("Password: " + userPassword);
@@ -75,6 +77,9 @@ public class CreateAccount extends HttpServlet {
 				ResultSet rs = statement.executeQuery(query);
 				
 				
+				//if query returns this means user is in database
+				//informs user to re-enter credentials
+				//else creates account
 				if((rs.next())) {
 	            	
 					
@@ -87,15 +92,14 @@ public class CreateAccount extends HttpServlet {
 
 	            	
 	            }else {
+	            	
 	            	String query1 = "insert into Users values ('"+userEmail + "', '"+ userPassword +"' ,'" + firstName + " " + lastName + "', NULL, NULL);";
 				
 	            	statement.executeUpdate(query1);
 	            	
 	            	request.setAttribute("checkInput", "success");
 	            	request.getRequestDispatcher("createAccount.jsp").forward(request,response);
-	            	
-	            	
-				
+
 	            }
 				
 				

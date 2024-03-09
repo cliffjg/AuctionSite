@@ -37,53 +37,31 @@ public class UserPage extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		System.out.println("This is the query in UserPage: " );
-		
-		String value = request.getParameter("auctionID");
-		
-		System.out.println("This is the query in UserPage in Get: " + value );
-//		
-		
-//		input.setAttribute('type', 'hidden');
-//        input.setAttribute('name', 'id');
-//        input.setAttribute('value', auctionId);
-		
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 		
 		response.sendRedirect("productPage.jsp");
 		
 		HttpSession session = request.getSession();
 		
-		
-		
-		
 
 		String auctionID = request.getParameter("auctionID"); 
 		
-//		String auctionID = (String)session.getAttribute("auctionID"); 
 		
 		String userEmail = (String)session.getAttribute("userEmail");
-		
-		String data = "";
 
-		
-		
-		
 		
 		String query = "select * from Auction where auctionID = '" 
 				+ auctionID + "';";
 
-		
-		System.out.println("This is the query in UserPage: " + query);
-		
-		System.out.println("\nuserEmail: " + userEmail + "\n");
+
 		
 		session.setAttribute("auctionID", auctionID);
 		
@@ -112,23 +90,13 @@ public class UserPage extends HttpServlet {
             	
 
             	ResultSet rs1 = statement.executeQuery(query);
-            	//gets number of columns from the query 
-    			//for for loop
-    			ResultSetMetaData metadata = rs1.getMetaData();
-    			
-    			
-
-//            	String query2 = "select * from Auction where userEmail = '" 
-//        				+ userEmail + "';";
+            	
             	
             	String query2 = "select * from Auction where auctionID = '" 
         				+ auctionID + "';";
             	
             	ResultSet rs2 = statement.executeQuery(query2);
-            	//gets number of columns from the query 
-    			//for for loop
-    			ResultSetMetaData metadata2 = rs2.getMetaData();
-    			
+
     			Auction auction = new Auction(); 
     			
     			
@@ -155,13 +123,6 @@ public class UserPage extends HttpServlet {
     						auction.setCurrentBid(rs2.getString("currentBid"));
     						auction.setBidderEmail(rs2.getString("bidderEmail"));
     				
-//    				System.out.println(auction.auctionID);
-//        			System.out.println(auction.userEmail);
-//        			System.out.println(auction.carYear);
-//        			System.out.println(auction.carMake);
-//        			System.out.println(auction.carModel);
-//        			System.out.println(auction.carColor);
-    				
     				
     			}
     			
@@ -174,76 +135,26 @@ public class UserPage extends HttpServlet {
     			System.out.println(auction.carMake);
     			System.out.println(auction.carModel);
     			System.out.println(auction.carColor);
-    			
-    			
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    			
-//    			String countQuery = "select Count(*) as row_count from Bidders where auctionID = " + auctionID +";";
-////    			
-//    			ResultSet resultSet = statement.executeQuery(countQuery);
-//    			int rowCount = 0;
-//    			if(resultSet.next()) {
-//    				rowCount = resultSet.getInt("row_count");
-////        			
-//        			System.out.println("Row Count: " + rowCount);
-//    			}
-////    			
-//    			
-//    			
-//    			query2 = "select * from Bidders where auctionID = '" 
-//        				+ auctionID + "';";
-//            	
-//            	rs2 = statement.executeQuery(query2);
-//            	//gets number of columns from the query 
-//    			//for for loop
-////    			metadata2 = rs2.getMetaData();
-//    			
-// 			
-//
-//    			
-//    			
-//    			
-//    			while(rs2.next()) {
-//    				
-//    				System.out.println("AuctionID: " + rs2.getString("auctionID"));    
-//    				System.out.println("\tDetails: " + rs2.getString("bidHistoryDetails" + rowCount) + "\n"); 
-//    				
-//    				
-//    			}
-//    			
-    		
-    			
-    			
-    			
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    			
-////////////////////////////////////////////Lookup Bid History//////////////////////////////////////////////////////////////////////////////////////        	
+   			
+////////////////////////////////////////////BEGINNING OF LOOK UP BID HISTORY////////////////////////////////////////////////////////////////////////        	
             	
             	
-String queryBidHistory = "select * from BidHistory where AuctionID =" + auctionID +";";
+    			String queryBidHistory = "select * from BidHistory where AuctionID =" + auctionID +";";
 
-ResultSet resultSet = statement.executeQuery(queryBidHistory);
+    			ResultSet resultSet = statement.executeQuery(queryBidHistory);
 
-ArrayList<String> bidHistory = new ArrayList<String>();
+    			ArrayList<String> bidHistory = new ArrayList<String>();
 
-while(resultSet.next()) {
-//System.out.println(resultSet.getString("auctionID"));
-//System.out.println(resultSet.getString("userEmail"));
-//System.out.println(resultSet.getString("bidPrice"));
-//System.out.println(resultSet.getString("bidDateTime"));
+    			while(resultSet.next()) {
 
-bidHistory.add(resultSet.getString("bidPrice") + " " + resultSet.getString("userEmail") + " " + resultSet.getString("bidDateTime"));
 
-}
+    				bidHistory.add(resultSet.getString("bidPrice") + " " + resultSet.getString("userEmail") + " " + resultSet.getString("bidDateTime"));
 
-session.setAttribute("bidHistory", bidHistory);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////					
+    			}
 
-            	
-            	
-
+    			session.setAttribute("bidHistory", bidHistory);
     			
-    			
+////////////////////////////////////////////ENDING OF LOOK UP BID HISTORY////////////////////////////////////////////////////////////////////////						
             	
             }
 			
