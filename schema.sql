@@ -46,7 +46,7 @@ Foreign Key (auctionID) references Auction(auctionID), Foreign Key (userEmail) r
 
 insert into Users(userEmail, password, name, address, phoneNumber)
 values 
-("admin@gmail.com",	"admin",	"admin", "New York, New York", "1-800-223-9797"),
+("admin@gmail.com",	"fG3qHhCic2ZznGD-Aq@Q",	"admin", "New York, New York", "1-800-223-9797"),
 ("michaeljackson@gmail.com", "1111", "Michael Jackson", "14 Yellow Brick Rd.", "732456789"),
 ("bobtom@gmail.com", "1111", "Bob Tom",	"57 US Highway 1 New Brunswick, NJ 08901", "(973) 353-1048"),
 ("email@gmail.com", "2222",	"Billy Jean", "123 Washington St., Suite 590 Newark, NJ 07102",	"(973) 353-5541"),
