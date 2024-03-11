@@ -19,11 +19,7 @@
             input.setAttribute('name', 'auctionID');
             input.setAttribute('value', auctionId);
             
-            
-            /* var userEmailToSend = document.createElement('input');
-            input.setAttribute('type', 'hidden');
-           	input.setAttribute('name', 'userEmail');
-            input.setAttribute('value', userEmailToSend);  */
+
 
             // Add the input element to the form
             form.appendChild(input);
@@ -41,40 +37,6 @@
     });
     
 
- /*       
-    
-            // Set the end time for the countdown
-        var endTime<%=auction.getAuctionId()%> = new Date('<%=auction.getExpirationDate()%>').getTime();
-
-        // Update the countdown every second
-        var countdown<%=auction.getAuctionId()%> = setInterval(function() {
-            // Get the current time
-            var now = new Date().getTime();
-            
-            // Calculate the time remaining
-            var distance = endTime<%=auction.getAuctionId()%> - now;
-            
-            // Calculate days, hours, minutes, and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            // Display the countdown
-            document.getElementById("countdown<%=auction.getAuctionId()%>").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
-            
-            // If the countdown is over, display a message
-            if (distance < 0) {
-                clearInterval(countdown<%=auction.getAuctionId()%>);
-                document.getElementById("countdown<%=auction.getAuctionId()%>").innerHTML = "EXPIRED";
-            }
-        }, 1000);
-    
-    
-  */  
-    
-    
     
     function startCountdown(auctionId, endTime) {
     // Update the countdown every second
@@ -122,9 +84,9 @@ document.getElementById("logout").onclick = function(){
     }
     
  /*document.getElementById("message").onclick = function(){
-	//window.location.href = "messagePage.jsp";
-	window.location.href = '/MessagPage';
+	window.location.href = "messagePage.jsp";
+	//window.location.href = '/MessagPage';
 	   
-};  */  
+};*/    
     
     

@@ -28,13 +28,17 @@
    					<%=userEmail%>
    				</button>
    				
-   				<!-- <a href="login.jsp" onclick="logout()">Logout</a> -->
+
    				
    				<button  id="logout" onclick="logout()">Log out</button>
    				
-   				<form id="myForm" action = "MessagePage" method = "post">
+   		
    				
-   				<button  id="message" >Message</button>
+   				<form id="myForm" action = "UserMessageServlet" method = "post">
+   				
+   					
+   				
+   				<button  id="messageButton" name="messageButton" value="<%=userEmail%>" >Message</button>
    				
    				</form>
    				
@@ -79,7 +83,7 @@
             
 
                 		
-                		<!-- <div  onclick="location.href='productPage.jsp'" style= "background-color:lightblue; height: 400px;"> -->
+
                 		<div class="auction" id="<%=auction.getAuctionId()%>">
 
                 			<% if(auction.getImagePath() == null){ %>
@@ -91,10 +95,6 @@
                 			<% } %>
                 		
 
-                			
-                			<%-- <br><%=auction.getAuctionId()%>
-            				<br><%=auction.getUserEmail()%>
-                			<br><%=auction.getCarImage()%> --%>
                 			<br>Car: <%=auction.getCarYear()%>
                				<%=auction.getCarMake()%>
                 			<%=auction.getCarModel()%>
@@ -112,15 +112,9 @@
                 				
                 			<% } %>
                 			
-                			
-                			<%-- <br>Current Bid: $<%=auction.getStartingBid()%> --%>
-                			<%-- <br>$<%=auction.getCarPrice()%> --%>
-                			<%-- <br><%=auction.getStartDate()%>
-                			<br><%=auction.getExpirationDate()%> --%>
+ 
                 			<br><%=auction.getCarDescription()%>
-                			<%-- <br><%=auction.getImagePath()%> --%>
-                			<%-- <br><%=auction.getCalculatedExpirationDate()%> --%>
-                			<%-- <br><%=auction.getCalculatedExpirationDate()%> --%>
+
                 			<div><%=auction.getCalculatedExpirationDate()%></div>
                 			
                 			
@@ -135,7 +129,7 @@
                 			
  </div>
                 		
-<!--  </a> --> 
+
 
  <script src="userPage.js"></script>
 <script >
@@ -237,9 +231,6 @@
                 			<% } %>
 
 
-                			<%-- <br><%=auction.getAuctionId()%>
-            				<br><%=auction.getUserEmail()%>
-                			<br><%=auction.getCarImage()%> --%>
                 			<br>Car: <%=auction.getCarYear()%>
                				<%=auction.getCarMake()%>
                 			<%=auction.getCarModel()%>
@@ -256,14 +247,11 @@
                 				
                 			<% } %>
                 			
-                			
-                			<%-- <br>$<%=auction.getCarPrice()%> --%>
-                			<%-- <br><%=auction.getStartDate()%>
-                			<br><%=auction.getExpirationDate()%> --%>
+
                 			<br><%=auction.getCarDescription()%>
-                			<%-- <br><%=auction.getImagePath()%> --%>
+  
                 			<br><%=auction.getCalculatedExpirationDate()%>
-                			<%-- <br><%=setInterval(auction.getCalculatedExpirationDate(),1000)%> --%>
+         
                 			
                 			<br>Countdown time: <span id="countdown<%=auction.getAuctionId()%>" style="color: red;"></span>
                 			<% session.setAttribute("userEmail", userEmail );%>

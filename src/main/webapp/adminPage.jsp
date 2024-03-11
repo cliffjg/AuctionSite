@@ -14,22 +14,21 @@
 </head>
 <body>
 
-	<!-- <form action="MessagePage" method="post"> -->
+
 		<div>This is the admin page</div>
 		
-				<%String userEmail = (String) session.getAttribute("userEmail");; %>
+				<%String userEmail = (String) session.getAttribute("userEmail");%>
 				
 				<p><%=userEmail%></p>
-				
-				
+					
 				
 				<div style="font-size: 2em;">UsersList</div>
 				
-				<!-- <form action="MessagePage" method="post"> -->
-				
+
 				<%
 					
 					session.setAttribute("admin", userEmail);
+				
        				ArrayList<Users> usersArrayList = new ArrayList<Users>();
         			usersArrayList = (ArrayList<Users>) session.getAttribute("usersArrayList");
         			
@@ -41,8 +40,7 @@
                	 	
             	%>
             	
-            	<%-- <%session.setAttribute("userEmail", users.getUserEmail());%> --%>
-            	
+
             	<div style="padding: 10px;">
             		<button >Open</button>
             			<span style="padding-left: 10px;" ><%=users.getUserEmail() %></span>
@@ -50,9 +48,9 @@
             			<span><%=users.getAddress() %></span>
             			<span><%=users.getPhoneNumber() %></span>
             			
-            			<!-- <form action="MessagePage" method="post"> -->
-            				<button class="auction" id="<%=users.getUserEmail()%>">Message</button>
-            			<!-- </form> -->
+   
+            				<button  class="auction" id="<%=users.getUserEmail()%>" >Message</button>
+
             			
             			<br>
             			
@@ -62,7 +60,7 @@
             		
             	
             	<%} %>
-         <!-- </form>  -->  	
+
          
      <script>
      
@@ -75,11 +73,11 @@
             
              console.log("Clicked userEmail: " + userEmail);
              
-             
-       
+
+            
              var form = document.createElement('form');
              form.setAttribute('method', 'post');
-             form.setAttribute('action', 'MessagePage');
+             form.setAttribute('action', 'AdminMessageServlet');
 
              
              var input = document.createElement('input');
@@ -101,9 +99,7 @@
      
      
      </script>    
-         
-         
-         
+                
             	
 </body>
 </html>

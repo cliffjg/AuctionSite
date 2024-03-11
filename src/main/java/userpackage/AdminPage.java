@@ -42,11 +42,9 @@ public class AdminPage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+//		doGet(request, response);
 		
-		
-		
-		System.out.println("\nOk I'm in the admin servlet!\n");
+
 		
 		HttpSession session = request.getSession();
 		
@@ -54,8 +52,6 @@ public class AdminPage extends HttpServlet {
 		//get attribute from login.java
 		String userEmail = (String)session.getAttribute("userEmail");
 
-		
-		System.out.println("\nTEST TEST TEST TEST TEST UserEmail: " + userEmail + "\n");
 		
 		String query = "select * from Users;";
 		

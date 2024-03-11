@@ -48,14 +48,8 @@ public class BackToUserPage extends HttpServlet {
 		
 		HttpSession session1 = request.getSession();
 
-		
-
 		ArrayList<Auction> myAuction = new ArrayList();
 		ArrayList<Auction> communityAuction = new ArrayList();
-//		
-		String myAuctions = "";
-		String myCommunity = "";
-		String data = "";
 
 		
 		String userEmail = (String)session1.getAttribute("userEmail");
@@ -90,13 +84,7 @@ public class BackToUserPage extends HttpServlet {
             	//gets number of columns from the query 
     			//for for loop
     			ResultSetMetaData metadata2 = rs2.getMetaData();
-    			
-    			int count = 1; 
-    			
-    			
-    			int numberOfColumns2 = metadata2.getColumnCount();
-    			
-    			
+
     			
     			while(rs2.next()) {
             		
