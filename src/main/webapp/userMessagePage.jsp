@@ -16,20 +16,20 @@
 </head>
 <body style="background-color: #d9d9d9">
 
-	 <form id="myForm" action = "MessagePage" method = "post">
+	<%String userEmail = (String)session.getAttribute("userEmail"); %>
+	
+	
+	<p>You are speaking with admin@gmail.com</p>
+
+
+	 <form id="myForm" action = "UserMessageServlet" method = "post">
 	 
 	 		<div id="messagebox" style="border: solid;  height: 500px; width: 400px; overflow: auto; padding: 10px;">
 
-	 			<!-- <div style="background-color: #DCF8C6; float: right; padding: 5px;">Hello</div>
-	 			
-	 			
 
-	 			<div style="background-color: #EAEAEA; float: left; padding: 5px;">Hello</div> -->
-	 			
-	 			<!-- <div style="padding: 5px; background-color: #DCF8C6; float: right; padding: 10px; padding-left: 90%; box-sizing: border-box;">Hello</div> -->
-	 			
 	 			
 	 			<%
+	 				session.setAttribute("userEmail", userEmail);
 
        				ArrayList<Message> messageArrayList = new ArrayList<Message>();
         			messageArrayList = (ArrayList<Message>) session.getAttribute("messageArrayList");
@@ -38,24 +38,41 @@
                 	Message message = new Message();
                	 	message = messageArrayList.get(i);
                	 	
-               	 	/*  if(message.getSendMessage() != null ){ */
+               	 
                	 	
-               	 	if(message.getSendMessage() != null){
+					
+   					if(message.getSendMessage() != null && message.getSendMessage().equals("----------User left the chat----------") ||
+   								message.getSendMessage() != null && message.getSendMessage().equals("----------User started the chat----------")
+   								){  
+                 %>	
+                   	 	<div style="text-align: center;  padding-bottom: 2px;"><%=message.getSendMessage()%></div>
+    	 			 	<div style="text-align: center;  font-size: 10px;">Logged: <%=message.getMessageDateTime() %></div>
+                   	 	
+                 <%	
+                   	 	
+       				}else  if(message.getSendMessage() == null && message.getReceiveMessage().equals("----------Admin left the chat----------") ||
+       						message.getSendMessage() == null && message.getReceiveMessage().equals("----------Admin started the chat----------")
+       						){
+                 %>	
+                   	 	<div style="text-align: center;  padding-bottom: 2px;"><%=message.getReceiveMessage()%></div>
+    	 			 	<div style="text-align: center;  font-size: 10px;">Logged: <%=message.getMessageDateTime() %></div>
+                   	 	
+                 <%	
+                   	 	
+       				}else  if(message.getSendMessage() == null){
 
 
             	%>
             	
             			<div  style="padding: 10px;">
 	 			
-	 				<div style="padding-left: 200px; ">
-	 					<div style="word-wrap: break-word; border: solid; padding:5px; border-radius: 10px; background-color: #DCF8C6; padding-left: 10px;"> <%=message.getSendMessage() %></div>
-	 					<div style="font-size: 10px; padding:2px; padding-left: 10px;">Sent: <%=message.getMessageDateTime() %></div>
+	 						<div style="padding-right: 200px; ">
+	 							<div style="word-wrap: break-word; border: solid; padding:5px; border-radius: 10px; background-color: #EAEAEA; padding-left: 10px;"><%=message.getReceiveMessage() %></div>
+	 							<div style="font-size: 10px; padding:2px; padding-left: 10px;">Received: <%=message.getMessageDateTime() %></div>
 	 				
-	 				</div>
-	 				<!-- <div style="word-wrap: break-word; padding-left: 200px; border: solid;">Hello my name is Michael Jackson and i want to change my password</div> -->
+	 						</div>	
 	 			
-	 			</div>
-            	
+	 					</div>	
             		
             	
             	<% 
@@ -64,29 +81,22 @@
             			
             	%>
             	
-            	
-            					<div  style="padding: 10px;">
+            	<div  style="padding: 10px;">
 	 			
-	 						<div style="padding-right: 200px; ">
-	 							<div style="word-wrap: break-word; border: solid; padding:5px; border-radius: 10px; background-color: #EAEAEA; padding-left: 10px;"><%=message.getReceiveMessage() %></div>
-	 							<div style="font-size: 10px; padding:2px; padding-left: 10px;">Received: <%=message.getMessageDateTime() %></div>
+	 				<div style="padding-left: 200px; ">
+	 					<div style="word-wrap: break-word; border: solid; padding:5px; border-radius: 10px; background-color: #DCF8C6; padding-left: 10px;"> <%=message.getSendMessage() %></div>
+	 					<div style="font-size: 10px; padding:2px; padding-left: 10px;">Sent: <%=message.getMessageDateTime() %></div>
 	 				
-	 						</div>	
-	 			
-	 					</div>		
-            			
-            			
-            			
+	 				</div>
+
+	 			</div>
+	     			
             			
             	<% 		
-            		}
+            		} /* for the else statement */
+ 	 	
                	 	
-               	 	
-               	 	
-               	 	
-               	 	
-               	 	
-               	 	}
+               	 	} /* for loop */
                	 %>
 	 			
 	 			
@@ -95,6 +105,7 @@
 	 		</div>
 	 		
 	 		<script type="text/javascript">
+	 				/* Message scroll is set to the bottom for newer messages*/
 	 				var container = document.getElementById('messagebox');
 	 	    		container.scrollTop = container.scrollHeight;
 	 	    </script>
@@ -109,11 +120,11 @@
 	 		
 	 		<div style="padding: 50px;">
 	 			<button>Check for new Messages</button>
+	 			<button name="userStartChat" id="userStartChat" value="userStartChat">Start chat</button>
+	 			<button name="userLeaveChat" id="userLeaveChat" value="leaveChat">End this chat</button>
 	 		
 	 		</div>
-	 		
-	 		
-	 		
+
 
 	</form>
 	

@@ -16,25 +16,24 @@
 </head>
 <body style="background-color: #d9d9d9">
 
-	 <form id="myForm" action = "MessagePage" method = "post">
+
+	<%String userEmail = (String)session.getAttribute("userEmail"); %>
+	<%String adminUser = (String)session.getAttribute("admin"); %>
+	
+	
+	<p>You are speaking with <%=userEmail%></p>
+	
+
+	 <form id="myForm" action = "AdminMessageServlet" method = "post">
+	 
 	 
 	 		<div id="messagebox" style="border: solid;  height: 500px; width: 400px; overflow: auto; padding: 10px;">
 
-	 			<!-- <div style="background-color: #DCF8C6; float: right; padding: 5px;">Hello</div>
-	 			
-	 			
-
-	 			<div style="background-color: #EAEAEA; float: left; padding: 5px;">Hello</div> -->
-	 			
-	 			<!-- <div style="padding: 5px; background-color: #DCF8C6; float: right; padding: 10px; padding-left: 90%; box-sizing: border-box;">Hello</div> -->
-	 			
 	 			
 	 			<%
 	 			
-	 				 String userEmail = (String)session.getAttribute("userEmail");
-	 				session.setAttribute("userEmail", userEmail);
-	 				
-	 				System.out.println("\n\nWhat is going on in this: " + userEmail);
+	 				session.setAttribute("userEmail", userEmail); 
+	 				session.setAttribute("adminUser", adminUser);
 	 				
 
        				ArrayList<Message> messageArrayList = new ArrayList<Message>();
@@ -44,7 +43,25 @@
                 	Message message = new Message();
                	 	message = messageArrayList.get(i);
                	 	
-               	 	if(message.getSendMessage() == null){
+               	 if(message.getSendMessage() == null && message.getReceiveMessage().equals("----------Admin left the chat----------") ||
+               			message.getSendMessage() == null && message.getReceiveMessage().equals("----------Admin started the chat----------") 
+               			 ){
+                   	 %>	
+                   	 	<div style="text-align: center;  padding-bottom: 2px;"><%=message.getReceiveMessage()%></div>
+    	 			 	<div style="text-align: center;  font-size: 10px;">Logged: <%=message.getMessageDateTime() %></div>
+                   	 	
+                   	 <%	
+                   	 	
+       				}else if(message.getSendMessage() != null && message.getSendMessage().equals("----------User left the chat----------") ||
+       						message.getSendMessage() != null && message.getSendMessage().equals("----------User started the chat----------")
+       						){
+               	 %>	
+               	 	<div style="text-align: center;  padding-bottom: 2px;"><%=message.getSendMessage()%></div>
+	 			 	<div style="text-align: center;  font-size: 10px;">Logged: <%=message.getMessageDateTime() %></div>
+               	 	
+               	 <%	
+               	 	
+   					}else if(message.getSendMessage() == null ){
 
 
             	%>
@@ -56,8 +73,7 @@
 	 					<div style="font-size: 10px; padding:2px; padding-left: 10px;">Sent: <%=message.getMessageDateTime() %></div>
 	 				
 	 				</div>
-	 				<!-- <div style="word-wrap: break-word; padding-left: 200px; border: solid;">Hello my name is Michael Jackson and i want to change my password</div> -->
-	 			
+
 	 			</div>
             	
             		
@@ -69,7 +85,7 @@
             	%>
             	
             	
-            					<div  style="padding: 10px;">
+            			<div  style="padding: 10px;">
 	 			
 	 						<div style="padding-right: 200px; ">
 	 							<div style="word-wrap: break-word; border: solid; padding:5px; border-radius: 10px; background-color: #EAEAEA; padding-left: 10px;"><%=message.getSendMessage() %></div>
@@ -94,53 +110,8 @@
                	 %>
 	 			
 	 			
-	 <!-- 			<div  style="padding: 10px;">
-	 			
-	 				<div style="padding-left: 200px; ">
-	 					<div style="word-wrap: break-word; border: solid; padding:5px; border-radius: 10px; background-color: #DCF8C6; padding-left: 10px;">Hello my name is Michael Jackson and i want to change my password</div>
-	 					<div style="font-size: 10px; padding:2px; padding-left: 10px;">Sent: 03/04/2024 @ 19:14</div>
-	 				
-	 				</div>
-	 				<div style="word-wrap: break-word; padding-left: 200px; border: solid;">Hello my name is Michael Jackson and i want to change my password</div>
-	 			
-	 			</div>
-	 			
-	 			
-	 				 			
-	 			<div  style="padding: 10px;">
-	 			
-	 				<div style="padding-right: 200px; ">
-	 					<div style="word-wrap: break-word; border: solid; padding:5px; border-radius: 10px; background-color: #EAEAEA;; padding-left: 10px;">Hello my name is Steven and i can help change your password. Give me a moment so i can verify your identity</div>
-	 					<div style="font-size: 10px; padding:2px; padding-left: 10px;">Received: 03/04/2024 @ 19:14</div>
-	 				</div>
-	 				<div style="word-wrap: break-word; padding-left: 200px; border: solid;">Hello my name is Michael Jackson and i want to change my password</div>
-	 			
-	 			</div>
-	 			
-	 				 			
-	 			<div  style="padding: 10px;">
-	 			
-	 				<div style="padding-left: 200px; ">
-	 					<div style="word-wrap: break-word; border: solid; padding:5px; border-radius: 10px; background-color: #DCF8C6; padding-left: 10px;">Thank you.</div>
-	 					<div style="font-size: 10px; padding:2px; padding-left: 10px;">Sent: 03/04/2024 @ 19:14</div>
-	 				</div>
-	 				<div style="word-wrap: break-word; padding-left: 200px; border: solid;">Hello my name is Michael Jackson and i want to change my password</div>
-	 			
-	 			</div>
-	 			
-	 				 			
-	 			<div  style="padding: 10px;">
-	 			
-	 				<div style="padding-right: 200px; ">
-	 					<div style="word-wrap: break-word; border: solid; padding:5px; border-radius: 10px; background-color: #EAEAEA;; padding-left: 10px;">What is your address?</div>
-	 					<div style="font-size: 10px; padding:2px; padding-left: 10px;">Received: 03/04/2024 @ 19:14</div>
-	 				</div>
-	 				<div style="word-wrap: break-word; padding-left: 200px; border: solid;">Hello my name is Michael Jackson and i want to change my password</div>
-	 			
-	 			</div>
-	 			 -->
-	 	
 	 		</div>
+	 		
 	 		
 	 		
 	 		<script type="text/javascript">
@@ -158,15 +129,12 @@
 	 		
 	 		<div style="padding: 20px;">
 	 			<button>Check for new Messages</button>
+	 			<button name="adminStartChat" id="adminStartChat" value="adminStartChat">Start chat</button>
+	 			<button name="adminLeaveChat" id="adminLeaveChat" value="leftChat">End this chat</button>
 	 		
 	 		</div>
 	 		
-	 		<div style="padding-left: 50px;">
-	 			<button>Leave the chat</button>
-	 		
-	 		</div>
-	 		
-	 		
+
 	 		
 	 		
 	</form>
