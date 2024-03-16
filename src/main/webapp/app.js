@@ -5,9 +5,6 @@ document.getElementById("forgot-password-button").onclick = function () {
     location.href = "forgot.html";
 };
 
-//document.getElementById("login-button").onclick = function () {
-//    location.href = "userpage.jsp";
-//};
 
 document.getElementById("login-on-top").onclick = function () {
     location.href = "login.html";
@@ -22,9 +19,7 @@ function logOutScreen() {
 //    location.href = "logout.html";
 }
 
-//function signupPage(){
-//	window.location.assign("signup.jsp");
-//}
+
 
 document.getElementById("createAccount").onclick = function () {
             window.location.href = "createAccount.jsp";
@@ -57,60 +52,7 @@ function userPage() {
 
  }
 
-// document.getElementById("email").onclick = function () {
-//     location.href = "login.html";
-// };
 
-// var incorrectEmailPassword = document.getElementById("incorrect-email-password");
-
-// function incorrect(){
-// 	incorrectEmailPassword.style.visibility = "visible";
-// }
-
-function on() {
-  	document.getElementById("overlay").style.display = "block";
-
-      var mysql = require('mysql');
-
-      var con = mysql.createConnection({
-      host: "127.0.0.1",
-      user: "root",
-      password: "00000000",
-      database: "mydb"
-      });
-  
-      con.connect(function(err) {
-          if (err) throw err;
-          console.log("Connected!");
-          var sql = "INSERT INTO customers (name, address) VALUES ('John', '1 dodo lane')";
-          con.query(sql, function (err, result) {
-          if (err) throw err;
-          console.log("1 record inserted");
-          });
-      });
-
-}
-            
-function off() {
-   document.getElementById("overlay").style.display = "none";
-}
-
-function on1() {
-    document.getElementById("overlay1").style.display = "block";
-}
-          
-function off1() {
- document.getElementById("overlay1").style.display = "none";
-}
-
-
-function on2() {
-    document.getElementById("overlay2").style.display = "block";
-}
-          
-function off2() {
- document.getElementById("overlay2").style.display = "none";
-}
 
 
 
@@ -151,24 +93,5 @@ function tabPages() {
   }
 }
 
-function addImage() {
-	
-    //document.getElementById("selectedImage").style.display = "block";
-    ////document.getElementById("addImageButton").style.visibility = "hidden";
-    //document.getElementById("addImageButton").style.display = "none";
-}
-
-
-function addNewUser() {
-
-
-    
-
-}
-
-          
-//function off2() {
-// document.getElementById("overlay2").style.display = "none";
-//}
 
 
