@@ -220,7 +220,8 @@ public class Login extends HttpServlet {
                 	
                 	HttpSession session = request.getSession();
 
-                	response.sendRedirect("userpageTest.jsp");
+//                	response.sendRedirect("userpageTest.jsp");
+                	response.sendRedirect("userPageNew.jsp");
 
                 	//set all the attributes to be forwarded to userPage.jsp
                 	session.setAttribute("userEmail", userEmail);

@@ -38,6 +38,8 @@
 
        				ArrayList<Message> messageArrayList = new ArrayList<Message>();
         			messageArrayList = (ArrayList<Message>) session.getAttribute("messageArrayList");
+        			
+        			
 
    					for(int i = 0; i < messageArrayList.size(); i++) {
                 	Message message = new Message();
@@ -101,12 +103,10 @@
             	<% 		
             		}
                	 	
+               	 		
                	 	
-               	 	
-               	 	
-               	 	
-               	 	
-               	 	}
+   					
+   					}
                	 %>
 	 			
 	 			

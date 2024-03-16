@@ -1,126 +1,133 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html data-bs-theme="light" lang="en" style="height: auto;background: var(--bs-cyan);">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>BuyMe</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" type="text/css" href="headerstyle.css">
-      
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>AddAuction</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+</head>
 
-    <body  style="padding-bottom: 400px">
-    
-
-            <div class="header">
-
-                <div class="left-section">
-                    <h1 class="site-tag" style="font-family: sans-serif;margin-left: 10px;" >
-                        <span style="color: rgb(229, 50, 56);padding: 0px;font-style: italic;">B</span>
-                        <span style="color: rgb(0, 100, 210);padding: 0px;font-style: italic;margin-left: -10px;">u</span>
-                        <span style="color: rgb(245, 175, 2);font-style: italic;margin-left: -10px;">y</span>
-                        <span style="color: rgb(134, 184, 23);font-style: italic;margin-left: -10px;">M</span>
-                        <span style="color: rgb(229, 50, 56);font-style: italic;margin-left: -10px;">e</span>             
-                    </h1>
-            </div>
-
-                <div class="center-section" onclick="on1()">
-                    <input  class="search-bar" type="text" placeholder="Search..." style="padding-left: 10px;font-size:16;">
-                    <button class="search-button">
-                        <img src="Images/searchIcon.png" style="height: 20px;margin-top: 2px;">
-                    </button>
-                </div>
-
-                <div class="right-section" style="font-family: sans-serif;">
-                    <button onclick="on2()" class="add-button">&#43;</button>
-                    
-                    
-                    
-                    
-                    
-                    
-                     <form action = "Userpage" method = "post">
-                     
-                    
-                    
-                    <div><button>Hello <%String userEmail = session.getAttribute("email").toString(); %>
-   					<%=userEmail%></button></div>
-                    
-                    
-                     </form>
-                    
-                  
-                    
-                    
-                    
-                    
-                    
-                    
-                    <span class="user-login-name">
-                   
-                    
-                    <%userEmail = session.getAttribute("email").toString(); %>
-   					<%=userEmail%>
-                    
-                    
-                    
-                        <div class="dropdown" style="margin-left: -10px;">
-                            <ul style="list-style-type:none;text-align: left;">
-                                <li href="#" style="color: black;margin-left: -40px;" onclick="on()">Update Profile</li>
-                                <li href="#" style="color: black;margin-left: -40px;padding-top: 10px;padding-bottom: 10px;">Link 2</li>
-                                <li href="#" style="color: black;margin-left: -40px;">Create Ticket</li>
-                            </ul>
-                           
-                        </div>
-                    </span>
-                    
-                    
-                        
-                    	<button onclick="logOutScreen()" class="logout-button" id="log-out" name="log-out" href="Logout">Logout</button>
-                 
-                    
-                </div>
-
-            </div>
-
-         
+<body style="position: relative;border-radius: 2px;background: transparent;">
+    <div style="background: transparent;">
+        <div style="width: 900px;height: 500px;position: absolute;margin-top: 57%;margin-left: 50%;transform: translateX(-50%) translateY(-150%) translateZ(314px);margin-bottom: 0px;transform-style: preserve-3d;border-radius: 0px;background: var(--bs-tertiary-bg);border-style: none;border-color: var(--bs-btn-hover-color);">
+            <div class="container" style="width: 100%;height: 100%;display: inline-flex;position: absolute;">
                 
-        <div style="margin-top: 20px;height: 45px;display: flex;border: 1px solid;border-color: rgb(176, 176, 176);border-top:none;border-right: none;border-left: none;">
-            
-          
-            	
-            	<div  onclick="switchToMyList()"  id="mylistings" class="listings-highlight" style="border: 2px solid;border-color: rgb(176, 176, 176);border-bottom: none;border-top-left-radius: 5px;border-top-right-radius: 5px;">
-                	<input type="radio" id="myTrigger" name="myTrigger" value="My Listings" style="display: none" />
-    					<label style="height: 40px;width: 150px; text-align: center; " for="myTrigger"><a style="color:black;text-decoration: none;position:relative; top:35%;" href="">My Listings</a></label>
-    				
-            	</div>
-            	
-    		
-    	
-            <div onclick="switchToCommunityList()" id="communitylistings" class="listings-highlight" style="background: #e4e4e4;border: 2px solid;border-color: rgb(176, 176, 176);border-bottom: none;border-top-left-radius: 5px;border-top-right-radius: 5px;">
-                           
-    		<input type="radio" id="myTrigger" name="myTrigger" style="display: none" />
-   				<label for="myTrigger"><a style="color:black;text-decoration: none;position:relative; top:35%;" href="">Community Listings</a></label>
-        
-                <div style="display:block;">
-                    
-                </div> 
+                <div style="width: 100%;height: 100%;margin: 0px;padding-left: 5px;">
+
+                    <div class="visible" style="width: 100%;height: 70%;display: block;">
+                        <div style="width: 100%;height: 10%;">
+                            <label class="form-label" style="width: 100%;text-align: center;padding-top: 10px;color: rgb(118,120,122);">
+                                Add Auction</label>
+                            </div>
+                            <input type="file" style="width: 100%;height: 100%; cursor: pointer;">
+                    </div>
+
+                    <div style="width: 100%;height: 70%;margin-left: 0px;padding-bottom: 10px;padding-top: 10px;">
+                        <label class="form-label" style="height: 0%;width: 100%;color: rgb(118,120,122);">
+                            Car Description
+                        </label>
+                        <textarea style="width: 100%;height: 30%;border-radius: 6px;border: 1px solid rgb(230,231,232) ;">
+                        </textarea>
+                    </div>
+
+                </div>
+
+                <div style="width: 100%;height: 100%;padding-top: 5px;padding-right: 5px;border-color: rgb(205,206,207);max-height: inherit;margin-right: 20px;margin-left: 20px;">
+                    <div style="width: 100%;height: 60px;">
+                        <div style="width: 100%;height: 40%;">
+                            <label class="form-label" style="height: 100%;width: 100%;padding-left: 10px;padding-top: 0px;color: rgb(118,120,122);">
+                                Year
+                            </label>
+                        </div>
+                        <div style="width: 100%;height: 60%;">
+                            <input type="number" min="1900" max="2026" maxlength="4" step="1" style="width: 100%;height: 100%;border-radius: 6px;padding-left: 10px;border: 1px solid rgb(230,231,232) ;">
+                        </div>
+                    </div>
+
+                    <div style="width: 100%;height: 60px;">
+
+                        <div style="width: 100%;height: 40%;">
+                            <label class="form-label" style="height: 100%;width: 100%;padding-left: 10px;padding-top: 0px;color: rgb(118,120,122);">
+                                Make
+                            </label>
+                        </div>
+
+                        <div style="width: 100%;height: 60%;">
+                            <input type="text" style="width: 100%;height: 100%;border-radius: 6px;padding-left: 10px;border: 1px solid rgb(230,231,232) ;">
+                        </div>
+                    </div>
+
+                    <div style="width: 100%;height: 60px;">
+                        <div style="width: 100%;height: 40%;">
+                            <label class="form-label" style="height: 100%;width: 100%;padding-left: 10px;padding-top: 0px;color: rgb(118,120,122);">
+                                Model
+                            </label>
+                        </div>
+                        <div style="width: 100%;height: 60%;">
+                            <input type="text" style="width: 100%;height: 100%;border-radius: 6px;padding-left: 10px;border: 1px solid rgb(230,231,232) ;">
+                        </div>
+                    </div>
+
+                    <div style="width: 100%;height: 60px;">
+                        <div style="width: 100%;height: 40%;">
+                            <label class="form-label" style="height: 100%;width: 100%;padding-left: 10px;padding-top: 0px;color: rgb(118,120,122);">
+                                Color
+                            </label>
+                        </div>
+
+                        <div style="width: 100%;height: 60%;">
+                            <input type="text" style="width: 100%;height: 100%;border-radius: 6px;padding-left: 10px;color: rgb(136,77,110);border: 1px solid rgb(230,231,232) ;">
+                        </div>
+                    </div>
+
+                    <div style="width: 100%;height: 60px;">
+                        <div style="width: 100%;height: 40%;">
+                            <label class="form-label" style="height: 100%;width: 100%;padding-left: 10px;padding-top: 0px;color: rgb(118,120,122);">
+                                Starting Bid
+                            </label>
+                        </div>
+
+                        <div style="width: 100%;height: 60%;">
+                            <input type="text" style="width: 100%;height: 100%;border-radius: 6px;padding-left: 10px;border: 1px solid rgb(230,231,232) ;">
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: 60px;">
+                        <div style="width: 100%;height: 40%;">
+                            <label class="form-label" style="height: 100%;width: 100%;padding-left: 10px;padding-top: 0px;color: rgb(118,120,122);">
+                                Price
+                            </label>
+                        </div>
+                        <div style="width: 100%;height: 60%;">
+                            <input type="number" step="1" style="width: 100%;height: 100%;border-radius: 6px;padding-left: 10px;border: 1px solid rgb(230,231,232) ;">
+                        </div>
+                    </div>
+
+                    <div style="width: 100%;height: 60px;">
+                        <div style="width: 100%;height: 40%;margin-top: 3px;">
+                            <label class="form-label" style="height: 100%;width: 100%;padding-left: 10px;padding-top: 0px;color: rgb(118,120,122);">
+                                Expiration Date (*Required)
+                            </label>
+                        </div>
+                        <div  style="width: 100%;height: 60%;">
+                            <input type="datetime-local" style="width: 100%;height: 100%;border-radius: 6px;padding-left: 10px;border: 1px solid rgb(230,231,232) ;" required>
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: inherit;padding-bottom: 50%;max-height: inherit;">
+                        <input class="btn btn-primary" type="submit" style="margin-top: 20px;width: 100%;height: initial;background: linear-gradient(-163deg, #0ce4fe 18%, #27cffe 44%, #42b8fe 80%, #4daefd 100%), #27cffe;">
+                    </div>
+                </div>
             </div>
-        </div>  
-        
-        
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
 
-        
-
-        
-        
-        <script src="app.js" charset="utf-8"></script>
-       
-    </body>
 </html>
 
 
 
- 
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->
+

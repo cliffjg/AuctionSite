@@ -17,7 +17,7 @@
 <body class="content">
 
 	<%//////////////////////SITE LOGO//////////////////////////////////////////%>	
-	<div class="left-section">
+	<!-- <div class="left-section">
 		<h1 class="site-tag" style="font-family: sans-serif;margin-left: 10px;" >
 			<span style="color: rgb(231, 0, 0);padding: 0px;font-style: italic;">B</span>
             <span style="color: blue;padding: 0px;font-style: italic;margin-left: -10px;">u</span>
@@ -26,7 +26,17 @@
            	<span style="color: rgb(231, 0, 0);font-style: italic;margin-left: -10px;">e</span>
                     
        </h1>
-    </div>
+    </div> -->
+    
+    
+    <div style="width: 300px; height: 64px; display: flex; justify-content: left;align-items: center;margin-top: 50px;">
+                <div style="width: 60px; height: 60px; ">
+                    <img src="Images/auction.png" width="100%" height="100%" >
+                </div>
+                <div style="width: 100px; height: 64px; font-size: 20px;padding-left: 5px;display: flex; justify-content: center;align-items: center;font-family: sans-serif;" >
+                    AuctionUp
+                </div>
+            </div>
 
 
 		<%/*/////////////////////BOX THAT HOLDS INPUT <-to-> LOGIN BUTTON//////////////////////////////////////////*/%>
@@ -75,7 +85,7 @@
 
 
 					<%/*/////////////////////LOGIN BUTTON/////////////////////////////////////////*/%>				
-					<button  id="login-button"   class="login-button">Log in</button>
+					<button  id="login-button"   class="login-button" >Log in</button>
 				
 				
 				

@@ -19,17 +19,22 @@
 
 .login-button {
 	width: 100%;
-	background-color: rgb(0, 81, 255);
 	justify-content: center;
 	align-items: center;
-	border: 1px solid gray;
-	border-radius: 4px;
-	color: white;
+	border: 1px solid #42b8fe;
 	padding: 5px;
+	color: rgb(255, 255, 255); 
+	border-radius: 6px;
+	background: linear-gradient(-163deg, #0ce4fe 18%, #27cffe 44%, #42b8fe 80%, #4daefd 100%), #27cffe;
+	
+	
 }
 
 .login-button:hover {
-	background-color: rgb(0, 69, 219);
+	color: rgb(255, 255, 255); 
+	border-color: #42b8fe; 
+	border-radius: 6px;
+	background: linear-gradient(-163deg, #0ce4fe 18%, #27cffe 44%, #42b8fe 80%, #4daefd 100%), #27cffe;
 }
 
 .cancel-font {
@@ -100,7 +105,7 @@
 	cursor: pointer;
 }
 
-#overlay {
+/* #overlay {
 
 	position: fixed;
 	display: none;
@@ -114,7 +119,7 @@
 	z-index: 2;
 	cursor: pointer;
 }
-
+ */
 #text {
 	width: 300px;
 	height: 250px;
@@ -189,7 +194,7 @@
 	margin: auto;
 }
 
-#overlay1, #overlay2 {
+/* #overlay1, #overlay2 {
 	position: fixed;
 	display: none;
 	width: 100%;
@@ -201,7 +206,7 @@
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 2;
 	cursor: pointer;
-}
+} */
 
 .listings-highlight {
 	font-family: sans-serif;
@@ -239,7 +244,7 @@
 }
 
 
-
+/* 
 #overlay {
     position: fixed;
     display: none;
@@ -252,7 +257,7 @@
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
     cursor: pointer;
-  }
+  } */
   
   #text{
     width: 300px;
@@ -335,7 +340,7 @@
 
   }
 
-  #overlay1,#overlay2 {
+/*   #overlay1,#overlay2 {
     position: fixed;
     display: none;
     width: 100%;
@@ -347,7 +352,7 @@
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
     cursor: pointer;
-  }
+  } */
 
  .listings-highlight{
  	font-family: sans-serif;

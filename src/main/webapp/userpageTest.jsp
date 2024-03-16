@@ -32,15 +32,38 @@
    				
    				<button  id="logout" onclick="logout()">Log out</button>
    				
+   				
    		
    				
    				<form id="myForm" action = "UserMessageServlet" method = "post">
    				
-   					
+   					<div style="padding: 10px;">
+   						<button  id="messageButton" name="messageButton" value="<%=userEmail%>" >Message</button>
    				
-   				<button  id="messageButton" name="messageButton" value="<%=userEmail%>" >Message</button>
-   				
+   					</div>	
+
    				</form>
+   				
+   				
+   				
+   				
+   				<!-- <form action="AddAuctionServlet" method="post">
+   					<div style="padding: 10px;">
+   						<button>Add Auction</button>
+   				
+   					</div>
+   				
+   				
+   				</form> -->
+   				
+   				
+   					<div style="padding: 10px;">
+   						<button onclick="location.href='addAuctionPage.jsp'">Add Auction</button>
+   				
+   					</div>
+   				
+
+   				
    				
    			</div>
         
