@@ -342,22 +342,19 @@
                 			
 
 		 	  				<% 
-		 	  				
-		 	  					if(!userEmail.equals(auction.getUserEmail())){
-		 	  				
+		 	  				if(!userEmail.equals(auction.getUserEmail()) && !auction.getCalculatedExpirationDate().contains("-") ){
 		 	  				%>
-		 	  					
+		 	  				
 		 	  						<br><div><span style= "font-weight: bold;">Bid: </span>
-		 	  						<input type="number" id="bidderPrice" name="bidderPrice" style="border-radius: 6px; border:1px solid"></input>
-		 	  						<button style="font-size: 15px; color: rgb(255, 255, 255); border-color: #42b8fe; border-radius: 6px;background: linear-gradient(-163deg, #0ce4fe 18%, #27cffe 44%, #42b8fe 80%, #4daefd 100%), #27cffe;margin-left: 5px;">
-		 	  							Submit Bid
-		 	  						</button>
+		 	  								<input type="number" id="bidderPrice" name="bidderPrice" style="border-radius: 6px; border:1px solid"></input>
+		 	  								<button style="font-size: 15px; color: rgb(255, 255, 255); border-color: #42b8fe; border-radius: 6px;background: linear-gradient(-163deg, #0ce4fe 18%, #27cffe 44%, #42b8fe 80%, #4daefd 100%), #27cffe;margin-left: 5px;">
+		 	  								Submit Bid
+		 	  								</button>
 		 	  					
-		 	  		</div>
+		 	  							</div>
 		 	  				
-		 	  				
-		 	  				<% 
-		 	  					}
+		 	  				<%	
+		 	  					} 
 		 	  				%>
 		 	  		</div>		
 							
