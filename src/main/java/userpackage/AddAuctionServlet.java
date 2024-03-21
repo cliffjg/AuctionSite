@@ -97,15 +97,15 @@ public class AddAuctionServlet extends HttpServlet {
 				+ "'" +carColor + "'" + "," + startingBid + "," + carPrice +","+"'"+startDate+"'" + "," + "'"+expirationDate+"'"
 				+ "," + "'" +carDescription + "'," + "'/Images/" + imagePath + "'"
 						+ ");";
-		 
-//		 String queryAddBidHistory = "insert into BidHistory(auctionID, userEmail, bidPrice, bidDateTime) values
-//				 (1, "johnnykane@gmail.com", 2750243, "2024-02-4 17:49:52");
+		
+
+		String queryAddBidHistory = null;
+		String auctionID = null;
+		
+		//query to get last entry in auction by current userEmail
+		String queryLastAddAuctionEntry = "select * from Auction where userEmail = '"+ userEmail + "' ORDER BY auctionID DESC LIMIT 1;";
 		
 		
-		 System.out.println(queryAddAuction);	
-		 	 
-		 
-//		 System.out.println(queryAddBidHistory;	
 		 
 		 try{
 			 DatabaseAccess db = new DatabaseAccess();
@@ -115,6 +115,22 @@ public class AddAuctionServlet extends HttpServlet {
 			
 			statement.executeUpdate(queryAddAuction);
 			
+			//get last new auction that was inserted by the current user
+			ResultSet rs = statement.executeQuery(queryLastAddAuctionEntry);
+			
+			while(rs.next()) {
+				
+				auctionID = rs.getString("auctionID");
+				
+			}
+			
+			//insert the bid into bidHistory
+			queryAddBidHistory = "insert into BidHistory(auctionID, userEmail, bidPrice, bidDateTime) values (" + 
+					auctionID + ", '" + userEmail + "', " + startingBid + ",'" + startDate + "');";
+			
+
+			statement.executeUpdate(queryAddBidHistory);
+	
 //			Files.copy(selectedPath,destinationPath);
 			
 			request.getRequestDispatcher("BackToUserPage").forward(request,response);
