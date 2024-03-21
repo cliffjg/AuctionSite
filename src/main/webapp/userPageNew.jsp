@@ -256,7 +256,7 @@
      <div id="overlay" >
   		<div id="text">
   		
-  		 <form action="AddAuctionServlet" method="post">
+  		 <form action="AddAuctionServlet" method="post" >
   		<!-- background: rgb(220,220,220); -->
   		
   		 <div style="width: 900px;height: 540px;  background: rgb(220,220,220);">
@@ -287,24 +287,40 @@
   		 						 <div style="height: 300px; width: 445px; box-sizing: border-box;">
   		 						 	<div style="width: 93%; height: 85%; margin-left: 10px; border: 1px solid rgb(151,151,151); border-radius: 6px;background: #FFFFFF;display: flex;justify-content: center;align-items: center;position: relative;">
   		 						 	
-  		 						 	<%-- <%
-  		 						 		if((request.getParameter("imagePath") == null )){
-						 
-  		 						 	%> --%>
-  		 						 		<img alt="" src="Images/add.png" style="width: 50px; height: 50px;position: absolute; z-index: 1;"> 
-  		 						 		<input name="imagePath" type="file" style="height: 100%; width: 100%; opacity: 0; position: absolute;z-index: 2;" >
-  		 						 	<%-- <%
-  		 						 		}else{
-  		 						 		
-  		 							%>
-  		 								<img alt="" src="Images/Bugatti.jpeg" style="width: 50px; height: 50px;position: absolute; z-index: 1;"> 
-  		 							
-  		 							<%
-  		 						 		}
-  		 							
-  		 							%> --%>
+
+  		 						 		<img id="imagePath" alt="" src="Images/add.png" style="width: 50px; height: 50px;position: absolute; z-index: 1;"> 
+  		 						 		<input id="imagePath" name="imagePath" type="file" style="height: 100%; width: 100%; opacity: 0; position: absolute;z-index: 2;" onchange="previewImage(event)">
+  		 						 
   		 						 		
   		 						 	</div>
+  		 						 	
+<!--THIS SCRIPT IS FOR CHANGING THE ADD IMAGE ICON TO THE IMAGE SELECTED BY USER  -->  		 						 	
+<script>
+  		 					
+	function previewImage(event) {
+
+		var img = document.getElementById('imagePath');
+		console.log("The image: " + img.value);
+  		 						  
+		// Check if a file was selected
+		if (event.target.files && event.target.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+			
+  		 	
+			//set the size of the image and also the result
+			img.style.width = '100%';
+			img.style.height = '100%';
+			img.src = e.target.result;
+  		 						   
+		}
+
+		// Read the selected file as a Data URL
+		reader.readAsDataURL(event.target.files[0]);
+		}
+	} 
+</script>
   		 						 	
   		 						 		
   		 						 		    
@@ -395,6 +411,7 @@
                                     <option id="make">Opel</option>
                                     <option id="make">Peugeot</option>
                                     <option id="make">Pontiac</option>
+                                    <option id="make">Porsche</option>
                                     <option id="make">Ram</option>
                                     <option id="make">Renault</option>
                                     <option id="make">Saab</option>

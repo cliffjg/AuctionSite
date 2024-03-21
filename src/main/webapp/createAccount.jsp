@@ -14,22 +14,23 @@
 
 <body class="content">
 
-
-	<div>
-		<h1 class="site-tag" style="font-family: sans-serif;">
-			<span style="color: rgb(231, 0, 0);">B</span> <span
-				style="color: blue;">u</span> <span
-				style="color: rgb(235, 235, 96);">y</span> <span
-				style="color: green;">M</span> <span style="color: rgb(231, 0, 0);">e</span>
-			<span style="font-weight: 100; font-size: 12px; padding-left: 100px;">Already
-				have an account? <span name="login-on-top" id="login-on-top" class="login-on-top"
-				style="color: blue;" >Log in.</span>
-			</span>
-		</h1>
-
-
-	</div>
-
+		    <div style="width: 475px; height: 64px; display: flex; justify-content: left;align-items: center;margin-top: 50px; border: 1px solid; color: black;">
+                <div style="width: 60px; height: 60px; ">
+                    <img src="Images/auction.png" width="100%" height="100%" >
+                </div>
+                <div style="width: 100px; height: 64px; font-size: 20px;padding-left: 5px;display: flex; justify-content: center;align-items: center;font-family: sans-serif;" >
+                    AuctionUp
+                </div>
+                <div style="width: 300px; height: 64px; display: flex; justify-content: right;margin-top: 50px;">
+            		<span style="font-weight: 100; font-size: 12px; padding-left: 100px;">Already
+						have an account? <span name="login-on-top" id="login-on-top" class="login-on-top"
+							style="color: blue;" >Log in.</span>
+					</span>
+            	</div>
+               
+                
+            </div>
+            
 
 		<div class="box">
 			<div class="login-section">

@@ -117,6 +117,7 @@ function off() {
 		if (elements[i].type == "text") {
     		elements[i].value = "";
   		}
+
   	
   	
 	}

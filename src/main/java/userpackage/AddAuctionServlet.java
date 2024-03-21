@@ -1,6 +1,9 @@
 package userpackage;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  * Servlet implementation class AddAuctionServlet
@@ -69,22 +73,7 @@ public class AddAuctionServlet extends HttpServlet {
 		String imagePath = request.getParameter("imagePath");
 		
 		
-		
-		
-		//Get all attributes from user 
-//		String userEmail = (String)session.getAttribute("userEmail");
-//				String carImage = request.getParameter("carImage").trim();
-//				String carYear = request.getParameter("carYear").trim(); 
-//				String carMake = request.getParameter("carMake").trim(); 
-//				String carModel = request.getParameter("carModel").trim();  
-//				String carColor = request.getParameter("carColor").trim(); 
-//				String startingBid = request.getParameter("startingBid").trim();  
-//				String carPrice = request.getParameter("carPrice").trim(); 
-////				String startDate = request.getParameter("startDate"); 
-//				String expirationDate = request.getParameter("expirationDate").trim(); 
-//				String carDescription = request.getParameter("carDescription").trim(); 
-//				String imagePath = request.getParameter("imagePath").trim();
-		
+
 		System.out.println("\n");		
 //		
 		System.out.println("Car Year: " + carYear);		
@@ -96,22 +85,12 @@ public class AddAuctionServlet extends HttpServlet {
 		System.out.println("Car Description: " + carDescription);
 		System.out.println("Image Path: " + imagePath);
 		
-//		 String queryAddAuction = "insert into Auction(auctionID, "
-//					+ "userEmail, "
-//					+ "carImage, "
-//					+ "carYear, "
-//					+ "carMake, "
-//					+ "carModel, "
-//					+ "carColor, "
-//					+ "startingBid, "
-//					+ "carPrice, "
-//					+ "startDate, "
-//					+ "expirationDate, "
-//					+ "carDescription, imagePath) values ("+ userEmail + "'" +","+"'"+carImage+"'," 
-//					+ carYear  + "," + "'" + carMake + "'"+ "," +"'" +carModel + "'"+","
-//					+ "'" +carColor + "'" + "," + startingBid + "," + carPrice +","+"'"+startDate+"'" + "," + "'"+expirationDate+"'"
-//					+ "," + "'" +carDescription + "'," + "'" + imagePath + "'"
-//							+ ");";
+//		Path selectedPath = Paths.get(imagePath);
+//		
+//		Path destinationPath = Paths.get("./Images/" + imagePath);
+		
+	
+		
 		
 		String queryAddAuction = "insert into Auction(userEmail, carImage, carYear, carMake, carModel, carColor, startingBid, carPrice, startDate, expirationDate, carDescription, imagePath) values ('" + userEmail + "'" +","+"'"+carImage+"'," 
 				+ carYear  + "," + "'" + carMake + "'"+ "," +"'" +carModel + "'"+","
@@ -124,6 +103,8 @@ public class AddAuctionServlet extends HttpServlet {
 		
 		
 		 System.out.println(queryAddAuction);	
+		 	 
+		 
 //		 System.out.println(queryAddBidHistory;	
 		 
 		 try{
@@ -133,6 +114,8 @@ public class AddAuctionServlet extends HttpServlet {
 			Statement statement = connection.createStatement();
 			
 			statement.executeUpdate(queryAddAuction);
+			
+//			Files.copy(selectedPath,destinationPath);
 			
 			request.getRequestDispatcher("BackToUserPage").forward(request,response);
 
