@@ -187,7 +187,7 @@ public class ProductPage extends HttpServlet {
     			System.out.println("Bidder Email: " + auction.bidderEmail);
     			
     			
-    			response.sendRedirect("productPage.jsp");
+    			response.sendRedirect("productPageNew.jsp");
     			
     			
             	

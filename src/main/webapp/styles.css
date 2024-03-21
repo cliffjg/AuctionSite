@@ -5,7 +5,7 @@
 	width:33.33333333%;
 }
 
-em:hover{
+/* em:hover{
 	
 	padding-left: 20px;
 	padding-right: 20px;
@@ -13,7 +13,20 @@ em:hover{
 	padding-bottom: 6px;
 	background:rgb(84,179,254);
 	
+} */
+
+.dividerSection{
+	
+	padding-left: 20px;
+	padding-right: 20px;
+	
 }
+
+.dividerSection:hover{
+	background:rgb(84,179,254) !important;
+	
+}
+
 
 #overlay {
 	display: none;

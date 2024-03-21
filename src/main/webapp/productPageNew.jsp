@@ -21,10 +21,7 @@
    <!--  <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css"> -->
    <!--  <link rel="stylesheet" href="assets/css/styles.css"> -->
     <!-- <link rel="stylesheet" href="assets/css/untitled.css"> -->
-     <link rel="stylesheet" href="styles.css">
-     
-     
-
+    <link rel="stylesheet" href="styles.css">
      
      
      <style>
@@ -63,7 +60,6 @@
     
   }
 </style>
-          
      
      
      
@@ -71,7 +67,8 @@
 
 <body >
 
-	<%String userEmail = session.getAttribute("userEmail").toString(); 
+	<%
+		String userEmail = session.getAttribute("userEmail").toString(); 
 	
 		NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
 		
@@ -85,15 +82,30 @@
    
     
       <nav> 
+      
         <div style="width: 100%; height: 64px; display: flex;">
-            <div style="width: 20%; height: 64px; display: flex; justify-content: center;align-items: center;">
-                <div style="width: 12%; height: 30px; ">
+            
+             
+           <form style="width: 100%;" action = "BackToUserPage" method = "post">
+            <!-- <div type ="submit" onclick="location.href='userPageNew.jsp'" style="width: 20%; height: 64px; display: flex; justify-content: center;align-items: center;cursor: pointer;">
+                 -->
+                 <!-- <div type ="submit" onclick="location.href='userPageNew.jsp'" style="width: 20%; height: 64px; display: flex; justify-content: center;align-items: center;cursor: pointer;">
+                 -->
+         
+         		<button   style="width: 20%; height: 64px; display: flex; justify-content: center;align-items: center;cursor: pointer;border: none;background: transparent;">
+                
+                <div style="width: 20%; height: 30px; ">
                     <img src="Images/auction.png" width="100%" height="100%">
                 </div>
                 <div style="width: 40%; height: 30px; font-size: 20px;padding-left: 5px;">
                     AuctionUp
                 </div>
-            </div>
+                
+  
+                
+            </button>
+           </form>
+            
 
             <div style="width: 80%; height: 64px;  display: flex; justify-content: right;align-items: center;">
             
@@ -172,13 +184,13 @@
 			<!-- <em onclick="location.href='userPageNew.jsp'" style="margin-left: 70px;margin-right: 0px;font-family: Abel, sans-serif;cursor: pointer; font-style: normal;">Home&nbsp;</em> -->
 	 	
 	 	<!-- </form> -->
-<!-- 	 	
+	 	
 	 	<form  action = "BackToUserPage" method = "post"> 
 	
 			<button  class="dividerSection" style="margin-left: 70px;margin-right: 0px;font-family: Abel, sans-serif;cursor: pointer; font-style: normal;border: none;background: transparent;color: white;">Home&nbsp;</button>
 	 	
 	 	</form>
-    	 -->
+    	
     	<div class="dividerSection" style="margin-left: 70px;margin-right: 0px;font-family: Abel, sans-serif;cursor: pointer; font-style: normal;">My Auctions&nbsp;</div>
     	<div class="dividerSection" style="font-family: Abel, sans-serif;margin-left: 40px;cursor: pointer;font-style: normal;">My Bids/Favorites</div>
     	<div class="dividerSection" style="font-family: Abel, sans-serif;font-weight: bold;margin-left: 40px;cursor: pointer;font-style: normal;">Community Auctions</div>
@@ -186,77 +198,134 @@
     </section>
      <!-- //////////////////////////////////ENDING OF BLACK SECTION PARTITION/////////////////////////////////////////////////////////////////////////////////////////////////-->
     
-    
+<!--////////////////////////////////////BEGINNING OF NEW CODE /////////////////////////////////////////////////////////////////////////////////////  -->
+<!-- 
+	 <form action = "BackToUserPage" method = "post">
+	
+		<button onclick="location.href='userpageTest.jsp'">Home</button>
+	 </form> -->
 
-   
-   
-    
-    <div   class="container" style="width: 100%;height: 350px;margin-top: 0px;" >
-    
-    <form id="myForm" action = "UserPage" method = "post">
-    	<input type="hidden" id="dataField" name="data">
-    
-        <div class="row" style="width: 100%;height: 350px;">
-        
+	 <form action = "ProductPage" method = "post">
+	 
+	 	<%-- <% String auctionID= request.getParameter("id");  %> --%>
+	 	<% String auctionID= request.getParameter("auctionID");  %>
+	 	 <% auctionID= (String)session.getAttribute("auctionID");  %>
+	 	 <% userEmail = (String)session.getAttribute("userEmail"); %>
+	 	 <%
+				String bidderEmail = userEmail;
+	 	 		session.setAttribute("bidderEmail", bidderEmail);
+	 	 		session.setAttribute("auctionID", auctionID);
+	 	 	
+	 	 
+		%>
+	 	
+		<%-- <% session.setAttribute("auctionID", auctionID);  %>
+		<% request.setAttribute("auctionID", auctionID);%> --%>
+	
+<%-- 	<div>
+		
+		The auctionID = <%=auctionID %>
+		<br>The userEmail = <%=userEmail %>
+	
+	</div> --%>
+	 
+		 <div>
+		 	
 
- 			<%
-
-       			ArrayList<Auction> myAuction = new ArrayList<Auction>();
-        		myAuction = (ArrayList<Auction>) session.getAttribute("communityAuction");
-        		
-   				for(int i = 0; i < myAuction.size(); i++) {
-            	Auction auction = new Auction();
-           	 	auction = myAuction.get(i);
-
-            %>
-            	
-            
-        <div   style="margin-top: 20px;lex:0 0 auto;width:33.33333333%;" class="auction" id="<%=auction.getAuctionId()%>">
-            
-            <% if(auction.getImagePath() == null){ %>
-                				<!-- <img src="Images/AwaitingPhoto.jpeg"  style="height: 250px; width: 100%;"> -->
-                				<div style="width: 100%;height: 60%;"><img width="100" height="80" style="width: 100%;height: 100%;" src="Images/AwaitingPhoto.jpeg"></div>
+		 	
+		 	
+		 	
+		 	
+		 	
+		 	
+        			
+		 	<%Auction auction = new Auction(); %>
+		 	
+		 	<%auction = (Auction) session.getAttribute("auction"); %>
+		 	
+		 	<%-- <%auction = (Auction)session.getParameter("auction"); %> --%>
+		 	<%-- <%auction = (Auction)session.getParameter("auction"); %> --%>
+		 	
+		 	<div style="padding-left: 10%;margin-top: 10px; display: flex; ">
+		 	
+		 				<div style="padding-right: 10px;">
+		 					<div style="height: 50px; width: 50px; border: solid 1px; color: black; margin-bottom: 10px;">
+		 						<img src="Images/bugatti_other.jpeg"  style="height: 100%; width: 100%;">
+		 					</div>
+		 					
+		 					<div style="height: 50px; width: 50px; border: solid 1px; color: black; margin-bottom: 10px;">
+		 						<img src="Images/bugatti_other.jpeg"  style="height: 100%; width: 100%;">
+		 					</div>
+		 					
+		 					<div style="height: 50px; width: 50px; border: solid 1px; color: black; margin-bottom: 10px;">
+		 						<img src="Images/bugatti_other.jpeg"  style="height: 100%; width: 100%;">
+		 					</div>
+		 				
+		 				</div>
+		 	
+		 				<div style="height: 400px; width: 650px; border: 1px solid; color: black;">
+		 					<% if(auction.getImagePath() == null){ %>
+                				<img src="Images/AwaitingPhoto.jpeg"  style="height: 400px; width: 50%;">
                 			
                 			<% }else{%>
-                				<%-- <img src=".<%=auction.getImagePath()%>"  style="height: 250px; width: 100%;"> --%>
-                				<div style="width: 100%;height: 60%;"><img width="100" height="80" style="width: 100%;height: 100%;" src=".<%=auction.getImagePath()%>"></div>
+                				<img src=".<%=auction.getImagePath()%>"  style="height: 100%; width: 100%;">
                 			
                 			<% } %>
-            
-               <%--  <div style="width: 100%;height: 60%;"><img width="100" height="80" style="width: 100%;height: 100%;" src=".<%=auction.getImagePath()%>"></div> --%>
-                <div style="width: 100%;height: 35%;margin-top: 0px;">
-                    <p class="lead" style="width: 100%;margin-bottom: 0px;margin-top: 10px;">Car: <%=auction.getCarYear()%> <%=auction.getCarMake()%> <%=auction.getCarModel()%></p> 
-               				
+                		</div>	
+		 	
+		 				<div style="padding-top: 10px; padding-left: 20px;">
+		 					<h5 style="font-weight: normal;margin-bottom: 0px;"><span style= "font-weight: bold;">Car: </span><%=auction.getCarYear()%>
+               				<%=auction.getCarMake()%>
+                			<%=auction.getCarModel()%>
+                			</h5>
+                			<span style= "font-weight: bold;">Color:</span> <%=auction.getCarColor()%>
+                			<br><br><span style= "font-weight: bold;">Seller's Description: </span><br><span style="padding-left: 20px;"><%=auction.getCarDescription()%></span>
                 			
+                			<% carPrice = currencyFormatter.format(Integer.parseInt(auction.getStartingBid()));%>
+                			<br><br><span style= "font-weight: bold;">Starting Bid: </span><%=carPrice%>
                 			
-                    <p style="width: 100%;margin-bottom: 0px;">Color: <%=auction.getCarColor()%></p>
-                    
-                    <%if(auction.getCurrentBid() != null){ %>
+                			<%-- 
+                			<br>$<%=auction.getCarPrice()%>
+                			<br><%=auction.getStartDate()%>
+                			<br><%=auction.getExpirationDate()%>
+                			<br><%=auction.getCarDescription()%>
+                			 --%>
                 			
-                				<% carPrice = currencyFormatter.format(Integer.parseInt(auction.getCurrentBid()));%>
-                				<%-- <p style="width: 100%;margin-bottom: 0px;">Current Bid: $<%=auction.getCurrentBid()%></p> --%>
-                				<p style="width: 100%;margin-bottom: 0px;">Current Bid: <span style="color: rgb(13, 181, 41);"><%=carPrice%></span></p>
+                			<%-- <%carPrice = currencyFormatter.format(Integer.parseInt(auction.getCurrentBid())); %> --%>
                 			
-                			<% }else{ %>
+                			<% if(auction.currentBid != null){
                 				
-                				<%String number = auction.getStartingBid(); %>
+                				carPrice = currencyFormatter.format(Integer.parseInt(auction.getCurrentBid()));
                 				
+                			%>
+                				<br><span style= "font-weight: bold;">Current Bid: </span><span style="color: green;"><%=carPrice%></span>
+                				<br><span style= "font-weight: bold;">Bidder Email: </span><%=auction.getBidderEmail()%>
                 			
-                				<% carPrice = currencyFormatter.format(Integer.parseInt(auction.getStartingBid()));%> 
-                				<%-- <p style="width: 100%;margin-bottom: 0px;">Current Bid: $<%=auction.getStartingBid()%></p> --%>
-                				<p style="width: 100%;margin-bottom: 0px;">Current Bid: <span style="color: rgb(13, 181, 41);"><%=carPrice%></span></p>
-                				
+                			<% }else{%>
+                				<br>Current Bid: No current Bids!
+                				<br>Bidder Email: No current Bids!
+                			
                 			<% } %>
+                			<%-- <br>Current Bid: $<%=auction.getCurrentBid()%>
+                			<br>Bidder Email: <%=auction.getBidderEmail()%> --%>
                 			
-                			 <% session.setAttribute("userEmail", userEmail );%>
-                    
-                    <p style="width: 100%;margin-bottom: 0px;">Time Remaining: <span id="countdown<%=auction.getAuctionId()%>" style="color: red;"></span></p>
-                    <p style="width: 100%;">Winning</p>
-                </div>
-            </div>
-            
-            <script src="userPage.js"></script>
-<script >
+                			<%-- <br><%=auction.getImagePath()%> --%>
+                			<%-- <br><%=auction.getCalculatedExpirationDate()%>
+                			<br><%=auction.getCalculatedExpirationDate()%>
+                			<div><%=auction.getCalculatedExpirationDate()%></div>
+     		 	  --%>           			
+     
+     				<div >
+     					<span style= "font-weight: bold;">Time remaining: </span> <span id="countdown<%=auction.getAuctionId()%>" style="color: red;"></span>
+ 
+     				
+     				</div>
+                			
+ 
+ 
+ 
+  <script src="userPage.js"></script>
+ <script >
      
      
      // Set the end time for the countdown
@@ -268,20 +337,93 @@
      
   
     
-</script> 
-            
-           <%} %> 
-           
-          
+</script>               			
+                			
+                			
 
+		 	  				<% 
+		 	  				
+		 	  					if(!userEmail.equals(auction.getUserEmail())){
+		 	  				
+		 	  				%>
+		 	  					
+		 	  						<br><div><span style= "font-weight: bold;">Bid: </span>
+		 	  						<input type="number" id="bidderPrice" name="bidderPrice" style="border-radius: 6px; border:1px solid"></input>
+		 	  						<button style="font-size: 15px; color: rgb(255, 255, 255); border-color: #42b8fe; border-radius: 6px;background: linear-gradient(-163deg, #0ce4fe 18%, #27cffe 44%, #42b8fe 80%, #4daefd 100%), #27cffe;margin-left: 5px;">
+		 	  							Submit Bid
+		 	  						</button>
+		 	  					
+		 	  		</div>
+		 	  				
+		 	  				
+		 	  				<% 
+		 	  					}
+		 	  				%>
+		 	  		</div>		
+							
+		 	
+		 	</div>
+		 	
+		 </div>
+		 
+		 				
 
-        </div>
-        
-       
-    </form>  
-  
-    </div>
-     
+		 			<div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+		 				
+		 				<div style="margin-top: 10px; "><span style= "font-weight: bold;">Bid History</span></div>
+		 				
+		 				<%
+
+       						ArrayList<String> bidHistory = new ArrayList<String>();
+   							bidHistory = (ArrayList<String>) session.getAttribute("bidHistory");
+    					%>
+   				
+   				
+   				
+   						<% 
+   							if(bidHistory != null){
+   								for(int i = bidHistory.size()-1; i >= 0 ; i--) {  
+   									/* for(int i = 0; i < bidHistory.size(); i++) {  */
+                				
+   									if(i == 0){
+   										
+            			%>
+            			
+            						<div>Starting bid: $<%=bidHistory.get(i) %></div>
+            			
+            			<% 	
+   									}else if(i == bidHistory.size()-1){
+            			%>
+
+            							
+            							
+            						<div >Current bid: $<%=bidHistory.get(i) %></div>
+            						
+            						
+            	
+            			<%
+   									}else{
+   										
+   						%>	
+   									<div style="padding-left: 80px;">$<%=bidHistory.get(i) %></div>
+   						
+   						<% 			
+   									}
+            						
+            					} 
+   							}
+   						%>
+   						
+   				</div>			
+	 
+	 
+	 </form>
+
+<!--///////////////////////////////////ENDING OF NEW CODE////////////////////////////////////////////////////////////////////////////////////////////////  -->
+   
+   
+    
+   
    
     
     

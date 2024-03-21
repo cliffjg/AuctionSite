@@ -46,6 +46,8 @@ public class BackToUserPage extends HttpServlet {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
 		
+		
+		
 		HttpSession session1 = request.getSession();
 
 		ArrayList<Auction> myAuction = new ArrayList();

@@ -47,7 +47,7 @@ public class UserPage extends HttpServlet {
 
 		doGet(request, response);
 		
-		response.sendRedirect("productPage.jsp");
+		response.sendRedirect("productPageNew.jsp");
 		
 		HttpSession session = request.getSession();
 		
