@@ -1,4 +1,4 @@
-select * from Users;
+-- select * from Users;
 
 -- select * from Auction;
 
@@ -20,11 +20,11 @@ select * from Users;
 
 -- insert into Users values ('peter@gmail.com', '1234' ,'Peter Peter', NULL, NULL);
 
-select * from Users;
+-- select * from Users;
 
-select * from Users where userEmail = 'admin@gmail.com';
+-- select * from Users where userEmail = 'admin@gmail.com';
 
-select * from Bidders where auctionID = 1;
+-- select * from Bidders where auctionID = 1;
 
 -- select Count(*) as row_count from Bidders;
 
@@ -76,12 +76,14 @@ select * from Bidders where auctionID = 1;
 -- ("johnnykane@gmail.com", "I need help with my account", "2024-03-02 17:49:52");
 
 
-select * from Bidders;
+-- select * from Bidders;
 
-select * from BidHistory;
+-- select * from BidHistory;
 
-select * from BidHistory where AuctionID = 1;
+-- select * from BidHistory where AuctionID = 1;
 
-select * from Users;
+-- select * from Users;
 
-select * from Messages;
+-- select * from Messages;
+
+select * from Auction;

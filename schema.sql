@@ -27,8 +27,13 @@ Create table Seller(userEmail varchar(50),
 Foreign Key(userEmail) references Users(userEmail), Primary Key(userEmail));
 
 
-Create table Auction(auctionID int,userEmail varchar(50),carImage BLOB,
+-- Create table Auction(auctionID int,userEmail varchar(50),carImage BLOB,
+-- carYear int, carMake varchar(50), carModel varchar(50), carColor varchar(50), startingBid int, carPrice int, startDate DATETIME, expirationDate DATETIME,  carDescription text,imagePath varchar (300),
+
+-- ADDED AUTO INCREMENT
+Create table Auction(auctionID int AUTO_INCREMENT,userEmail varchar(50),carImage BLOB,
 carYear int, carMake varchar(50), carModel varchar(50), carColor varchar(50), startingBid int, carPrice int, startDate DATETIME, expirationDate DATETIME,  carDescription text,imagePath varchar (300),
+
 
 Foreign Key(userEmail)  references Seller(userEmail), Primary Key(auctionID));
 
@@ -79,17 +84,30 @@ values ("michaeljackson@gmail.com"),
 ("tonybaker@gmail.com");
 
 
-insert into Auction(auctionID, userEmail,carImage,
+-- insert into Auction(auctionID, userEmail,carImage,
+-- carYear, carMake, carModel, carColor, startingBid,carPrice, startDate, expirationDate, carDescription, imagePath) values
+-- (1,'johnnykane@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2020,'Bugatti','Divo','Gun Metal Gray',2750243,5700000,'2024-02-4 17:49:52','2024-05-24 17:49:59','Beautiful car; only a few have been made', '/Images/Bugatti.jpeg'),
+-- (2,'bobtom@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2020,'Nissan','GTR','White',20243,113540,'2024-01-15 17:49:52','2024-04-26 17:20:59','Beautiful car; only a few have been made', '/Images/NissanGTR.jpeg'),
+-- (3,'michaeljackson@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2022,'Honda','Civic Type R','White',15375,41500,'2024-02-4 17:49:52','2024-05-28 17:49:59','High performance. low mileage; practically brand new', '/Images/Honda.jpeg'),
+-- (4, 'miller@gmail.com',null, 2022, 'Porsche', 'Taycan', 'Gray', 45632, 82789,'2024-04-4 17:49:52','2024-05-14 17:49:59', 'Save gas with this electric car', '/Images/Porsche.jpeg' ),
+-- (5,'johnbravo@gmail.com', null, 2019, 'Ferrari', '488 Pista', 'Red', 330000, 2750243, '2024-02-4 17:49:52','2024-03-15 17:49:59','Beautiful car; only a few have been made','/Images/Ferrari.jpeg'),
+-- (6,'email@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2022,'Tesla','Model S Plaid','Black',89243,135990,'2024-01-4 17:49:52','2024-06-10 17:49:59','New Car; No Gas; Just electricity', '/Images/Tesla.jpeg'),
+-- (7,"michaeljackson@gmail.com","utl_raw.cast_to_raw ('This is a new blob description)",2022, "Bugatti", "Veyron", "Blue",10000, 5700000, "2024-02-02 23:59:59","2024-05-05 23:59:59", "Brand new never driven. Low mileage", NULL),
+-- (8,"miller@gmail.com","utl_raw.cast_to_raw ('This is a new blob description)",2024, "Lamborghini", "Hurrcan", "Black",25432, 577223, "2024-02-02 23:59:59","2024-04-05 23:59:59", "Most beautiful car made by Lambo. Low mileage. Week end drives only.", NULL),
+-- (9,'tonybaker@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description)",2024,'BMW','M3','Metallic Blue',25322,125967,'2024-02-04 17:49:52','2024-03-19 17:49:59','Brand New. 500 miles. Comes with 100,000 mile warranty', NULL);
+
+insert into Auction(userEmail,carImage,
 carYear, carMake, carModel, carColor, startingBid,carPrice, startDate, expirationDate, carDescription, imagePath) values
-(1,'johnnykane@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2020,'Bugatti','Divo','Gun Metal Gray',2750243,5700000,'2024-02-4 17:49:52','2024-05-24 17:49:59','Beautiful car; only a few have been made', '/Images/Bugatti.jpeg'),
-(2,'bobtom@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2020,'Nissan','GTR','White',20243,113540,'2024-01-15 17:49:52','2024-04-26 17:20:59','Beautiful car; only a few have been made', '/Images/NissanGTR.jpeg'),
-(3,'michaeljackson@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2022,'Honda','Civic Type R','White',15375,41500,'2024-02-4 17:49:52','2024-05-28 17:49:59','High performance. low mileage; practically brand new', '/Images/Honda.jpeg'),
-(4, 'miller@gmail.com',null, 2022, 'Porsche', 'Taycan', 'Gray', 45632, 82789,'2024-04-4 17:49:52','2024-05-14 17:49:59', 'Save gas with this electric car', '/Images/Porsche.jpeg' ),
-(5,'johnbravo@gmail.com', null, 2019, 'Ferrari', '488 Pista', 'Red', 330000, 2750243, '2024-02-4 17:49:52','2024-03-15 17:49:59','Beautiful car; only a few have been made','/Images/Ferrari.jpeg'),
-(6,'email@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2022,'Tesla','Model S Plaid','Black',89243,135990,'2024-01-4 17:49:52','2024-06-10 17:49:59','New Car; No Gas; Just electricity', '/Images/Tesla.jpeg'),
-(7,"michaeljackson@gmail.com","utl_raw.cast_to_raw ('This is a new blob description)",2022, "Bugatti", "Veyron", "Blue",10000, 5700000, "2024-02-02 23:59:59","2024-05-05 23:59:59", "Brand new never driven. Low mileage", NULL),
-(8,"miller@gmail.com","utl_raw.cast_to_raw ('This is a new blob description)",2024, "Lamborghini", "Hurrcan", "Black",25432, 577223, "2024-02-02 23:59:59","2024-04-05 23:59:59", "Most beautiful car made by Lambo. Low mileage. Week end drives only.", NULL),
-(9,'tonybaker@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description)",2024,'BMW','M3','Metallic Blue',25322,125967,'2024-02-04 17:49:52','2024-03-19 17:49:59','Brand New. 500 miles. Comes with 100,000 mile warranty', NULL);
+('johnnykane@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2020,'Bugatti','Divo','Gun Metal Gray',2750243,5700000,'2024-02-4 17:49:52','2024-05-24 17:49:59','Beautiful car; only a few have been made', '/Images/Bugatti.jpeg'),
+('bobtom@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2020,'Nissan','GTR','White',20243,113540,'2024-01-15 17:49:52','2024-04-26 17:20:59','Beautiful car; only a few have been made', '/Images/NissanGTR.jpeg'),
+('michaeljackson@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2022,'Honda','Civic Type R','White',15375,41500,'2024-02-4 17:49:52','2024-05-28 17:49:59','High performance. low mileage; practically brand new', '/Images/Honda.jpeg'),
+('miller@gmail.com',null, 2022, 'Porsche', 'Taycan', 'Gray', 45632, 82789,'2024-04-4 17:49:52','2024-05-14 17:49:59', 'Save gas with this electric car', '/Images/Porsche.jpeg' ),
+('johnbravo@gmail.com', null, 2019, 'Ferrari', '488 Pista', 'Red', 330000, 2750243, '2024-02-4 17:49:52','2024-03-15 17:49:59','Beautiful car; only a few have been made','/Images/Ferrari.jpeg'),
+('email@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description')",2022,'Tesla','Model S Plaid','Black',89243,135990,'2024-01-4 17:49:52','2024-06-10 17:49:59','New Car; No Gas; Just electricity', '/Images/Tesla.jpeg'),
+("michaeljackson@gmail.com","utl_raw.cast_to_raw ('This is a new blob description)",2022, "Bugatti", "Veyron", "Blue",10000, 5700000, "2024-02-02 23:59:59","2024-05-05 23:59:59", "Brand new never driven. Low mileage", NULL),
+("miller@gmail.com","utl_raw.cast_to_raw ('This is a new blob description)",2024, "Lamborghini", "Hurrcan", "Black",25432, 577223, "2024-02-02 23:59:59","2024-04-05 23:59:59", "Most beautiful car made by Lambo. Low mileage. Week end drives only.", NULL),
+('tonybaker@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description)",2024,'BMW','M3','Metallic Blue',25322,125967,'2024-02-04 17:49:52','2024-03-19 17:49:59','Brand New. 500 miles. Comes with 100,000 mile warranty', NULL);
+
 
 -- insert into Bidders(auctionID, bidHistoryDetails) values 
 -- (1, "2750243 johnnykane@gmail.com 2024-02-4 17:49:52"), 
@@ -160,8 +178,8 @@ alter table Auction add bidderEmail varchar(50);
 
 
  
-insert into Auction values 
-(10,'tonybaker@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description)",2024,'BMW','M3','Metallic Blue',25322,125967,'2024-02-29 11:50:52','2024-02-29 12:00:59','Brand New. 500 miles. Comes with 100,000 mile warranty', NULL, NULL,NULL);
+-- insert into Auction values 
+-- (10,'tonybaker@gmail.com',"utl_raw.cast_to_raw ('This is a new blob description)",2024,'BMW','M3','Metallic Blue',25322,125967,'2024-02-29 11:50:52','2024-02-29 12:00:59','Brand New. 500 miles. Comes with 100,000 mile warranty', NULL, NULL,NULL);
 
 -- insert into Bidders(auctionID, bidHistoryDetails1) values 
 -- (1, "2750243 johnnykane@gmail.com 2024-02-4 17:49:52"), 
@@ -184,8 +202,19 @@ insert into BidHistory(auctionID, userEmail, bidPrice, bidDateTime) values
 (6, "email@gmail.com", 89243, "2024-01-4 17:49:52"),
 (7, "michaeljackson@gmail.com", 10000, "2024-02-02 23:59:59"), 
 (8, "miller@gmail.com", 25432, "2024-02-02 23:59:59"), 
-(9, "tonybaker@gmail.com", 25322, "2024-02-04 17:49:52"),
-(10, "tonybaker@gmail.com", 25322, "2024-02-29 11:50:52");
+(9, "tonybaker@gmail.com", 25322, "2024-02-04 17:49:52");
+
+-- insert into BidHistory(auctionID, userEmail, bidPrice, bidDateTime) values
+-- (1, "johnnykane@gmail.com", 2750243, "2024-02-4 17:49:52"),
+-- (2, "bobtom@gmail.com", 20243, "2024-01-15 17:49:52"),
+-- (3, "michaeljackson@gmail.com", 15375, "2024-02-4 17:49:52"), 
+-- (4, "miller@gmail.com", 45632, "2024-04-4 17:49:52"), 
+-- (5, "johnbravo@gmail.com", 330000, "2024-02-4 17:49:52"), 
+-- (6, "email@gmail.com", 89243, "2024-01-4 17:49:52"),
+-- (7, "michaeljackson@gmail.com", 10000, "2024-02-02 23:59:59"), 
+-- (8, "miller@gmail.com", 25432, "2024-02-02 23:59:59"), 
+-- (9, "tonybaker@gmail.com", 25322, "2024-02-04 17:49:52"),
+-- (10, "tonybaker@gmail.com", 25322, "2024-02-29 11:50:52");
 
 create table Messages(messageID int AUTO_INCREMENT, userEmail varchar(50), sendMessage varchar(150), receiveMessage varchar(150), messageDateTime varchar(50),
 Foreign Key (userEmail) references Users(userEmail), Primary Key(messageID) );
@@ -208,12 +237,12 @@ insert into Messages(userEmail, sendMessage,receiveMessage, messageDateTime) val
 insert into Messages(userEmail, sendMessage,receiveMessage, messageDateTime) values
 ("michaeljackson@gmail.com", null, "ok thank you. What group were you part of as a child?", "03/02/2024 @ 17:59:52");
 
-select * from Users;
-select * from Buyer;
-select * from Seller;
-select * from Auction;
-SELECT * FROM Admin;
-SELECT * FROM CustomerRep;
+-- select * from Users;
+-- select * from Buyer;
+-- select * from Seller;
+-- select * from Auction;
+-- SELECT * FROM Admin;
+-- SELECT * FROM CustomerRep;
 
-select * from Messages;
--- select * from Bidders;
+-- select * from Messages;
+select * from BidHistory;

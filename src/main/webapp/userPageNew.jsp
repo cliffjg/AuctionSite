@@ -240,6 +240,17 @@
     </footer> -->
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <!-- BEGINNING OF OVERLAY FOR ADDING AUCTION  -->
      <!-- <div id="overlay" onclick="off()"> -->
      <div id="overlay" >
@@ -274,11 +285,27 @@
   		 						 </div>
   		 						 
   		 						 <div style="height: 300px; width: 445px; box-sizing: border-box;">
-  		 						 	<div style="width: 93%; height: 85%; margin-left: 10px; border: 1px solid rgb(151,151,151); border-radius: 6px;background: #FFFFFF;display: flex;justify-content: center;align-items: center;">
-  		 						 		<img alt="" src="Images/add.png" style="width: 50px; height: 50px;">
-  		 						 		<!-- <input name="imagePath" type="file" style="width: 445px; height: 265px; font-size: 15px; opacity: 0%;  "> -->
+  		 						 	<div style="width: 93%; height: 85%; margin-left: 10px; border: 1px solid rgb(151,151,151); border-radius: 6px;background: #FFFFFF;display: flex;justify-content: center;align-items: center;position: relative;">
+  		 						 	
+  		 						 	<%-- <%
+  		 						 		if((request.getParameter("imagePath") == null )){
+						 
+  		 						 	%> --%>
+  		 						 		<img alt="" src="Images/add.png" style="width: 50px; height: 50px;position: absolute; z-index: 1;"> 
+  		 						 		<input name="imagePath" type="file" style="height: 100%; width: 100%; opacity: 0; position: absolute;z-index: 2;" >
+  		 						 	<%-- <%
+  		 						 		}else{
+  		 						 		
+  		 							%>
+  		 								<img alt="" src="Images/Bugatti.jpeg" style="width: 50px; height: 50px;position: absolute; z-index: 1;"> 
+  		 							
+  		 							<%
+  		 						 		}
+  		 							
+  		 							%> --%>
   		 						 		
   		 						 	</div>
+  		 						 	
   		 						 		
   		 						 		    
   		 						 	
@@ -310,7 +337,7 @@
                           		Year
                       		</div>
                       		<div  style="width: 415px; height: 30px;  margin-top: -25px;">
-                      			<input name="carYear" class="addAuctionInputs" type="text" >
+                      			<input name="carYear" class="addAuctionInputs" type="number" >
                       		</div>
                    		 </div>
                    		 
@@ -320,7 +347,77 @@
                           		Make
                       		</div>
                       		<div  style="width: 420px; height: 30px;  margin-top: -25px;">
-                      			<input name="carMake" class="addAuctionInputs" type="text" >
+                      			<!-- <input name="carMake" class="addAuctionInputs" type="text" > -->
+                      			<select name="carMake" class="addAuctionInputs" id="year" >
+                                    
+                                    <option id="make" value="0" disabled selected></option>
+                                    <option id="make">Abarth</option>
+                                    <option id="make">Acura</option>
+                                    <option id="make">Alfa Romeo</option>
+                                    <option id="make">Aston Martin</option>
+                                    <option id="make">Audi</option>
+                                    <option id="make">Bentley</option>
+                                    <option id="make">BMW</option>
+                                    <option id="make">Bugatti</option>
+                                    <option id="make">Buick</option>
+                                    <option id="make">Cadillac</option>
+                                    <option id="make">Chevrolet</option>
+                                    <option id="make">Chrysler</option>
+                                    <option id="make">Citroen</option>
+                                    <option id="make">Dacia</option>
+                                    <option id="make">Dodge</option>
+                                    <option id="make">Ferrari</option>
+                                    <option id="make">Fiat</option>
+                                    <option id="make">Ford</option>
+                                    <option id="make">GMC</option>
+                                    <option id="make">Honda</option>
+                                    <option id="make">Hummer</option>
+                                    <option id="make">Hyundai</option>
+                                    <option id="make">Infiniti</option>
+                                    <option id="make">Isuzu</option>
+                                    <option id="make">Jaguar</option>
+                                    <option id="make">Jeep</option>
+                                    <option id="make">Kia</option>
+                                    <option id="make">Lamborghini</option>
+                                    <option id="make">Lancia</option>
+                                    <option id="make">Land Rover</option>
+                                    <option id="make">Lexus</option>
+                                    <option id="make">Lincoln</option>
+                                    <option id="make">Lotus</option>
+                                    <option id="make">Maserati</option>
+                                    <option id="make">Mazda</option>
+                                    <option id="make">McLaren</option>
+                                    <option id="make">Mercedes-Benz</option>
+                                    <option id="make">Mercury</option>
+                                    <option id="make">Mini</option>
+                                    <option id="make">Mitsubishi</option>
+                                    <option id="make">Nissan</option>
+                                    <option id="make">Opel</option>
+                                    <option id="make">Peugeot</option>
+                                    <option id="make">Pontiac</option>
+                                    <option id="make">Ram</option>
+                                    <option id="make">Renault</option>
+                                    <option id="make">Saab</option>
+                                    <option id="make">Saturn</option>
+                                    <option id="make">Scion</option>
+                                    <option id="make">Seat</option>
+                                    <option id="make">Skoda</option>
+                                    <option id="make">Smart</option>
+                                    <option id="make">SsangYong</option>
+                                    <option id="make">Subaru</option>
+                                    <option id="make">Suzuki</option>
+                                    <option id="make">Tesla</option>
+                                    <option id="make">Toyota</option>
+                                    <option id="make">Volkswagen</option>
+                                    <option id="make">Volvo</option>
+                                    <option id="make">Wiesmann</option>
+                                    <option id="make">Other</option>
+                                    
+
+
+                                   
+                                    
+                                </select>
                       		</div>
                    		 </div>
                    		 
@@ -351,7 +448,7 @@
                           		Starting Bid
                       		</div>
                       		<div  style="width: 420px; height: 30px;  margin-top: -25px;">
-                      			<input name="startingBid" class="addAuctionInputs" type="text" >
+                      			<input name="startingBid" class="addAuctionInputs" type="number" >
                       		</div>
                    		 </div>
                    		 
@@ -361,7 +458,7 @@
                           		Price
                       		</div>
                       		<div  style="width: 420px; height: 30px;  margin-top: -25px;">
-                      			<input name="carPrice" class="addAuctionInputs" type="text" >
+                      			<input name="carPrice" class="addAuctionInputs" type="number" >
                       		</div>
                    		 </div>
 					
@@ -373,7 +470,7 @@
                           		Expiration Date (*Required)
                       		</div>
                       		<div  style="width: 420px; height: 30px;  margin-top: -25px;">
-                      			<input name="expirationDate" class="addAuctionInputs" type="text" >
+                      			<input name="expirationDate" class="addAuctionInputs" type="datetime-local" >
                       		</div>
                    		 </div>
                    		 
@@ -383,7 +480,7 @@
 						 	
                       		<div  style="width: 420px; height: 30px;  margin-top: -20px;">
                       			<!-- <input type="submit" style="width: 420px; height: 30px; font-size: 15;"> -->
-                      			<button style="width: 400px; height: 30px; font-size: 15px; color: rgb(255, 255, 255); border-color: #42b8fe; border-radius: 6px;background: linear-gradient(-163deg, #0ce4fe 18%, #27cffe 44%, #42b8fe 80%, #4daefd 100%), #27cffe;margin-left: 5px;">Submit</button>
+                      			<button onclick="location.href='userpageTest.jsp'" style="width: 400px; height: 30px; font-size: 15px; color: rgb(255, 255, 255); border-color: #42b8fe; border-radius: 6px;background: linear-gradient(-163deg, #0ce4fe 18%, #27cffe 44%, #42b8fe 80%, #4daefd 100%), #27cffe;margin-left: 5px;">Submit</button>
                       		</div>
                    		 </div>
 			

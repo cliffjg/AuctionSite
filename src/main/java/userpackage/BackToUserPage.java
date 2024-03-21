@@ -172,7 +172,7 @@ public class BackToUserPage extends HttpServlet {
             	
             	HttpSession session = request.getSession();
     			
-            	response.sendRedirect("userpageTest.jsp");
+            	response.sendRedirect("userPageNew.jsp");
 
             	session.setAttribute("userEmail", userEmail);
 
