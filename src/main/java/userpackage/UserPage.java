@@ -148,7 +148,9 @@ public class UserPage extends HttpServlet {
     			while(resultSet.next()) {
 
 
-    				bidHistory.add(resultSet.getString("bidPrice") + " " + resultSet.getString("userEmail") + " " + resultSet.getString("bidDateTime"));
+//    				bidHistory.add(resultSet.getString("bidPrice") + " " + resultSet.getString("userEmail") + " " + resultSet.getString("bidDateTime"));
+    				bidHistory.add(resultSet.getString("userEmail") + " " +resultSet.getString("bidDateTime") + " " + resultSet.getString("bidPrice"));
+            		System.out.println(resultSet.getString("userEmail") + " " +resultSet.getString("bidDateTime") + " " + resultSet.getString("bidPrice"));
 
     			}
 

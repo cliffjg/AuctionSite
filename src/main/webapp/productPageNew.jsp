@@ -361,15 +361,138 @@
 		 	
 		 	</div>
 		 	
-		 </div>
+		 </div >
 		 
 		 				
 
-		 			<div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+		 			<div style="margin: 20px; display: flex; justify-content: center; align-items: center; flex-direction: column; ">
 		 				
-		 				<div style="margin-top: 10px; "><span style= "font-weight: bold;">Bid History</span></div>
+		 				<!-- <div style="margin-top: 10px; "><span style= "font-weight: bold;">Bid History</span></div> -->
+		 				
+		 				<div style="width: 100%; display: flex; justify-content: space-between; flex-direction: row;padding-top: 10px; padding-bottom: 10px;">
+		 				
+		 					<div style="padding-left: 40px;">Status</div>
+		 					<div>Bidder Email</div>
+		 					<div>Bid Date/Time</div>
+		 					<div style="padding-right: 40px;">Bid Amount</div>
+		 					
+		 					
+		 				
+		 				</div>
+		 				<div style=" width: 95%; border: 1px solid; color: gray;"></div>
+		 				
+		 				<!--////////////////////////////////////////////////////////////////////////////////////////  -->
 		 				
 		 				<%
+
+       						ArrayList<String> bidHistory = new ArrayList<String>();
+   							bidHistory = (ArrayList<String>) session.getAttribute("bidHistory");
+    					%>
+   				
+   				
+   				
+   						<% 
+   						
+   							
+   							if(bidHistory != null){
+   								for(int i = bidHistory.size()-1; i >= 0 ; i--) {  
+   									/* for(int i = 0; i < bidHistory.size(); i++) {  */
+                				
+   									if(i == 0){
+
+   										String[] separateWords = bidHistory.get(i).split("\\s+");
+   												String word1 = separateWords[0];
+   												String word2 = separateWords[1];
+   												String word3 = separateWords[2];
+   												String word4 = separateWords[3];
+   												
+   												System.out.println("Word1: "+word1);
+   												System.out.println("Word2: "+word2);
+   												System.out.println("Word3: "+word3);
+   												System.out.println("Word4: "+word4);
+            			%>
+            						
+									<div style="width: 100%; display: flex; justify-content: space-between;padding-top: 10px; padding-bottom: 10px;">
+										<div style="padding-left: 40px;">Starting Bid</div>
+										<div><%=word1%></div>
+            							<div><%=word2%> <%=word3%></div>
+            							
+            							<%carPrice = currencyFormatter.format(Integer.parseInt(word4)); %>
+            							<div style="padding-right: 40px;"><%=carPrice%></div>
+									
+									</div>
+									
+									<div style=" width: 95%; border: 1px solid; color: gray;"></div>
+            			
+            						
+            			
+            			<% 	
+   									}else if(i == bidHistory.size()-1){
+   										
+   										String[] separateWords = bidHistory.get(i).split("\\s+");
+											String word1 = separateWords[0];
+											String word2 = separateWords[1];
+											String word3 = separateWords[2];
+											
+											
+											System.out.println("Word1: "+word1);
+											System.out.println("Word2: "+word2);
+											System.out.println("Word3: "+word3);
+											
+   										
+            			%>
+
+            							<div style="width: 100%; display: flex; justify-content: space-between;padding-top: 10px; padding-bottom: 10px; color: green;">
+										<div style="padding-left: 40px;">Winning Bid</div>
+										<div><%=word1%></div>
+            							<div><%=word2%></div>
+            							
+            							<%carPrice = currencyFormatter.format(Integer.parseInt(word3)); %>
+            							<div style="padding-right: 40px;"><%=carPrice%></div>
+									
+									</div>
+            							
+            						<%-- <div >Current bid: <%=bidHistory.get(i) %></div> --%>
+            						
+            						
+            	
+            			<%
+   									}else{
+   										
+   										String[] separateWords = bidHistory.get(i).split("\\s+");
+										String word1 = separateWords[0];
+										String word2 = separateWords[1];
+										String word3 = separateWords[2];
+										
+										
+										System.out.println("Word1: "+word1);
+										System.out.println("Word2: "+word2);
+										System.out.println("Word3: "+word3);
+   										
+   						%>	
+   						
+   										<div style="width: 100%; display: flex; justify-content: space-between;padding-top: 10px; padding-bottom: 10px;">
+										<div style="padding-left: 40px;">Losing Bid </div>
+										<div><%=word1%></div>
+            							<div><%=word2%></div>
+            							
+            							<%carPrice = currencyFormatter.format(Integer.parseInt(word3)); %>
+            							<div style="padding-right: 40px;"><%=carPrice%></div>
+									
+									</div>
+   									<%-- <div style="padding-left: 80px;">$<%=bidHistory.get(i) %></div> --%>
+   						
+   						<% 			
+   									}
+            						
+            					} 
+   							}
+   						%>
+		 				
+		 				
+		 				<!--//////////////////////////////////////////////////////////////////////////////////////////  -->
+		 				
+		 				<%-- <%
 
        						ArrayList<String> bidHistory = new ArrayList<String>();
    							bidHistory = (ArrayList<String>) session.getAttribute("bidHistory");
@@ -409,7 +532,7 @@
             						
             					} 
    							}
-   						%>
+   						%> --%>
    						
    				</div>			
 	 

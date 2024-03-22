@@ -251,7 +251,16 @@
                 			 <% session.setAttribute("userEmail", userEmail );%>
                     
                     <p style="width: 100%;margin-bottom: 0px;">Time Remaining: <span id="countdown<%=auction.getAuctionId()%>" style="color: red;"></span></p>
-                    <p style="width: 100%;">Winning</p>
+                    
+                    <%	
+                    	if(userEmail.equals(auction.bidderEmail)){ 
+                    %>
+                    		<p style="width: 100%;color: rgb(13, 181, 41);">Currently Winning!</p>
+                    		
+                    	
+                    <%
+                    	} 
+                    %>
                 </div>
             </div>
             
