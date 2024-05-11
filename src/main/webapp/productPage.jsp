@@ -85,18 +85,57 @@
 	
 	
 
-    <div class="d-inline-flex flex-column align-content-start flex-wrap flex-sm-shrink-1" style="width: 100%;height: 30px;background: rgb(44,47,50);overflow: scroll;overflow-y: hidden;"><label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 50px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;margin-top: 5px;padding-right: 10px;padding-left: 10px;height: 100%;"><span style="background-color: rgb(43, 47, 50);">My Auctions</span></label><label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 20px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;margin-top: 5px;padding-right: 10px;padding-left: 10px;height: 100%;"><span style="background-color: rgb(43, 47, 50);">My Bids/Favorites</span></label><label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 20px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;font-size: 16px;margin-top: 5px;"><span style="background-color: rgb(43, 47, 50);">Community Auctions</span></label></div>
+    <div class="d-inline-flex flex-column align-content-start flex-wrap flex-sm-shrink-1" style="width: 100%;height: 30px;background: rgb(44,47,50);overflow: scroll;overflow-y: hidden;">
+    	<label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 50px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;margin-top: 5px;padding-right: 10px;padding-left: 10px;height: 100%;">
+    		<span style="background-color: rgb(43, 47, 50);">My Auctions</span>
+    	</label>
+    	<label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 20px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;margin-top: 5px;padding-right: 10px;padding-left: 10px;height: 100%;">
+    		<span style="background-color: rgb(43, 47, 50);">My Bids/Favorites</span>
+    	</label>
+    	<label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 20px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;font-size: 16px;margin-top: 5px;">
+    		<span style="background-color: rgb(43, 47, 50);">Community Auctions</span>
+    	</label>
+    </div>
+    
+    
+    
     <div class="container" style="margin-top: 0px;background: var(--bs-body-bg);border-radius: 0px;border-top-left-radius: 0px;border-top-right-radius: 0px;width: 100%;max-height: 1400px;height: 1100px;">
         <div class="row justify-content-sm-center justify-content-xl-center justify-content-xxl-center">
             <div class="col-md-6 col-lg-6" style="height: 100%;width: 610px;margin-top: 0px;">
-                <div class="d-inline-flex flex-column justify-content-center align-content-start flex-wrap flex-sm-shrink-1" style="width: 100%;height: 20px;background: rgb(255,255,255);overflow: scroll;overflow-y: hidden;margin-left: 0px;"><a class="form-label" style="margin-right: 2px;font-size: 14px; text-decoration: none; color: gray;" href="userPage.jsp">Home</a><label class="form-label" style="margin-right: 2px;--bs-primary: #05d3ef;--bs-primary-rgb: 5,211,239;color: var(--bs-primary);">&gt;</label><label class="form-label d-lg-flex" style="font-size: 14px;color: gray;">Product Page</label></div>
-                <div style="height: 100%;width: 100%;"><img src=".<%=auction.getImagePath()%>" style="width: 100%;height: 100%;border-radius: 8px;"></div>
-                <div class="d-flex d-lg-flex flex-row justify-content-lg-start" style="height: 60px;margin-top: 10px;"><img style="height: 100%;width: 100px;border-radius: 8px;margin-right: 10px;" src=".<%=auction.getImagePath()%>"><img style="height: 100%;width: 100px;border-radius: 8px;margin-right: 10px;opacity: 0.40;" src=".<%=auction.getImagePath()%>"><img style="height: 100%;width: 100px;border-radius: 8px;opacity: 0.40;" src=".<%=auction.getImagePath()%>"></div>
+            
+            	<form id="backToUserPageServletForm" action="BackToUserPageServlet" method="post">
+                	<div class="d-inline-flex flex-column justify-content-center align-content-start flex-wrap flex-sm-shrink-1" style="width: 100%;height: 20px;background: rgb(255,255,255);overflow: scroll;overflow-y: hidden;margin-left: 0px;">
+
+                		<a class="form-label" style="margin-right: 2px;font-size: 14px; text-decoration: none; color: gray; cursor: pointer;" onclick="document.getElementById('backToUserPageServletForm').submit();">Home</a>
+                	
+                	<!-- <a class="form-label" style="margin-right: 2px;font-size: 14px; text-decoration: none; color: gray;" href="userPage.jsp">Home</a> -->
+                		<label class="form-label" style="margin-right: 2px;--bs-primary: #05d3ef;--bs-primary-rgb: 5,211,239;color: var(--bs-primary);">&gt;</label>
+                		<label class="form-label d-lg-flex" style="font-size: 14px;color: gray;">Product Page</label>
+                	
+                	
+               	 	</div>
+            	</form>
+            	
+                <div style="height: 100%;width: 100%;">
+                	<img src=".<%=auction.getImagePath()%>" style="width: 100%;height: 100%;border-radius: 8px;">
+                </div>
+                <div class="d-flex d-lg-flex flex-row justify-content-lg-start" style="height: 60px;margin-top: 10px;">
+                	<img style="height: 100%;width: 100px;border-radius: 8px;margin-right: 10px;" src=".<%=auction.getImagePath()%>">
+                	<img style="height: 100%;width: 100px;border-radius: 8px;margin-right: 10px;opacity: 0.40;" src=".<%=auction.getImagePath()%>">
+                	<img style="height: 100%;width: 100px;border-radius: 8px;opacity: 0.40;" src=".<%=auction.getImagePath()%>"></div>
             </div>
             <div class="col-md-6" style="width: 100%;min-width: 350px;max-width: 350px;margin-top: 0px;">
-                <div class="d-inline-flex flex-column justify-content-center align-content-start flex-wrap flex-sm-shrink-1" style="width: 100%;height: 10px;background: rgb(255,255,255);overflow: scroll;overflow-y: hidden;margin-left: 0px;"><label class="form-label" style="margin-right: 2px;font-size: 14px;"></label><label class="form-label" style="margin-right: 2px;"></label><label class="form-label d-lg-flex" style="font-size: 14px;"></label></div>
-                <div style="height: 30px;"><label class="form-label" style="width: 100%;height: 100%;--bs-secondary: #6c757d;--bs-secondary-rgb: 108,117,125;color: #6c757d;font-weight: bold;font-size: 20px;">Car: <%=auction.getCarYear()%> <%=auction.getCarMake()%> <%=auction.getCarModel()%> </label></div>
-                <div style="height: 25px;"><label class="form-label" style="width: 100%;height: 100%;color: var(--bs-secondary);font-size: 15px;font-weight: bold;">Color: <%=auction.getCarColor()%></label></div>
+                <div class="d-inline-flex flex-column justify-content-center align-content-start flex-wrap flex-sm-shrink-1" style="width: 100%;height: 10px;background: rgb(255,255,255);overflow: scroll;overflow-y: hidden;margin-left: 0px;">
+                	<label class="form-label" style="margin-right: 2px;font-size: 14px;"></label>
+                	<label class="form-label" style="margin-right: 2px;"></label>
+                	<label class="form-label d-lg-flex" style="font-size: 14px;"></label>
+                </div>
+                <div style="height: 30px;">
+                	<label class="form-label" style="width: 100%;height: 100%;--bs-secondary: #6c757d;--bs-secondary-rgb: 108,117,125;color: #6c757d;font-weight: bold;font-size: 20px;">Car: <%=auction.getCarYear()%> <%=auction.getCarMake()%> <%=auction.getCarModel()%> </label>
+                </div>
+                <div style="height: 25px;">
+                	<label class="form-label" style="width: 100%;height: 100%;color: var(--bs-secondary);font-size: 15px;font-weight: bold;">Color: <%=auction.getCarColor()%></label>
+                </div>
                 <div style="width: 100%;height: 60px;margin-top: 10px;">
                     <div class="d-flex d-lg-flex flex-row justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-end" style="text-align: center;">
                     	<label class="form-label" style="width: 50%;height: 100%;color: var(--bs-secondary);font-weight: bold;text-align: left;">Current Bid:</label>
@@ -142,7 +181,10 @@
                     	<%} %>
                     	
                     </div>
-                    <div class="d-flex d-lg-flex flex-row justify-content-center align-items-center justify-content-lg-start" style="text-align: center;"><label class="form-label" style="width: 100%;height: 100%;--bs-success: #01b15f;--bs-success-rgb: 1,177,95;color: #6c757d;text-align: left;font-size: 14px;font-weight: bold;">&nbsp;Active Bids:&nbsp;<strong>3 Bids</strong></label><label class="form-label" style="width: 100%;height: 100%;font-size: 12px;color: #00c8e3;font-weight: bold;text-align: left;">Show bid history</label></div>
+                    <div class="d-flex d-lg-flex flex-row justify-content-center align-items-center justify-content-lg-start" style="text-align: center;">
+                    	<label class="form-label" style="width: 100%;height: 100%;--bs-success: #01b15f;--bs-success-rgb: 1,177,95;color: #6c757d;text-align: left;font-size: 14px;font-weight: bold;">&nbsp;Active Bids:&nbsp;<strong>3 Bids</strong></label>
+                    	<label class="form-label" style="width: 100%;height: 100%;font-size: 12px;color: #00c8e3;font-weight: bold;text-align: left;">Show bid history</label>
+                    </div>
                 </div>
                 <div class="d-flex d-lg-flex align-items-center align-content-center justify-content-lg-start" style="text-align: center;background: #d5d5d5;border-radius: 8px;margin-top: 30px;filter: brightness(112%);">
                 	
@@ -165,9 +207,15 @@
                  <form action="ProductPageServlet" method="post">
                  
 
-                	<div style="height: 30px;margin-top: 20px;"><label class="form-label" style="width: 100%;height: 100%;--bs-secondary: #6c757d;--bs-secondary-rgb: 108,117,125;color: #6c757d;font-weight: bold;font-size: 20px;">Enter Bid Price Below:&nbsp;</label></div>
-                	<div class="d-flex d-lg-flex flex-row justify-content-start align-items-baseline justify-content-lg-start" style="margin: 0px;height: 38px;margin-top: 10px;"><input type="number" name= "bidderPrice" style="width: 100%;height: 100%;--bs-secondary: #6c757d;--bs-secondary-rgb: 108,117,125;border-radius: 15px;border: 1px solid #d2d2d2;margin-left: 5px;margin-top: 0px;padding-left: 20px;" placeholder="Enter Bid Price"></div>
-               		<div style="margin-top: 20px;"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="submit" style="width: 100%;height: 100%;margin-top: 0px;border-radius: 20px;font-weight: bold;background: linear-gradient(55deg, #11e5fe 58%, #4eacfe 82%);border-color: rgb(54,207,254);">Place Bid</button></div>
+                	<div style="height: 30px;margin-top: 20px;">
+                		<label class="form-label" style="width: 100%;height: 100%;--bs-secondary: #6c757d;--bs-secondary-rgb: 108,117,125;color: #6c757d;font-weight: bold;font-size: 20px;">Enter Bid Price Below:&nbsp;</label>
+                	</div>
+                	<div class="d-flex d-lg-flex flex-row justify-content-start align-items-baseline justify-content-lg-start" style="margin: 0px;height: 38px;margin-top: 10px;">
+                		<input type="number" name= "bidderPrice" style="width: 100%;height: 100%;--bs-secondary: #6c757d;--bs-secondary-rgb: 108,117,125;border-radius: 15px;border: 1px solid #d2d2d2;margin-left: 5px;margin-top: 0px;padding-left: 20px;" placeholder="Enter Bid Price">
+                	</div>
+               		<div style="margin-top: 20px;">
+               			<button class="btn btn-primary" data-bss-hover-animate="pulse" type="submit" style="width: 100%;height: 100%;margin-top: 0px;border-radius: 20px;font-weight: bold;background: linear-gradient(55deg, #11e5fe 58%, #4eacfe 82%);border-color: rgb(54,207,254);">Place Bid</button>
+               		</div>
                		
 					<%
 						String check = (String)request.getAttribute("success");
@@ -212,16 +260,27 @@
         <div class="row justify-content-sm-center justify-content-xl-center justify-content-xxl-center" style="height: 200px;">
             <div class="col-md-6 col-lg-6" style="height: 100%;width: 610px;margin-top: 0px;">
                 <div class="d-flex d-lg-flex justify-content-start justify-content-lg-start" style="width: 100%;height: 60px;margin-top: 10px;">
-                    <div style="width: 40px;height: 40px;"><img class="border-1" style="width: 100%;height: 100%;border-radius: 100%;border-style: solid;border-color: #6c757d;" src="<%=sellerProfilePicture%>"></div>
-                    <div class="d-flex d-lg-flex justify-content-start align-items-center align-items-lg-center" style="width: 200px;height: 40px;"><label class="form-label" style="margin-left: 5px;color: #6c757d;">Sold by</label><label class="form-label" style="margin-left: 2px;font-weight: bold;color: #6c757d;"><%=fullName%></label></div>
+                    <div style="width: 40px;height: 40px;">
+                    	<img class="border-1" style="width: 100%;height: 100%;border-radius: 100%;border-style: solid;border-color: #6c757d;" src="<%=sellerProfilePicture%>">
+                    </div>
+                    <div class="d-flex d-lg-flex justify-content-start align-items-center align-items-lg-center" style="width: 200px;height: 40px;">
+                    	<label class="form-label" style="margin-left: 5px;color: #6c757d;">Sold by</label>
+                    	<label class="form-label" style="margin-left: 2px;font-weight: bold;color: #6c757d;"><%=fullName%></label>
+                    </div>
                     <div data-bss-hover-animate="pulse" style="height: 40px;width: 180px;"><button class="btn btn-primary d-lg-flex justify-content-lg-center align-items-lg-center" type="button" style="width: 100%;height: 100%;border-radius: 20px;color: rgb(255,255,255);background: linear-gradient(55deg, #11e5fe 30%, #4eacfe 82%);font-weight: bold;font-size: 14px;border: 2px solid rgb(54,207,254);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z" fill="currentColor"></path>
                             </svg>Contact Seller</button></div>
                 </div>
-                <div class="d-flex d-lg-flex justify-content-start align-items-center align-items-lg-center" style="width: 100%px;height: 40px;"><label class="form-label" style="margin-left: 5px;color: #6c757d;width: 140px;">Pick up Location:</label><label class="form-label" style="margin-left: 2px;font-weight: bold;color: #6c757d;width: 200px;"><%=pickUpLocation %></label></div>
+                <div class="d-flex d-lg-flex justify-content-start align-items-center align-items-lg-center" style="width: 100%px;height: 40px;">
+                	<label class="form-label" style="margin-left: 5px;color: #6c757d;width: 140px;">Pick up Location:</label>
+                	<label class="form-label" style="margin-left: 2px;font-weight: bold;color: #6c757d;width: 200px;"><%=pickUpLocation %></label>
+                </div>
             </div>
             <div class="col-md-6" style="width: 100%;min-width: 350px;max-width: 350px;margin-top: 10px;">
-                <div style="height: 150px;width: 100%;"><label class="form-label d-lg-flex align-items-lg-start" style="font-size: 15px;font-weight: bold;color: #6c757d;">Car Description:</label><label class="form-label" style="color: #6c757d;"><%=auction.getCarDescription()%></label></div>
+                <div style="height: 150px;width: 100%;">
+                	<label class="form-label d-lg-flex align-items-lg-start" style="font-size: 15px;font-weight: bold;color: #6c757d;">Car Description:</label>
+                	<label class="form-label" style="color: #6c757d;"><%=auction.getCarDescription()%></label>
+                </div>
             </div>
         </div>
     </div>
