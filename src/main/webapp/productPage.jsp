@@ -168,6 +168,30 @@
                 	<div style="height: 30px;margin-top: 20px;"><label class="form-label" style="width: 100%;height: 100%;--bs-secondary: #6c757d;--bs-secondary-rgb: 108,117,125;color: #6c757d;font-weight: bold;font-size: 20px;">Enter Bid Price Below:&nbsp;</label></div>
                 	<div class="d-flex d-lg-flex flex-row justify-content-start align-items-baseline justify-content-lg-start" style="margin: 0px;height: 38px;margin-top: 10px;"><input type="number" name= "bidderPrice" style="width: 100%;height: 100%;--bs-secondary: #6c757d;--bs-secondary-rgb: 108,117,125;border-radius: 15px;border: 1px solid #d2d2d2;margin-left: 5px;margin-top: 0px;padding-left: 20px;" placeholder="Enter Bid Price"></div>
                		<div style="margin-top: 20px;"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="submit" style="width: 100%;height: 100%;margin-top: 0px;border-radius: 20px;font-weight: bold;background: linear-gradient(55deg, #11e5fe 58%, #4eacfe 82%);border-color: rgb(54,207,254);">Place Bid</button></div>
+               		
+					<%
+						String check = (String)request.getAttribute("success");
+                   	
+               			if(check != null && check.equals("error")){ 
+					%>
+					
+						<div class="d-flex flex-row justify-content-center justify-content-lg-start align-items-lg-center" style="width: 100%;"><svg class="bi bi-x d-lg-flex" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="width: 10%;color: #dc3545;margin-right: 0px;height: 100%;">
+        				<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"></path>
+    						</svg><label class="form-label d-lg-flex align-items-lg-center" style="width: 100%;height: 100%;color: #dc3545;font-weight: bold;margin-bottom: 0px;">Bid is lower than current bid</label></div>
+
+					 
+                    <%
+                       	 } else if (check != null && check.equals("success")){ 
+                       			 			
+                    %> 
+                       
+						<div class="d-flex flex-row justify-content-center justify-content-lg-start align-items-lg-center" style="width: 100%;"><svg class="bi bi-check d-lg-flex" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="width: 10%;color: rgba(79, 174, 103);margin-right: 0px;height: 100%;">
+        					<path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"></path>
+    							</svg><label class="form-label d-lg-flex align-items-lg-center" style="width: 100%;height: 100%;color: rgba(79, 174, 103);font-weight: bold;margin-bottom: 0px;">Successfully placed bid!</label></div>
+					<%
+						}
+					%>
+					
             
             	</form>
             

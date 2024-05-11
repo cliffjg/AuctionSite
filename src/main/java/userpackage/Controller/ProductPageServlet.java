@@ -74,6 +74,18 @@ public class ProductPageServlet extends HttpServlet {
 		String query = "update Auction set currentBid = " + bidderPrice + ", bidderEmail = '" + bidderEmail + "' where auctionID = " + auctionID + ";";
 
 		
+		//if nothing is entered show error
+		if(bidderPrice.trim() == null || bidderPrice.trim() == "") {
+			
+			request.setAttribute("success", "error");
+	
+        	request.getRequestDispatcher("productPage.jsp").forward(request,response);
+			
+		}
+		
+		
+		
+		
 		
 
 		try {
@@ -90,7 +102,10 @@ public class ProductPageServlet extends HttpServlet {
             	
 				
 				System.out.println("\nBid is not greater than both starting Price and current Bid\n");
-				response.sendRedirect("productPage.jsp");
+				request.setAttribute("success", "error");
+//				response.sendRedirect("productPage.jsp");
+				
+            	request.getRequestDispatcher("productPage.jsp").forward(request,response);
 
             	
             }else {
@@ -192,7 +207,12 @@ public class ProductPageServlet extends HttpServlet {
     			System.out.println("Bidder Email: " + auction.bidderEmail);
     			
     			
-    			response.sendRedirect("productPage.jsp");
+//    			response.sendRedirect("productPage.jsp");
+    			
+    			request.setAttribute("success", "success");
+//				response.sendRedirect("productPage.jsp");
+				
+            	request.getRequestDispatcher("productPage.jsp").forward(request,response);
     			
     			
             	
