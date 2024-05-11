@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>AuctionUp User Page</title>
+    <title>AuctionUp Home</title>
     <link rel="icon" type="image/png" href="Images/auction.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel&amp;display=swap">
@@ -25,18 +25,6 @@
 
 <body>
 
-<!--    	<script>
-   		function submitForm(data) {
-   								
-   			console.log("Data to submit:", data);
-   			// Set the value of the hidden input field
-   			document.getElementById("dataField").value = data;
-   							        	    
-   			// Submit the form
-   			document.getElementById("myForm").submit();
-		}
-   			
-   	</script> -->
 
 
 	<jsp:include page="header.jsp" />

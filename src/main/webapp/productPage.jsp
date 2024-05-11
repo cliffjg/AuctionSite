@@ -185,14 +185,23 @@
                        			 			
                     %> 
                        
-						<div class="d-flex flex-row justify-content-center justify-content-lg-start align-items-lg-center" style="width: 100%;"><svg class="bi bi-check d-lg-flex" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="width: 10%;color: rgba(79, 174, 103);margin-right: 0px;height: 100%;">
+ 						<div class="d-flex flex-row justify-content-center justify-content-lg-start align-items-lg-center" style="width: 100%;"><svg class="bi bi-check d-lg-flex" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="width: 10%;color: rgba(79, 174, 103);margin-right: 0px;height: 100%;">
         					<path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"></path>
     							</svg><label class="form-label d-lg-flex align-items-lg-center" style="width: 100%;height: 100%;color: rgba(79, 174, 103);font-weight: bold;margin-bottom: 0px;">Successfully placed bid!</label></div>
+					 
+					 
+<!-- 					 					<div class="d-flex flex-row justify-content-center justify-content-lg-start align-items-lg-center" style="width: 100%;"><svg class="bi bi-check d-lg-flex" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="width: 10%;color: rgba(79, 174, 103);margin-right: 0px;height: 100%;">
+        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"></path>
+    </svg><label class="form-label d-lg-flex align-items-lg-center" style="width: 100%;height: 100%;color: rgba(79, 174, 103);font-weight: bold;margin-bottom: 0px;">Successfully placed bid</label></div>
+					
+         -->
+					
 					<%
 						}
 					%>
 					
-            
+					
+    
             	</form>
             
             
