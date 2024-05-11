@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import ="java.util.ArrayList"%>
 <%@ page import ="java.util.List"%>
-<%@ page import="userpackage.Message" %>
-<%@ page import="userpackage.Users" %>    
+<%@ page import="userpackage.Model.Message" %>
+<%@ page import="userpackage.Model.Users" %>    
 
 <!DOCTYPE html>
 <html>
@@ -15,6 +15,14 @@
 
 </head>
 <body style="background-color: #d9d9d9">
+
+	<form id="backToUserPageServletForm" action = "BackToUserPageServlet" method = "post">
+        	<a  onclick="document.getElementById('backToUserPageServletForm').submit();" style="cursor: pointer; width 200px; height: 50px; border: solid 1px; color black;">
+
+        		<span style="color: #404040;">Go Back Home</span>
+        	</a>
+        	
+        </form>
 
 	<%String userEmail = (String)session.getAttribute("userEmail"); %>
 	
@@ -127,6 +135,9 @@
 
 
 	</form>
+	
+	
+	        
 	
 	
 
