@@ -73,7 +73,78 @@
                             </div>
                             <div class="form-group mb-3">
                             	<label class="form-label text-secondary">Make</label>
-                            	<input class="d-flex" type="text" required=""  name="carMake" style="width: 100%;height: 38px;border-radius: 6px;border: 1px solid #dee2e6 ;">
+                            	<!-- <input class="d-flex" type="text" required=""  name="carMake" style="width: 100%;height: 38px;border-radius: 6px;border: 1px solid #dee2e6 ;"> -->
+                            	<select class="d-flex" name="carMake" class="addAuctionInputs" id="year" style="width: 100%;height: 38px;border-radius: 6px;border: 1px solid #dee2e6 ;" required>
+                                    
+                                    <option id="make" value="0" disabled selected></option>
+                                    <option id="make">Abarth</option>
+                                    <option id="make">Acura</option>
+                                    <option id="make">Alfa Romeo</option>
+                                    <option id="make">Aston Martin</option>
+                                    <option id="make">Audi</option>
+                                    <option id="make">Bentley</option>
+                                    <option id="make">BMW</option>
+                                    <option id="make">Bugatti</option>
+                                    <option id="make">Buick</option>
+                                    <option id="make">Cadillac</option>
+                                    <option id="make">Chevrolet</option>
+                                    <option id="make">Chrysler</option>
+                                    <option id="make">Citroen</option>
+                                    <option id="make">Dacia</option>
+                                    <option id="make">Dodge</option>
+                                    <option id="make">Ferrari</option>
+                                    <option id="make">Fiat</option>
+                                    <option id="make">Ford</option>
+                                    <option id="make">GMC</option>
+                                    <option id="make">Honda</option>
+                                    <option id="make">Hummer</option>
+                                    <option id="make">Hyundai</option>
+                                    <option id="make">Infiniti</option>
+                                    <option id="make">Isuzu</option>
+                                    <option id="make">Jaguar</option>
+                                    <option id="make">Jeep</option>
+                                    <option id="make">Kia</option>
+                                    <option id="make">Lamborghini</option>
+                                    <option id="make">Lancia</option>
+                                    <option id="make">Land Rover</option>
+                                    <option id="make">Lexus</option>
+                                    <option id="make">Lincoln</option>
+                                    <option id="make">Lotus</option>
+                                    <option id="make">Maserati</option>
+                                    <option id="make">Mazda</option>
+                                    <option id="make">McLaren</option>
+                                    <option id="make">Mercedes-Benz</option>
+                                    <option id="make">Mercury</option>
+                                    <option id="make">Mini</option>
+                                    <option id="make">Mitsubishi</option>
+                                    <option id="make">Nissan</option>
+                                    <option id="make">Opel</option>
+                                    <option id="make">Peugeot</option>
+                                    <option id="make">Pontiac</option>
+                                    <option id="make">Porsche</option>
+                                    <option id="make">Ram</option>
+                                    <option id="make">Renault</option>
+                                    <option id="make">Saab</option>
+                                    <option id="make">Saturn</option>
+                                    <option id="make">Scion</option>
+                                    <option id="make">Seat</option>
+                                    <option id="make">Skoda</option>
+                                    <option id="make">Smart</option>
+                                    <option id="make">SsangYong</option>
+                                    <option id="make">Subaru</option>
+                                    <option id="make">Suzuki</option>
+                                    <option id="make">Tesla</option>
+                                    <option id="make">Toyota</option>
+                                    <option id="make">Volkswagen</option>
+                                    <option id="make">Volvo</option>
+                                    <option id="make">Wiesmann</option>
+                                    <option id="make">Other</option>
+                                    
+
+
+                                   
+                                    
+                                </select>
                             </div>
                             <div class="form-group mb-3">
                             	<label class="form-label text-secondary">Model</label>
