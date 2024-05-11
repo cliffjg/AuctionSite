@@ -21,13 +21,16 @@
             <div class="col-10 col-sm-8 col-md-6 col-lg-6 offset-1 offset-sm-2 offset-md-3 offset-lg-0 align-self-center d-lg-flex align-items-lg-center align-self-lg-stretch bg-white p-5 rounded rounded-lg-0 my-5 my-lg-0" id="login-block">
                 <div class="m-auto w-lg-75 w-xl-50">
                     <h2 style="color: var(--bs-body-color);font-family: Abel, sans-serif;font-size: 30px;"><img width="100" height="80" style="width: 32px;height: 32px;" src="Images/auction.png">&nbsp;AuctionUp</h2>
+                    
+                    
                     <form action = "CreateAccountServlet" method = "post">
+                    
                         <div class="form-group mb-3"><label class="form-label text-secondary">Enter Email:</label><input name="userEmail" class="form-control" type="text" required=""  ></div>
                         <div class="form-group mb-3"><label class="form-label text-secondary">Enter Password:</label><input name="password" class="form-control" type="password" required=""></div>
-                        <div class="form-group mb-3"><label class="form-label text-secondary">Confirm Password:</label><input name="password" class="form-control" type="password" required=""></div>
+                        <div class="form-group mb-3"><label class="form-label text-secondary">Confirm Password:</label><input name="confirmPassword" class="form-control" type="password" required=""></div>
                         
-                        <div class="form-group mb-3"><label class="form-label text-secondary">Enter First Name:</label><input name="firstName" class="form-control" type="text"  ></div>
-                        <div class="form-group mb-3"><label class="form-label text-secondary">Enter Last Name:</label><input name="lastName" class="form-control" type="text" ></div>
+                        <div class="form-group mb-3"><label class="form-label text-secondary">Enter First Name:</label><input name="firstName" class="form-control" type="text" required="" ></div>
+                        <div class="form-group mb-3"><label class="form-label text-secondary">Enter Last Name:</label><input name="lastName" class="form-control" type="text" required=""></div>
                         
                         
                       	<% 
@@ -54,7 +57,7 @@
                        <%
                         	 } else if (check != null && check.equals("success")){ 
                        			
-                       			System.out.println("NO Error"); 
+                       			
                        %> 
                        
                        			<div style="width: 100%;height: 24px;">
@@ -65,6 +68,21 @@
         							</label>
         						</div>
                        
+                       	
+                       <%
+                        	 } else if (check != null && check.equals("passwordDoesntMatch")){ 
+                       			
+                       			
+                       %> 
+                       
+                       		<div style="width: 100%;height: 24px;">
+                        			<label class="form-label" style="color: rgb(235,14,0); visibility: visible;width: 100%;">
+                        				<svg class="bi bi-x" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="color: rgb(235,14,0);">
+            								<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"></path>
+        								</svg>Password entered doesn't match!
+        							</label>
+        						</div>
+
                        		
                        <%
                        		 } 

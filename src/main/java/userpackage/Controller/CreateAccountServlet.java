@@ -52,11 +52,13 @@ public class CreateAccountServlet extends HttpServlet {
 		String lastName = request.getParameter("lastName").trim();
 		String userEmail = request.getParameter("userEmail").trim();
 		String userPassword = request.getParameter("password").trim();
+		String confirmPassword = request.getParameter("confirmPassword").trim();
 
 		System.out.println("First Name: " + firstName);
 		System.out.println("Last Name: " + lastName);
 		System.out.println("User Email: " + userEmail);
 		System.out.println("User Password: " + userPassword);
+		System.out.println("Conf Password: " + confirmPassword);
 		
 		
 		String query = "select * from Users where userEmail = '" + userEmail + "';";
@@ -69,13 +71,14 @@ public class CreateAccountServlet extends HttpServlet {
 		//if input in userEmail or Password is null
 		//send error message to user that account was not created
 		//need to reenter input
-		if(userEmail.trim() == null || userPassword.trim() == null || userEmail.trim() == "" || userPassword.trim() == "") {
+		if(userEmail.trim() == null || userPassword.trim() == null || userEmail.trim() == "" || userPassword.trim() == "" || !(userPassword.trim().equals(confirmPassword))) {
 			System.out.println("UserEmail: " + userEmail);
 			System.out.println("Password: " + userPassword);
+			System.out.println("Conf Password: " + confirmPassword);
 			System.out.println("Name: " + firstName + " " + lastName);
 			
-			request.setAttribute("checkInput", "errorUserEmailPassword");
-			request.getRequestDispatcher("createAccount.jsp").forward(request,response);
+			request.setAttribute("success", "passwordDoesntMatch");
+			request.getRequestDispatcher("createAccountPage.jsp").forward(request,response);
 			
 		}else {
 			try {
