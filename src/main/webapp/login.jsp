@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>AuctionUp Login</title>
+    <link rel="icon" type="image/png" href="Images/auction.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito&amp;display=swap">
@@ -73,6 +74,7 @@
                     	<button class="btn btn-info mt-2" role="button" style="color: var(--bs-body-bg);background: linear-gradient(-91deg, rgb(103,170,255) -5%, var(--bs-btn-bg) 100%), rgb(103,170,247);">Log In</button>
                     	
                     </form>
+                    
                     
                     <p class="mt-3 mb-0"><a class="text-info small" href="#">Forgot your email or password?</a></p>
                     <div>
