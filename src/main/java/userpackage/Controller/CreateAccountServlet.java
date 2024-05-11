@@ -63,6 +63,8 @@ public class CreateAccountServlet extends HttpServlet {
 		
 		String query = "select * from Users where userEmail = '" + userEmail + "';";
 		
+		String insertIntoSeller = "insert into Seller(userEmail) values (?);";
+		
 //		String query = "select * from Users where userEmail = ?;"
 //		PreparedStatement preparedStatement = connection.prepareStatement(query);
 //		preparedStatement.setString(1, userEmail);
@@ -123,6 +125,15 @@ public class CreateAccountServlet extends HttpServlet {
 
 	            	
 	            	preparedStatement.executeUpdate();
+	            	
+	            	
+	            	preparedStatement = null;
+	            	
+	            	preparedStatement = connection.prepareStatement(insertIntoSeller);
+	            	preparedStatement.setString(1, userEmail);
+	            	
+	            	preparedStatement.executeUpdate();
+	            	
 	            	
 //	            	statement.executeUpdate(query1);
 	            	
