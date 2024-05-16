@@ -210,8 +210,8 @@
                  
                  <!-- <form action="ProductPageServlet" method="post"> -->
                 
-                 
-                 <%if(!users.get(0).getUserEmail().equals(auction.getUserEmail())  && !auction.getCalculatedExpirationDate().contains("-")){ %>
+                 <!-- bidder can't bid on own auction or if auction is expired -->
+                 <%if(!users.get(0).getUserEmail().equals(auction.getUserEmail()) && !auction.getCalculatedExpirationDate().contains("-")){ %>
 
 
 						<form action="ProductPageServlet" method="post">

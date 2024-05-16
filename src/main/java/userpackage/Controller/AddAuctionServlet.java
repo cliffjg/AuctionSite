@@ -128,7 +128,7 @@ public class AddAuctionServlet extends HttpServlet {
 			preparedStatement.setString(9, startDate);
 			preparedStatement.setString(10, expirationDate);
 			preparedStatement.setString(11, carDescription);
-			preparedStatement.setString(12, imagePath);
+			preparedStatement.setString(12, "/Images/"+imagePath);
 
 	
         	preparedStatement.executeUpdate();
