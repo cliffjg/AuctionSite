@@ -85,7 +85,19 @@
         
         	<%-- <div>Auction Id: <%=auction.getAuctionId()%></div> --%>
         	
-        	                	<div style="width: 100%;height: 60%;"><img style="width: 100%;height: 250px;" src=".<%=auction.getImagePath()%>"></div>
+        	                	<div style="width: 100%;height: 60%;">
+        	                	
+        	             <%--    		<%if(auction.getImagePath() == null){ %>
+        	                			<img style="width: 100%;height: 250px;" src="Images/AwaitingPhoto.jpeg">
+        	                		
+        	                		
+        	                		<%}else{ %>
+        	                			<img style="width: 100%;height: 250px;" src=".<%=auction.getImagePath()%>">
+        	                		<%} %>
+        	                	 --%>	
+        	                		<img style="width: 100%;height: 250px;" src=".<%=auction.getImagePath()%>">
+        	                		
+        	                	</div>
                 	<div style="width: 100%;height: 40%;padding-top: 10px;">
                     	<h5 class="fw-normal">Car: <%=auction.getCarYear()%> <%=auction.getCarMake()%> <%=auction.getCarModel()%></h5>
                     	<span>Color: <%=auction.getCarColor()%><br></span>

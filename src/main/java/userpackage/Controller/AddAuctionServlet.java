@@ -78,9 +78,16 @@ public class AddAuctionServlet extends HttpServlet {
 		String filePathes = request.getParameter("filePath");
 		System.out.println("This is the filePah:" + filePathes);
 		
-		if(imagePath == null) {
+		
+		System.out.println("Image Path: " + imagePath);
+		
+		if(imagePath == null || imagePath.equals("") || imagePath == "") {
 			imagePath = "/Images/AwaitingPhoto.jpeg";
+		}else {
+			imagePath = "/Images/"+imagePath;
 		}
+		
+		
 
 		System.out.println("\n");		
 		
@@ -128,7 +135,7 @@ public class AddAuctionServlet extends HttpServlet {
 			preparedStatement.setString(9, startDate);
 			preparedStatement.setString(10, expirationDate);
 			preparedStatement.setString(11, carDescription);
-			preparedStatement.setString(12, "/Images/"+imagePath);
+			preparedStatement.setString(12, imagePath);
 
 	
         	preparedStatement.executeUpdate();
