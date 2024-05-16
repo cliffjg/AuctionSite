@@ -126,6 +126,7 @@
 			img.style.height = '100%';
 			img.src = e.target.result;
 			
+			//expand div above image from icon to full image
 			divAboveImage.style.width = '100%';
 			divAboveImage.style.height = '100%';
   		 						   
