@@ -63,9 +63,93 @@
             
                 <div style="width: 100%;height: 100%;">
                     <div class="m-auto w-lg-75 w-xl-50" style="width: 90%;">
-                        <div class="d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="width: 100%;height: 400px;border: 1px solid #dee2e6;border-radius: 2px;">
-                            <div style="width: 50px;height: 50px;"><img width="100" height="80" style="width: 100%;height: 100%;border-radius: 2px;border: 1px none #dee2e6 ;" src="Images/add.png" name="imagePath"></div>
+                    
+                   
+                   
+                    	<div  class="d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="width: 100%;height: 400px;border: 1px solid #dee2e6;border-radius: 2px;position: relative;">
+                            	
+            <%--                 	<%
+                            		if(){
+                            	%>
+                            			<div style="width: 50px;height: 50px;position: relative;z-index: 0;">
+                            				<img width="100" height="80" style="width: 100%;height: 100%;border-radius: 2px;border: 1px none #dee2e6;position: relative;z-index: 0;" src="Images/add.png" name="imagePath">
+                            			</div>
+                            	
+                            	<%
+                            		}else{
+                            	%>	
+                            			<div style="width: 50px;height: 50px;position: relative;z-index: 0;">
+                            				<img width="100" height="80" style="width: 100%;height: 100%;border-radius: 2px;border: 1px none #dee2e6;position: relative;z-index: 0;" src="Images/add.png" name="imagePath">
+                            			</div>
+                            	<%
+                            		}
+                            	%>
+                            	
+                 --%>            	
+                            	
+                       
+                             	<div id="divAboveImage" style="width: 50px;height: 50px;position: relative;z-index: 1;">
+                            		<img id="imagePath" width="100" height="80" style="width: 100%;height: 100%;border-radius: 2px;border: 1px none #dee2e6;position: relative;z-index: 1;" src="Images/add.png" name="imagePath">
+                            	</div>
+                            	
+                            <!-- 	<div style="width: 100%;height: 100%;position: relative;z-index: 1;">
+                            		<img id="imagePath" width="100" height="80" style="width: 100%;height: 100%;border-radius: 2px;border: 1px none #dee2e6;position: relative;z-index: 1;" src="Images/add.png" name="imagePath">
+                            	</div> -->
+                            	
+                            	<div style="height: 100%; width: 100%;position: absolute; z-index: 2;">
+                            		<input id="imagePath" name="imagePath" type="file" accept="image/*" style="height: 100%; width: 100%;cursor: pointer; opacity: 0;position: absolute;z-index: 2;" onchange="previewImage(event)">
+                            		<p id="filePath" name="filePath"></p>
+                            	</div>
+                            	<!-- <input type="file" style="height: 100%; width: 100%;cursor: pointer; z-index: 2;opacity: 1;"> -->
+
                         </div>
+                        
+                        
+          <!--THIS SCRIPT IS FOR CHANGING THE ADD IMAGE ICON TO THE IMAGE SELECTED BY USER  -->  		 						 	
+<script>
+  		 					
+	function previewImage(event) {
+
+		var img = document.getElementById('imagePath');
+		var divAboveImage = document.getElementById('divAboveImage');
+		console.log("The image: " + img.value);
+  		 						  
+		// Check if a file was selected
+		if (event.target.files && event.target.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+			
+  		 	
+			//set the size of the image and also the result
+			img.style.width = '100%';
+			img.style.height = '100%';
+			img.src = e.target.result;
+			
+			divAboveImage.style.width = '100%';
+			divAboveImage.style.height = '100%';
+  		 						   
+		}
+
+		// Read the selected file as a Data URL
+		reader.readAsDataURL(event.target.files[0]);
+		}
+	} 
+	
+	
+	function handleFileSelect(event) {
+		  const file = event.target.files[0];
+		  const filePath = URL.createObjectURL(file);
+		  document.getElementById('filePath').textContent = filePath;
+
+		}
+	
+	
+	
+</script>              
+                        
+                        
+        
                         <div>
                             <div class="form-group mb-3">
                             	<label class="form-label text-secondary">Year</label>

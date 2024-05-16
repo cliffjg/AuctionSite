@@ -234,7 +234,42 @@ function on() {
 }
 
 
-    
 
+function previewImage(event) {
+
+		var img = document.getElementById('imagePath');
+		var divAboveImage = document.getElementById('divAboveImage');
+		console.log("The image: " + img.value);
+  		 						  
+		// Check if a file was selected
+		if (event.target.files && event.target.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+			
+  		 	
+			//set the size of the image and also the result
+			img.style.width = '100%';
+			img.style.height = '100%';
+			img.src = e.target.result;
+			
+			divAboveImage.style.width = '100%';
+			divAboveImage.style.height = '100%';
+  		 						   
+		}
+
+		// Read the selected file as a Data URL
+		reader.readAsDataURL(event.target.files[0]);
+		}
+} 
+	
+	
+function handleFileSelect(event) {
+		  const file = event.target.files[0];
+		  const filePath = URL.createObjectURL(file);
+		  document.getElementById('filePath').textContent = filePath;
+
+}
+	
 
     
