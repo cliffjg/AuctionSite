@@ -47,6 +47,8 @@
 	 	
 	 	auction = (Auction) session.getAttribute("auction"); 
 	 	
+	 	session.setAttribute("auction", auction);
+	 	
 	 	String fullName = (String)session.getAttribute("fullName");
 	 	String sellerEmail = (String)session.getAttribute("sellerEmail");
 	 	String sellerProfilePicture = (String)session.getAttribute("sellerProfilePicture");
@@ -326,9 +328,20 @@
                     	<label class="form-label" style="margin-left: 5px;color: #6c757d;">Sold by</label>
                     	<label class="form-label" style="margin-left: 2px;font-weight: bold;color: #6c757d;"><%=fullName%></label>
                     </div>
-                    <div data-bss-hover-animate="pulse" style="height: 40px;width: 180px;"><button class="btn btn-primary d-lg-flex justify-content-lg-center align-items-lg-center" type="button" style="width: 100%;height: 100%;border-radius: 20px;color: rgb(255,255,255);background: linear-gradient(55deg, #11e5fe 30%, #4eacfe 82%);font-weight: bold;font-size: 14px;border: 2px solid rgb(54,207,254);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                    
+                    <form action="ContactSellerServlet" method="post">
+                    	  <div data-bss-hover-animate="pulse" style="height: 40px;width: 180px;">
+                    	  	<button type="submit" name="sellerEmail" value="<%=sellerEmail %>"  class="btn btn-primary d-lg-flex justify-content-lg-center align-items-lg-center" type="button" style="width: 100%;height: 100%;border-radius: 20px;color: rgb(255,255,255);background: linear-gradient(55deg, #11e5fe 30%, #4eacfe 82%);font-weight: bold;font-size: 14px;border: 2px solid rgb(54,207,254);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z" fill="currentColor"></path>
                             </svg>Contact Seller</button></div>
+                    
+                    
+                    </form>
+                  <%--   <div data-bss-hover-animate="pulse" style="height: 40px;width: 180px;"><button name="sellerEmail" value="<%=sellerEmail %>" onclick="window.location.href = 'contactSeller.jsp'" class="btn btn-primary d-lg-flex justify-content-lg-center align-items-lg-center" type="button" style="width: 100%;height: 100%;border-radius: 20px;color: rgb(255,255,255);background: linear-gradient(55deg, #11e5fe 30%, #4eacfe 82%);font-weight: bold;font-size: 14px;border: 2px solid rgb(54,207,254);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z" fill="currentColor"></path>
+                            </svg>Contact Seller</button></div>
+                             --%>
+                            
                 </div>
                 <div class="d-flex d-lg-flex justify-content-start align-items-center align-items-lg-center" style="width: 100%px;height: 40px;">
                 	<label class="form-label" style="margin-left: 5px;color: #6c757d;width: 140px;">Pick up Location:</label>
