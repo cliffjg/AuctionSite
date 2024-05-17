@@ -33,6 +33,8 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item d-flex flex-row justify-content-center align-items-center" style="margin-right: 20px;color: #404040;">
+                    	
+                    		
                     	<a class="nav-link" href="newAuction.jsp" style="margin-left: 0px;color: rgba(0,0,0,0.65);">
                     		<img style="width: 10px;height: 10px;color: #404040;" src="assets/img/plus.png">
                     		<span style="color: #404040;margin-left: 5px;">New Auction</span>
@@ -51,17 +53,25 @@
                         
                         
                       
-                      	<form id="myForm" action = "InboxMailPageServlet" method = "post">
+                      	<form id="inboxMailPageServletForm" action = "InboxMailPageServlet" method = "post">
    				
    							<div style="padding: 10px;">
-   								<a class="nav-link d-flex justify-content-center align-items-center" href="inboxMailPage.jsp" style="margin-left: 0px;color: #404040;">
+   								<!-- <a class="nav-link d-flex justify-content-center align-items-center" href="inboxMailPage.jsp" style="margin-left: 0px;color: #404040;">
                     				<img style="width: 12px;height: 12px;margin-right: 5px;color: #404040;" src="assets/img/mail.png">
                     				<span style="color: #404040;">Messages</span>
                            			 <div style="height: 20px;width: 0px;color: rgb(64, 64, 64);margin-left: 10px;border: 1px solid #404040 ;"></div>
                        			 </a>
-   						<%-- <button  id="messageButton" name="messageButton" value="<%=users.get(0).getUserEmail()%>" >Message</button> --%>
+   						 -->
+   						 
+   						 		<a class="nav-link d-flex justify-content-center align-items-center" onclick="document.getElementById('inboxMailPageServletForm').submit();" style="margin-left: 0px;color: #404040;cursor: pointer;">
+                    				<img style="width: 12px;height: 12px;margin-right: 5px;color: #404040;" src="assets/img/mail.png">
+                    				<span style="color: #404040;">Messages</span>
+                           			 <div style="height: 20px;width: 0px;color: rgb(64, 64, 64);margin-left: 10px;border: 1px solid #404040 ;"></div>
+                       			 </a>
    				
    							</div>	
+   							
+   							
 
    						</form>
                          

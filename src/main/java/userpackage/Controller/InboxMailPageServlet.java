@@ -2,6 +2,7 @@ package userpackage.Controller;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDateTime;
@@ -15,6 +16,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import userpackage.Model.Auction;
+import userpackage.Model.Message;
+import userpackage.Model.Users;
 
 /**
  * Servlet implementation class MessagePage
@@ -48,201 +53,106 @@ public class InboxMailPageServlet extends HttpServlet {
 //
 	System.out.println("IM IN HERE! InBoxMessageServlet");
 		
-		request.getRequestDispatcher("inboxMailPage.jsp");
-////		RequestDispatcher dispatcher = request.getRequestDispatcher("/MessagePage");
-//
-//		
-//		String messageButton = (String)request.getParameter("messageButton");
-//		
-//		System.out.println("The messageButton is: "  + messageButton);
-//		
-//		
-//		
-//		
-//		
-//		
-//		
-//		
-////		String adminLeaveChat = (String)request.getParameter("adminLeaveChat");
-////		String userLeaveChat = (String)request.getParameter("userLeaveChat");
-//		
-//		String adminLeaveChat = (String)request.getParameter("messageButton");
-//		
-//		String userLeaveChat = (String)request.getParameter("messageButton");
-//		
-//		
-//		System.out.println("In Messages java");
-//		
-//		LocalDateTime now = LocalDateTime.now();
-//		
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy @ HH:mm:ss");
-//		
-////		ArrayList<String> messageArrayList = new ArrayList<String>();
-//		
-//		
-//		HttpSession session = request.getSession();
-//		
-////		String userLoggedInAs = (String) session.getAttribute("userEmail");
-//		
-//		
-//	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-////		String userLoggedInAs = (String)request.getParameter("messageButton");;
-//
-////		String userLoggedInAs = (String) session.getAttribute("userEmail");
-////		
-////		if(userLoggedInAs == null) {
-////			userLoggedInAs = (String) session.getAttribute("admin");
-////		}
-////		
-////		System.out.println("USER LOGGED IN AS: " + userLoggedInAs);
-//		
-//		
-////		String userLoggedInAs = (String) session.getAttribute("admin");
-//		String userLoggedInAs = (String)request.getParameter("messageButton");
-//		
-//		if(userLoggedInAs == null) {
-//			userLoggedInAs = (String) session.getAttribute("userEmail");
-//		}
-//		
-//		System.out.println("USER LOGGED IN AS: " + userLoggedInAs);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//		
-//		
-//		
-//		
-////		String userEmail = "michaeljackson@gmail.com";
-//		
-////		String userEmail = (String) session.getAttribute("userEmail");
-//		
-//		
-//		String userEmail = (String) request.getParameter("userEmail");
-//		
-//		//when reloaded userEmail is null so it resets it
-//		if(userEmail == null) {
-////			request.getRequestDispatcher("login.jsp").forward(request,response);
-//			
-////			userEmail = (String)session.getAttribute(userEmail);
-//			userEmail = (String)session.getAttribute("userEmail");
-//		}
-//		
-////		if(adminLeaveChat != null || userLeaveChat != null) {
-////			System.out.println("\n\nYOU PRESSED THE LEAVE CHAT BUTTON: " + adminLeaveChat + "\n\n");
-////			System.out.println("\n\nYOU PRESSED THE LEAVE CHAT BUTTON: " + userLeaveChat + "\n\n");
-//			
-//			
-////		}
-//		
-//		System.out.println("USEREMAIL: " + userEmail);
-////		
-//		String formattedDateTime = now.format(formatter);
-////		
-//		String message = (String) request.getParameter("message");
-//		
-//		//Query for User
-//		String queryUser = "insert into Messages(userEmail, sendMessage, receiveMessage, messageDateTime) values ('" + userEmail + "', '" + message + "', null, '" + formattedDateTime + "');";
-////		
-//		
-//		//Query for Admin
-//		String queryAdmin = "insert into Messages(userEmail, sendMessage, receiveMessage, messageDateTime) values ('" + userEmail + "', null,'" + message + "', '" + formattedDateTime + "');";
-//		
-//		String query = null; 
-//		
-////		System.out.println("Query: " + query);
-//		
-//		
-//		
-//		ArrayList<Message> messageArrayList = new ArrayList<Message>();
-//		
-//		Message messageObject = null;
-//		
-//		try {
-//			
-//			DatabaseAccess db = new DatabaseAccess();
-//			Connection connection = db.getConnection();
-//			
-//			Statement statement = connection.createStatement();
-//			
-//			if(message != null && message != "" /*|| !message.equals("null")*/) {
-//				
-//				
-//				
-//				if(userLoggedInAs != null && userLoggedInAs.equals("admin@gmail.com")) {
-//					statement.executeUpdate(queryAdmin);
-//				}else {
-//					statement.executeUpdate(queryUser);
-//				}
-////				statement.executeUpdate(queryAdmin);
-//				
-//			}
-//			
-//			if(adminLeaveChat != null) {
-//				adminLeaveChat = "----------Admin left the chat----------";
-//				String queryAdminLogOut = "insert into Messages(userEmail, sendMessage, receiveMessage, messageDateTime) values ('" + userEmail + "', null,'" + adminLeaveChat + "', '" + formattedDateTime + "');";
-//				statement.executeUpdate(queryAdminLogOut);
-////				System.out.println("\n\nYOU PRESSED THE LEAVE CHAT BUTTON: " + adminLeaveChat + "\n\n");	
-//				
-//			}
-//			
-//			else if(userLeaveChat != null) {
-//				userLeaveChat = "----------User left the chat----------";
-//				String queryUserLogOut = "insert into Messages(userEmail, sendMessage, receiveMessage, messageDateTime) values ('" + userEmail + "', '" + userLeaveChat + "', null, '" + formattedDateTime + "');";
-//				statement.executeUpdate(queryUserLogOut);
-////				System.out.println("\n\nYOU PRESSED THE LEAVE CHAT BUTTON: " + userLeaveChat + "\n\n");	
-//				
-//			}
-//			
-//		
-//			
-//			
-//			query = "select * from Messages where userEmail = '" + userEmail + "';";
-////			System.out.println("Query: " + query);
-//			
-//			ResultSet rs = statement.executeQuery(query);
-//			
-//			while(rs.next()) {
-//				
-//				messageObject = new Message(
-//						rs.getString("userEmail"),
-//						rs.getString("sendMessage"),
-//						rs.getString("receiveMessage"),
-//						rs.getString("messageDateTime")
-//						);
-//				
-//				messageArrayList.add(messageObject);
-//				
-////				System.out.println("\n" + "UserEmail: " + rs.getString("userEmail"));
-////				System.out.println("SendMessage: " + rs.getString("sendMessage"));
-////				System.out.println("ReceiveMessage: " + rs.getString("receiveMessage"));
-////				System.out.println("TimeStamp: " + rs.getString("messageDateTime") + "\n");
-//				
-//				
-//			}
-//			
-//			session.setAttribute("messageArrayList", messageArrayList);
-//			session.setAttribute("userEmail", userEmail);
-//			
-//			System.out.println("The user page that it will send to: " + userLoggedInAs);
-//			
-//			if(userLoggedInAs != null && userLoggedInAs.equals("admin@gmail.com")) {
-//				
-//				request.getRequestDispatcher("adminMessagePage.jsp").forward(request,response);
-//			}else {
-//				request.getRequestDispatcher("userMessagePage.jsp").forward(request,response);
-//			}
-//			
-//			
-//			
-//			db.closeConnection(connection);
-//			
-//		}catch(Exception e){
-//
-//			 throw new IllegalStateException("Cannot connect the database!", e);
-//		}
-//		
-//		
-//		
-////		request.getRequestDispatcher("messagePage.jsp").forward(request,response);
 		
+		
+
+		HttpSession session = request.getSession();
+		
+		ArrayList<Users> users = (ArrayList<Users>)session.getAttribute("users");
+		ArrayList<Message> auctionMessage = new ArrayList();
+		
+		Message m = null;
+		
+		String queryMessages = "select auctionID, userEmail, sendMessage, destinationEmail, receiveMessage, messageDateTime, profilePicture from " +
+		"(select *, row_number() over(partition by auctionID, userEmail order by messageDateTime DESC) as row_num from AuctionMessages " +
+		"where destinationEmail = ?) as subquery where row_num = 1 order by messageDateTime DESC;";
+		
+//		String queryMessages = "select * from AuctionMessages where destinationEmail = ?;";
+		
+//		System.out.println("Auction ID: " + auction.getAuctionId());
+		System.out.println("User Email: " + users.get(0).getUserEmail());
+//		System.out.println("Seller Email: " + sellerEmail);
+//		System.out.println("Message: " + message);
+		
+		
+		System.out.println("SQL: " + queryMessages);
+		
+//		
+//		Auction auction = (Auction) session.getAttribute("auction");
+//		
+//		ArrayList<Users> users = (ArrayList<Users>)session.getAttribute("users");
+//		ArrayList<Message> auctionMessage = new ArrayList();
+//		
+//		Message m = null;
+//		
+//		String sellerEmail = (String)session.getAttribute("sellerEmail");
+//		String message = request.getParameter("message");
+//		
+//		
+//		System.out.println("Auction ID: " + auction.getAuctionId());
+//		System.out.println("User Email: " + users.get(0).getUserEmail());
+//		System.out.println("Seller Email: " + sellerEmail);
+//		System.out.println("Message: " + message);
+//		
+////		select * from Messages where userEmail = "AliceSmith@gmail.com" and destinationEmail = "BobJohnson@gmail.com"  ORDER BY messageID DESC;
+//		
+//		//insert into Messages(userEmail, sendMessage,destinationEmail, receiveMessage, messageDateTime, profilePicture) values
+////		("AliceSmith@gmail.com", "Hello my name is Alice Smith and i need help changing my password","admin@gmail.com" ,null, "03/02/2024 @ 17:49:52", 'Images/AliceSmith.jpg');
+//
+//		
+//		
+//		String insertMessage = "insert into AuctionMessages(auctionID, userEmail, sendMessage,destinationEmail, receiveMessage, messageDateTime, profilePicture) values(?,?,?,?,null,?,?)";
+//		String queryMessages = "select * from AuctionMessages where destinationEmail = ?  order by messageID ASC;";
+//		
+//		
+		try {
+			DatabaseAccess db = new DatabaseAccess();
+			Connection connection = db.getConnection();
+			
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(queryMessages);
+			preparedStatement.setString(1, users.get(0).getUserEmail());
+
+	
+        	ResultSet rs = preparedStatement.executeQuery();
+        	
+        	
+        	
+        	while(rs.next()) {
+        		
+
+        		
+        		m = new Message(rs.getString("auctionID"),
+        				rs.getString("userEmail"),
+        				rs.getString("sendMessage"),
+        				rs.getString("destinationEmail"),
+        				rs.getString("receiveMessage"),
+        				rs.getString("messageDateTime"),
+        				rs.getString("profilePicture")
+        				);
+        		
+//        		if(rs.getString("sendMessage") != null) {
+//        			System.out.println(rs.getString("userEmail")+ ": " + rs.getString("sendMessage"));
+//        		}
+//        		
+//        		if(rs.getString("receiveMessage") != null) {
+//        			System.out.println(rs.getString("destinationEmail")+ ": " + rs.getString("receiveMessage"));
+//        		}
+        		
+        		auctionMessage.add(m);
+        		
+        	}
+        	
+        	System.out.println("auctionMessage: " + auctionMessage.toString());
+			
+		}catch(Exception e){
+
+			 throw new IllegalStateException("Cannot connect the database!", e);
+		}
+//		
+		session.setAttribute("auctionMessage", auctionMessage);
+		request.getRequestDispatcher("inboxMailPage.jsp").forward(request,response);
+//		request.getRequestDispatcher("productPage.jsp").forward(request,response);
 		
 	}
 

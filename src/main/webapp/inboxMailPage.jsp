@@ -2,6 +2,7 @@
 <%@ page import ="java.util.ArrayList"%>
 <%@ page import ="java.util.List"%>
 <%@ page import="userpackage.Model.Auction" %>
+<%@ page import="userpackage.Model.Message" %>
 <%@ page import="userpackage.Model.Users" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.Locale" %>
@@ -28,6 +29,8 @@
 
 	<%ArrayList<Users> users = (ArrayList<Users>)session.getAttribute("users"); %>
 	
+	<%ArrayList<Message> auctionMessage = (ArrayList<Message>)session.getAttribute("auctionMessage"); %>
+	
 	
 	<jsp:include page="header.jsp" />
 
@@ -51,12 +54,16 @@
     <div class="d-inline-flex flex-column align-content-start flex-wrap flex-sm-shrink-1" style="width: 100%;height: 30px;background: rgb(44,47,50);overflow: scroll;overflow-y: hidden;"><label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 50px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;margin-top: 5px;padding-right: 10px;padding-left: 10px;height: 100%;"><span style="background-color: rgb(43, 47, 50);">My Auctions</span></label><label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 20px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;margin-top: 5px;padding-right: 10px;padding-left: 10px;height: 100%;"><span style="background-color: rgb(43, 47, 50);">My Bids/Favorites</span></label><label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 20px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;font-size: 16px;margin-top: 5px;"><span style="background-color: rgb(43, 47, 50);">Community Auctions</span></label></div>
     <div class="container-fluid">
         <div class="card shadow" style="border-radius: 0px;">
+        
+      <!--   
             <div class="card-header py-3">
                 <p class="text-primary m-0 fw-bold"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pencil-square">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"></path>
                     </svg>&nbsp;Create Message</p>
             </div>
+          -->   
+            
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6 text-nowrap">
@@ -81,56 +88,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi Satou</td>
-                                <td style="color: var(--bs-table-color);">Can you provide detailed information about the vehicle's make, model, year, and mileage?</td>
-                                <td>2008/11/28</td>
-                            </tr>
-                            <tr>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Angelica Ramos</td>
-                                <td>What condition is the vehicle in, and are there any known issues or defects?</td>
-                                <td>2009/10/09<br></td>
-                            </tr>
-                            <tr>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg">Ashton Cox</td>
-                                <td>Can you describe the vehicle's service history and any maintenance or repairs that have been done?</td>
-                                <td>2009/01/12<br></td>
-                            </tr>
-                            <tr>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar4.jpeg">Bradley Greer</td>
-                                <td>Are there any photos available, both interior and exterior, that show the vehicle's current condition?</td>
-                                <td>2012/10/13<br></td>
-                            </tr>
-                            <tr>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar5.jpeg">Brenden Wagner</td>
-                                <td>What is the starting bid or reserve price for the vehicle?</td>
-                                <td>2011/06/07<br></td>
-                            </tr>
-                            <tr>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Brielle Williamson</td>
-                                <td>Are there any additional fees or charges that the winning bidder will need to pay?</td>
-                                <td>2012/12/02<br></td>
-                            </tr>
-                            <tr>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Bruno Nash<br></td>
-                                <td>Can you specify the auction end date and time, as well as any extended bidding rules?</td>
-                                <td>2011/05/03<br></td>
-                            </tr>
-                            <tr>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg">Caesar Vance</td>
-                                <td>Is the vehicle available for inspection before the auction ends, and if so, how can I arrange it?</td>
-                                <td>2011/12/12<br></td>
-                            </tr>
-                            <tr>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar4.jpeg">Cara Stevens</td>
-                                <td style="background: var(--bs-table-bg);">What are the terms of sale, including payment methods accepted and pickup or delivery options?</td>
-                                <td>2011/12/06<br></td>
-                            </tr>
-                            <tr>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar5.jpeg">Cedric Kelly</td>
-                                <td>Can you extend the auction?</td>
-                                <td>2012/03/29<br></td>
-                            </tr>
+                        
+                        
+                        	<%
+                        		for(int i = 0; i < auctionMessage.size(); i++){
+                        		Message m = new Message();
+                        		m = auctionMessage.get(i);
+                        	%>
+                        		<tr>
+                                	<td><img class="rounded-circle me-2" width="30" height="30" src="<%=m.getProfilePicture()%>"><%=m.getUserEmail()%></td>
+                                	<td style="color: var(--bs-table-color);"><%=m.getSendMessage() %></td>
+                                	<td><%=m.getMessageDateTime() %></td>
+                            	</tr>
+                        	
+                        	<%
+                        		}
+                        	%>
+                         	
+                        	
+
                         </tbody>
                         <tfoot>
                             <tr>
