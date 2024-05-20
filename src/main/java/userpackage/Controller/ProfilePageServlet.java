@@ -101,7 +101,7 @@ public class ProfilePageServlet extends HttpServlet {
 				
 				
 				
-//				ResultSet rs = preparedStatement.executeQuery();
+
 				preparedStatement.executeUpdate();
 				
 				System.out.println("Prepared Statement: " + preparedStatement.toString());
