@@ -21,12 +21,20 @@
         <div class="row mh-100vh">
             <div class="col-10 col-sm-8 col-md-6 col-lg-6 offset-1 offset-sm-2 offset-md-3 offset-lg-0 align-self-center d-lg-flex align-items-lg-center align-self-lg-stretch bg-white p-5 rounded rounded-lg-0 my-5 my-lg-0" id="login-block">
                 <div class="m-auto w-lg-75 w-xl-50">
-                    <h2 style="color: var(--bs-body-color);font-family: Abel, sans-serif;font-size: 30px;"><img width="100" height="80" style="width: 32px;height: 32px;" src="Images/auction.png">&nbsp;AuctionUp</h2>
+                    <h2 style="color: var(--bs-body-color);font-family: Abel, sans-serif;font-size: 30px;">
+                    	<img width="100" height="80" style="width: 32px;height: 32px;" src="Images/auction.png">&nbsp;AuctionUp
+                    </h2>
                     
                     <form action = "LoginServlet" method = "post">
                     
-                        <div class="form-group mb-3"><label class="form-label text-secondary">Email</label><input name="userEmail" class="form-control" type="text" required=""  ></div>
-                        <div class="form-group mb-3"><label class="form-label text-secondary">Password</label><input name="pass" class="form-control" type="password" required=""></div>
+                        <div class="form-group mb-3">
+                        	<label class="form-label text-secondary">Email</label>
+                        	<input name="userEmail" class="form-control" type="text" required=""  >
+                        </div>
+                        <div class="form-group mb-3">
+                        	<label class="form-label text-secondary">Password</label>
+                        	<input name="pass" class="form-control" type="password" required="">
+                        </div>
    
                        
                        <% 
