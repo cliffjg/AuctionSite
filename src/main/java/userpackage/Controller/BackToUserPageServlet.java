@@ -50,7 +50,10 @@ public class BackToUserPageServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		
-		//Arrays for storing the auction objects\
+		String whatTabPressed = request.getParameter("whatTabPressed");
+		
+		
+		//Arrays for storing the auction objects
 		ArrayList<Auction> allAuctions = new ArrayList();
 		ArrayList<Auction> myAuction = new ArrayList();
 		ArrayList<Auction> communityAuction = new ArrayList();
@@ -68,9 +71,43 @@ public class BackToUserPageServlet extends HttpServlet {
 			
 			
 			
-			String query = "select * from Auction;";
+//			String query = "select * from Auction;";
+//			
+//			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			PreparedStatement preparedStatement = null;
+			
+			if(whatTabPressed != null && whatTabPressed.equals("myAuctions")) {
+				System.out.println("Tab Pressed: " + whatTabPressed);
+				
+				String query = "select * from Auction where userEmail = ?;";
+				
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, userEmail);
+				
+				
+			}else if(whatTabPressed != null && whatTabPressed.equals("myBids")) {
+				System.out.println("Tab Pressed: " + whatTabPressed);
+								
+				
+				String query = "select distinct a.auctionID, a.* from Auction a join bidHistory b on a.auctionID = b.auctionID where b.userEmail = ? and a.userEmail != ?;";
+				
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, userEmail);
+				preparedStatement.setString(2, userEmail);
+				
+			}else{
+				System.out.println("Tab Pressed: " + whatTabPressed);
+				
+				String query = "select * from Auction;";
+				
+				preparedStatement = connection.prepareStatement(query);
+
+				
+				
+				
+			}
+		
 
 			ResultSet rs = preparedStatement.executeQuery();
 			
@@ -116,7 +153,7 @@ public class BackToUserPageServlet extends HttpServlet {
             	//set all the attributes to be forwarded to userPage.jsp
             	session.setAttribute("userEmail", userEmail);
             	session.setAttribute("allAuctions", allAuctions);
-
+            	session.setAttribute("whatTabPressed", whatTabPressed);
 			
 			
 			db.closeConnection(connection);

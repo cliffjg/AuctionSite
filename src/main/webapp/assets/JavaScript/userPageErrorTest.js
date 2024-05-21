@@ -78,6 +78,100 @@ function submitForm(data) {
 }    
 
 
+function submitFormWhatTabPressed(whatTabPressed){
+	console.log("Data to submit:", whatTabPressed);
+	// Set the value of the hidden input field
+	//document.getElementById("dataField").value = data;
+	
+	
+	
+	var whatTabPressed = whatTabPressed;
+        	    
+
+	// Creating form for submission
+	var form = document.createElement('form');
+	form.setAttribute('method', 'post');
+	form.setAttribute('action', 'BackToUserPageServlet');
+
+	// Create an input element to hold the auction ID
+	var input = document.createElement('input');
+	input.setAttribute('type', 'hidden');
+	input.setAttribute('name', 'whatTabPressed');
+	input.setAttribute('value', whatTabPressed);
+            
+
+
+	// Add the input element to the form
+	form.appendChild(input);
+	
+
+	// Append the form to the document body
+	document.body.appendChild(form);
+
+	// Submit the form
+	form.submit();
+	
+	
+}
+
+
+function submitFormForMessage(auctionID, userEmail, destinationEmail) {
+//function submitFormForMessage(data) {	
+	
+	
+	//console.log("Data to submit:", data);
+	console.log("Form submitted with parameters:", auctionID, userEmail, destinationEmail);
+	// Set the value of the hidden input field
+	//document.getElementById("dataField").value = data;
+
+	
+	var auctionID = auctionID;
+	var userEmail = userEmail;
+	var destinationEmail = destinationEmail;
+  	    
+
+	// Creating form for submission
+	var form = document.createElement('form');
+	form.setAttribute('method', 'post');
+	form.setAttribute('action', 'TestingMessageServlet');
+	
+	// Create an input element to hold the auction ID
+	var inputAuctionID = document.createElement('input');
+	inputAuctionID.setAttribute('type', 'hidden');
+	inputAuctionID.setAttribute('name', 'auctionID');
+	inputAuctionID.setAttribute('value', auctionID);
+	
+	// Create an input element to hold the userEmail
+	var inputUserEmail = document.createElement('input');
+	inputUserEmail.setAttribute('type', 'hidden');
+	inputUserEmail.setAttribute('name', 'userEmail');
+	inputUserEmail.setAttribute('value', userEmail);
+
+	// Create an input element to hold the destinationEmail
+	var inputDestinationEmail = document.createElement('input');
+	inputDestinationEmail.setAttribute('type', 'hidden');
+	inputDestinationEmail.setAttribute('name', 'destinationEmail');
+	inputDestinationEmail.setAttribute('value', destinationEmail);
+            
+
+
+	// Add the input element to the form
+	form.appendChild(inputAuctionID);
+	form.appendChild(inputUserEmail);
+	form.appendChild(inputDestinationEmail);
+	
+
+	// Append the form to the document body
+	document.body.appendChild(form);
+
+	// Submit the form
+	form.submit();
+	
+} 
+
+
+
+
 function startCountdown(auctionId, endTime) {
     // Update the countdown every second
     var countdown = setInterval(function() {
@@ -122,54 +216,6 @@ function startCountdown(auctionId, endTime) {
     }, 1000);
 }
 
- 
- /*   
-function startCountdown(auctionId, endTime) {
-    
-    // Update the countdown every second
-	var countdown = setInterval(function() {
-        // Get the current time
-		var now = new Date().getTime();
-        
-        // Calculate the time remaining
-        var distance = endTime - now;
-        
-        // Calculate days, hours, minutes, and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        // Display the countdown
-        document.getElementById("countdown" + auctionId).innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
-        
-       // document.getElementById("countdown" + auctionId).style.color = red;
-        
-        // If the countdown is over, display a message
-        if (distance < 0) {
-            clearInterval(countdown);
-            document.getElementById("countdown" + auctionId).innerHTML = "EXPIRED";
-        }
-    }, 1000);
-}
-*/
-   
-/*
-    
-function submitForm(data) {
-	
-	console.log("Data to submit:", data);
-	// Set the value of the hidden input field
-	document.getElementById("dataField").value = data;
-        	    
-	// Submit the form
-	document.getElementById("myForm").submit();
-	
-}
-        	
-*/
-
 
    
 document.getElementById("logout").onclick = function(){
@@ -188,19 +234,7 @@ function logout() {
 	};
 }
     
-/*    
-function submitForm(data) {
-	
-	console.log("Data to submit:", data);
-	// Set the value of the hidden input field
-	document.getElementById("dataField").value = data;
-        	    
-	// Submit the form
-	document.getElementById("myForm").submit();
-	
-}
-        	
-*/
+
 
 function off() {
 	
@@ -232,6 +266,8 @@ function on() {
 	document.getElementById("overlay").style.display = "block";
 	
 }
+
+
 
 
 
@@ -270,6 +306,8 @@ function handleFileSelect(event) {
 		  document.getElementById('filePath').textContent = filePath;
 
 }
-	
+
+
+
 
     

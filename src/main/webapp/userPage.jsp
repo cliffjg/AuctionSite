@@ -28,9 +28,11 @@
 
 
 	<jsp:include page="header.jsp" />
+	
+	<jsp:include page="tabBar.jsp" />
 
 
-<%-- 	<%String userEmail = session.getAttribute("userEmail").toString();  --%>
+
 	
 	<% ArrayList<Users> users = (ArrayList<Users>)session.getAttribute("users");
 		/* ArrayList<Users> auction = (ArrayList<Users>)session.getAttribute("allAuctions"); */
@@ -41,99 +43,74 @@
 	%>
 	
 
-     
-     
-    <!--////////////////////////////////////////////////////////////////////////////////////////  -->
-    
-	    <div class="d-inline-flex flex-column align-content-start flex-wrap flex-sm-shrink-1" style="width: 100%;height: 30px;background: rgb(44,47,50);overflow: scroll;overflow-y: hidden;">
-	    	<label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 50px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;margin-top: 5px;padding-right: 10px;padding-left: 10px;height: 100%;">
-	    		<span style="background-color: rgb(43, 47, 50);">My Auctions</span>
-	    	</label>
-	    	<label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 20px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;margin-top: 5px;padding-right: 10px;padding-left: 10px;height: 100%;">
-	    		<span style="background-color: rgb(43, 47, 50);">My Bids/Favorites</span>
-	    	</label>
-	    	<label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 20px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;font-size: 16px;margin-top: 5px;">
-	    		<span style="background-color: rgb(43, 47, 50);">Community Auctions</span>
-	    	</label>
-	    </div>
-   
+                 	
     <div class="container" style="height: auto;">
     
-    <form id="myForm" action = "UserPageServlet" method = "post">
-    	<input type="hidden" id="dataField" name="data">
+    	<!--//////////////////////////////////////////BEGINNING OF MY LISTINGS//////////////////////////////////////////////////////////////////////-->	
+
+            		    
+            		    
+            		    
+        	<form id="myForm" action = "UserPageServlet" method = "post">
+    			<input type="hidden" id="dataField" name="data">
     	
     	
-        <div class="row" style="margin-top: 20px;height: 100%;">
+        		<div class="row" style="margin-top: 20px;height: 100%;">
         
-        	<%
+        			<%
 
-       			ArrayList<Auction> myAuction = new ArrayList<Auction>();
-        		/* myAuction = (ArrayList<Auction>) session.getAttribute("communityAuction"); */
-        		myAuction = (ArrayList<Auction>) session.getAttribute("allAuctions");
+       					ArrayList<Auction> myAuction = new ArrayList<Auction>();
+        				/* myAuction = (ArrayList<Auction>) session.getAttribute("communityAuction"); */
+        				myAuction = (ArrayList<Auction>) session.getAttribute("allAuctions");
         		
-        		
-   				for(int i = 0; i < myAuction.size(); i++) {
-            	Auction auction = new Auction();
-           	 	auction = myAuction.get(i);
+        				
+        				int countBids = 0;
+        				
+   						for(int i = 0; i < myAuction.size(); i++) {
+            			Auction auction = new Auction();
+           	 			auction = myAuction.get(i);
 
-            %>
-            	
-        
-        
-       
-        <div class="col-md-4" style="height: 100%; margin-top: 10px;cursor: pointer;"  onclick="submitForm(<%=auction.getAuctionId()%>)">
-        
-        	<%-- <div>Auction Id: <%=auction.getAuctionId()%></div> --%>
-        	
-        	                	<div style="width: 100%;height: 60%;">
-        	                	
-        	             <%--    		<%if(auction.getImagePath() == null){ %>
-        	                			<img style="width: 100%;height: 250px;" src="Images/AwaitingPhoto.jpeg">
-        	                		
-        	                		
-        	                		<%}else{ %>
-        	                			<img style="width: 100%;height: 250px;" src=".<%=auction.getImagePath()%>">
-        	                		<%} %>
-        	                	 --%>	
-        	                		<img style="width: 100%;height: 250px;" src=".<%=auction.getImagePath()%>">
-        	                		
-        	                	</div>
-                	<div style="width: 100%;height: 40%;padding-top: 10px;">
-                    	<h5 class="fw-normal">Car: <%=auction.getCarYear()%> <%=auction.getCarMake()%> <%=auction.getCarModel()%></h5>
-                    	<span>Color: <%=auction.getCarColor()%><br></span>
-                    	<%if(auction.getCurrentBid() != null){ %>
-                    		<% carPrice = currencyFormatter.format(Integer.parseInt(auction.getCurrentBid()));%>
-                    		
-                    		<span>Current Bid:&nbsp;<span style="color: rgb(0, 128, 0);"><%=carPrice%></span></span>
+            		%>
+            
+            
+
+            					<div class="col-md-4" style="height: 100%; margin-top: 10px;cursor: pointer;"  onclick="submitForm(<%=auction.getAuctionId()%>)">
+        	        				<div style="width: 100%;height: 60%;">
+										<img style="width: 100%;height: 250px;" src=".<%=auction.getImagePath()%>">
+									</div>
+                					<div style="width: 100%;height: 40%;padding-top: 10px;">
+                    					<h5 class="fw-normal">Car: <%=auction.getCarYear()%> <%=auction.getCarMake()%> <%=auction.getCarModel()%></h5>
+                    					<span>Color: <%=auction.getCarColor()%><br></span>
                     	
-                    	<% }else{ %>
+                    					<%if(auction.getCurrentBid() != null){ %>
+                    						<% carPrice = currencyFormatter.format(Integer.parseInt(auction.getCurrentBid()));%>
+                    		
+                    						<span>Current Bid:&nbsp;<span style="color: rgb(0, 128, 0);"><%=carPrice%></span></span>
+                    	
+                    					<% }else{ %>
                 				
-                			<%String number = auction.getStartingBid(); %>
-                				
+                							<%String number = auction.getStartingBid(); %>
+                							<% carPrice = currencyFormatter.format(Integer.parseInt(auction.getStartingBid()));%> 
                 			
-                			<% carPrice = currencyFormatter.format(Integer.parseInt(auction.getStartingBid()));%> 
-                			<span>Current Bid:&nbsp;<span style="color: rgb(0, 128, 0);"><%=carPrice%></span></span>
+                							<span>Current Bid:&nbsp;<span style="color: rgb(0, 128, 0);"><%=carPrice%></span></span>
                 			
-                		<%} %>	
-                		<% session.setAttribute("userEmail", users.get(0).getUserEmail());%>
+                						<%}%>	
+                		
+                						<% session.setAttribute("userEmail", users.get(0).getUserEmail());%>
                 		
                 		
 
-                    	<span><br>Time Remaining:&nbsp;<span id="countdown<%=auction.getAuctionId()%>" style="color: rgb(255,0,0);"></span></span>
+                    					<span><br>Time Remaining:&nbsp;<span id="countdown<%=auction.getAuctionId()%>" style="color: rgb(255,0,0);"></span></span>
                     	 
-						<%if(users.get(0).getUserEmail().equals(auction.bidderEmail)){ %>
+										<%if(users.get(0).getUserEmail().equals(auction.bidderEmail)){ %>
 
-	                    	<span><br><span style="color: rgb(0, 128, 0);">Currently Winning!</span></span>
+	                    					<span><br><span style="color: rgb(0, 128, 0);"><strong>*Currently Winning!</strong></span></span>
 	                    	
-	                    <%} %>	
-                	</div>
-        	
-        	
-        	
-
-      					
-        </div>
+	                    				<%}%>	
+                					</div>	
+       	 						</div>
             	
+            		
             	
                 <script src="assets/JavaScript/userPageErrorTest.js"></script>
 
@@ -147,7 +124,7 @@
      // Start the countdown
      startCountdown("<%=auction.getAuctionId()%>", endTime<%=auction.getAuctionId()%>);
      
-      
+   
    
     
 </script>  
@@ -158,25 +135,49 @@
 			<%
    				}
 			%>
+			
+			<% 
+			
+				String whatTabPressed = (String)session.getAttribute("whatTabPressed");
+				
+				if(myAuction.size() == 0 && whatTabPressed != null && whatTabPressed.equals("myAuctions")){
+			%>
+					<div>
+						You have no auctions! Click "<a href="newAuction.jsp">New Auction</a>" to add an Auction!
+					</div>
+					
+					
+					
+			<%
+				} else if(myAuction.size() == 0 && whatTabPressed != null && whatTabPressed.equals("myBids")){
+					String communityAuctions = "communityAuctions";
+			%>
+					<div>
+						You have no bids! Please place bid in "<a style="cursor:pointer; text-decoration: underline; color: rgb(49,108,244);" onclick="submitFormWhatTabPressed('<%=communityAuctions%>')">Community Auctions</a>"!
+					</div>
+            <%
+				}
+            %>
 
-
-
-            
-
-        </div>
+        		</div>
     
     
     	
     
-    </form>
+    		</form>
     
-    </div>
+    	
+    
+    
+    <!--//////////////////////////////////////////END OF MY LISTINGS//////////////////////////////////////////////////////////////////////-->
+        
+
+
+
+	</div>
     
 
-    
-    <!--///////////////////////////////////////////////////////////////////////////////////////////  -->
-    
-    
+ 
 
      
       <jsp:include page="footer.jsp" />

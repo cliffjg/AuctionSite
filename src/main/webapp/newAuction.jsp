@@ -36,20 +36,10 @@
 
 	
 	<jsp:include page="header.jsp" />
-	
+	<jsp:include page="tabBar.jsp" />
 	
 
-    <div class="d-inline-flex flex-column align-content-start flex-wrap flex-sm-shrink-1" style="width: 100%;height: 30px;background: rgb(44,47,50);overflow: scroll;overflow-y: hidden;">
-    	<label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 50px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;margin-top: 5px;padding-right: 10px;padding-left: 10px;height: 100%;">
-    		<span style="background-color: rgb(43, 47, 50);">My Auctions</span>
-    	</label>
-    	<label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 20px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;margin-top: 5px;padding-right: 10px;padding-left: 10px;height: 100%;">
-    		<span style="background-color: rgb(43, 47, 50);">My Bids/Favorites</span>
-    	</label>
-    	<label class="form-label" data-bss-hover-animate="pulse" style="color: var(--bs-body-bg);margin-left: 20px;margin-right: 20px;font-family: Abel, sans-serif;font-weight: bold;font-size: 16px;margin-top: 5px;">
-    		<span style="background-color: rgb(43, 47, 50);">Community Auctions</span>
-    	</label>
-    </div>
+
     
 
 <form action="AddAuctionServlet" method="post">
