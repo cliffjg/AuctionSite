@@ -48,13 +48,7 @@ public class InboxMailPageServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		
-//
-	System.out.println("IM IN HERE! InBoxMessageServlet");
-		
-		
-		
+	
 
 		HttpSession session = request.getSession();
 		
@@ -62,49 +56,14 @@ public class InboxMailPageServlet extends HttpServlet {
 		ArrayList<Message> auctionMessage = new ArrayList();
 		
 		Message m = null;
+
+//		String queryMessages = "select * from AuctionMessagesConversation where userEmail = ? or destinationEmail = ?;";
+	
 		
-		String queryMessages = "select auctionID, userEmail, sendMessage, destinationEmail, receiveMessage, messageDateTime, profilePicture from " +
-		"(select *, row_number() over(partition by auctionID, userEmail order by messageDateTime DESC) as row_num from AuctionMessages " +
-		"where destinationEmail = ?) as subquery where row_num = 1 order by messageDateTime DESC;";
-		
-//		String queryMessages = "select * from AuctionMessages where destinationEmail = ?;";
-		
-//		System.out.println("Auction ID: " + auction.getAuctionId());
-		System.out.println("User Email: " + users.get(0).getUserEmail());
-//		System.out.println("Seller Email: " + sellerEmail);
-//		System.out.println("Message: " + message);
-		
-		
-		System.out.println("SQL: " + queryMessages);
-		
-//		
-//		Auction auction = (Auction) session.getAttribute("auction");
-//		
-//		ArrayList<Users> users = (ArrayList<Users>)session.getAttribute("users");
-//		ArrayList<Message> auctionMessage = new ArrayList();
-//		
-//		Message m = null;
-//		
-//		String sellerEmail = (String)session.getAttribute("sellerEmail");
-//		String message = request.getParameter("message");
-//		
-//		
-//		System.out.println("Auction ID: " + auction.getAuctionId());
-//		System.out.println("User Email: " + users.get(0).getUserEmail());
-//		System.out.println("Seller Email: " + sellerEmail);
-//		System.out.println("Message: " + message);
-//		
-////		select * from Messages where userEmail = "AliceSmith@gmail.com" and destinationEmail = "BobJohnson@gmail.com"  ORDER BY messageID DESC;
-//		
-//		//insert into Messages(userEmail, sendMessage,destinationEmail, receiveMessage, messageDateTime, profilePicture) values
-////		("AliceSmith@gmail.com", "Hello my name is Alice Smith and i need help changing my password","admin@gmail.com" ,null, "03/02/2024 @ 17:49:52", 'Images/AliceSmith.jpg');
-//
-//		
-//		
-//		String insertMessage = "insert into AuctionMessages(auctionID, userEmail, sendMessage,destinationEmail, receiveMessage, messageDateTime, profilePicture) values(?,?,?,?,null,?,?)";
-//		String queryMessages = "select * from AuctionMessages where destinationEmail = ?  order by messageID ASC;";
-//		
-//		
+		String queryMessages = "select conversationID, auctionID, userEmail, profilePicture, car, sendMessage, destinationEmail, messageDateTime from " +
+			"(select *, row_number() over(partition by auctionID, userEmail order by messageDateTime DESC) as row_num from AuctionMessagesConversation " +
+			"where destinationEmail = ? ) as subquery where row_num = 1 order by messageDateTime DESC;";
+
 		try {
 			DatabaseAccess db = new DatabaseAccess();
 			Connection connection = db.getConnection();
@@ -112,47 +71,42 @@ public class InboxMailPageServlet extends HttpServlet {
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(queryMessages);
 			preparedStatement.setString(1, users.get(0).getUserEmail());
+//			preparedStatement.setString(2, users.get(0).getUserEmail());
 
 	
         	ResultSet rs = preparedStatement.executeQuery();
         	
-        	
-        	
+        	        	
         	while(rs.next()) {
         		
-
-        		
-        		m = new Message(rs.getString("auctionID"),
+   
+        		m = new Message(rs.getString("conversationID"),
+        				rs.getString("auctionID"),
         				rs.getString("userEmail"),
+        				rs.getString("profilePicture"),
+        				rs.getString("car"),
         				rs.getString("sendMessage"),
         				rs.getString("destinationEmail"),
-        				rs.getString("receiveMessage"),
         				rs.getString("messageDateTime"),
-        				rs.getString("profilePicture")
+        				null
+        				
         				);
-        		
-//        		if(rs.getString("sendMessage") != null) {
-//        			System.out.println(rs.getString("userEmail")+ ": " + rs.getString("sendMessage"));
-//        		}
-//        		
-//        		if(rs.getString("receiveMessage") != null) {
-//        			System.out.println(rs.getString("destinationEmail")+ ": " + rs.getString("receiveMessage"));
-//        		}
         		
         		auctionMessage.add(m);
         		
         	}
         	
-        	System.out.println("auctionMessage: " + auctionMessage.toString());
+        	
+        	
 			
 		}catch(Exception e){
 
 			 throw new IllegalStateException("Cannot connect the database!", e);
 		}
-//		
+	
 		session.setAttribute("auctionMessage", auctionMessage);
 		request.getRequestDispatcher("inboxMailPage.jsp").forward(request,response);
-//		request.getRequestDispatcher("productPage.jsp").forward(request,response);
+
 		
 	}
 
