@@ -115,16 +115,15 @@ function submitFormWhatTabPressed(whatTabPressed){
 }
 
 
-function submitFormForMessage(auctionID, userEmail, destinationEmail) {
+function submitFormForMessage(conversationID, auctionID, userEmail, destinationEmail) {
 //function submitFormForMessage(data) {	
 	
 	
 	//console.log("Data to submit:", data);
-	console.log("Form submitted with parameters:", auctionID, userEmail, destinationEmail);
-	// Set the value of the hidden input field
-	//document.getElementById("dataField").value = data;
+	console.log("Form submitted with parameters:", conversationID, auctionID, userEmail, destinationEmail);
 
-	
+
+	var conversationID = conversationID;
 	var auctionID = auctionID;
 	var userEmail = userEmail;
 	var destinationEmail = destinationEmail;
@@ -133,7 +132,13 @@ function submitFormForMessage(auctionID, userEmail, destinationEmail) {
 	// Creating form for submission
 	var form = document.createElement('form');
 	form.setAttribute('method', 'post');
-	form.setAttribute('action', 'TestingMessageServlet');
+	form.setAttribute('action', 'ViewMessageServlet');
+	
+	// Create an input element to hold the conversationID
+	var inputConversationID = document.createElement('input');
+	inputConversationID.setAttribute('type', 'hidden');
+	inputConversationID.setAttribute('name', 'conversationID');
+	inputConversationID.setAttribute('value', conversationID);
 	
 	// Create an input element to hold the auction ID
 	var inputAuctionID = document.createElement('input');
@@ -156,6 +161,7 @@ function submitFormForMessage(auctionID, userEmail, destinationEmail) {
 
 
 	// Add the input element to the form
+	form.appendChild(inputConversationID);
 	form.appendChild(inputAuctionID);
 	form.appendChild(inputUserEmail);
 	form.appendChild(inputDestinationEmail);
