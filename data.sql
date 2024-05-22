@@ -62,34 +62,23 @@ insert into AuctionMessagesConversation(conversationID, auctionID, userEmail, pr
 (2,3, "EthanWilson@gmail.com", "Images/EthanWilson.jpg", "2022 Honda Civic Type R", "Is that all city driving miles or highway? Did you get the oil changed at 10,000?", "BobJohnson@gmail.com" , "03/02/2024 @ 17:57:52");
 
 
-insert into ConversationCount(conversationID, auctionID, userEmail, destinationEmail) values(1, 1, "AliceSmith@gmail.com","BobJohnson@gmail.com"),(2, 3,  "EthanWilson@gmail.com", "BobJohnson@gmail.com");
+insert into AuctionMessagesConversation(conversationID, auctionID, userEmail, profilePicture, car, sendMessage, destinationEmail, messageDateTime) values
+(3,3, "CharlieBrown@gmail.com", "Images/CharlieBrown.jpg", "2022 Honda Civic Type R", "Hello my name is Charlie; Did you modify the engine?", "BobJohnson@gmail.com" , "03/02/2024 @ 17:49:52"),
+(3,3, "BobJohnson@gmail.com", "Images/BobJohnson.jpg", "2022 Honda Civic Type R", "Yes it has a upgraded turbo and intercooler!", "CharlieBrown@gmail.com" , "03/02/2024 @ 17:55:52"),
+(3,3, "CharlieBrown@gmail.com", "Images/CharlieBrown.jpg", "2022 Honda Civic Type R", "What brand is the turbo?", "BobJohnson@gmail.com" , "03/02/2024 @ 17:57:52");
+
+insert into AuctionMessagesConversation(conversationID, auctionID, userEmail, profilePicture, car, sendMessage, destinationEmail, messageDateTime) values
+(4,4, "BobJohnson@gmail.com", "Images/BobJohnson.jpg", "2022 Porsche Taycan", "How many miles can this go on a single charge?", "AliceSmith@gmail.com" , "03/02/2024 @ 17:49:52"),
+(4,4, "AliceSmith@gmail.com", "Images/AliceSmith.jpg", "2022 Porsche Taycan", "It can go 250 miles depending on the amount of pressure you place on the pedal.", "BobJohnson@gmail.com" , "03/02/2024 @ 17:55:52"),
+(4,4, "BobJohnson@gmail.com", "Images/BobJohnson.jpg", "2022 Porsche Taycan", "Ok Thank you", "AliceSmith@gmail.com" , "03/02/2024 @ 17:57:52");
 
 
 
-insert into AuctionMessages(auctionID, userEmail, car, sendMessage,destinationEmail, receiveMessage, messageDateTime, profilePicture) values
-(1, "AliceSmith@gmail.com", "2020 Bugatti Divo", "Hello my name is Alice and i want to know if you are still selling the Bugatti?", "BobJohnson@gmail.com" ,null, "03/02/2024 @ 17:49:52", "Images/AliceSmith.jpg"),
-(1, "AliceSmith@gmail.com",  "2020 Bugatti Divo", null, "BobJohnson@gmail.com" ,"Yes, it is still available!", "03/02/2024 @ 17:55:52", "Images/BobJohnson.jpg"),
-(1, "AliceSmith@gmail.com",  "2020 Bugatti Divo", "Thank you!", "BobJohnson@gmail.com" ,null, "03/02/2024 @ 17:57:52", "Images/AliceSmith.jpg");
-
-insert into AuctionMessages(auctionID, userEmail, car, sendMessage,destinationEmail, receiveMessage, messageDateTime, profilePicture) values
-(3, "EthanWilson@gmail.com", "2022 Honda Civic Type R", "Hello my name is Ethan; How many miles does the Honda have?", "BobJohnson@gmail.com" ,null, "03/02/2024 @ 17:49:52", "Images/EthanWilson.jpg"),
-(3, "EthanWilson@gmail.com", "2022 Honda Civic Type R", null, "BobJohnson@gmail.com" ,"It has 15,000 miles on the odometer!", "03/02/2024 @ 17:55:52", "Images/BobJohnson.jpg"),
-(3, "EthanWilson@gmail.com", "2022 Honda Civic Type R", "Is that all city driving miles or highway? Did you get the oil changed at 10,000?", "BobJohnson@gmail.com" ,null, "03/02/2024 @ 17:57:52", "Images/EthanWilson.jpg");
-
-insert into AuctionMessages(auctionID, userEmail, car, sendMessage,destinationEmail, receiveMessage, messageDateTime, profilePicture) values
-(3, "CharlieBrown@gmail.com", "2022 Honda Civic Type R", "Hello my name is Charlie; Did you modify the engine", "BobJohnson@gmail.com" ,null, "03/02/2024 @ 17:49:52", "Images/CharlieBrown.jpg"),
-(3, "CharlieBrown@gmail.com", "2022 Honda Civic Type R", null, "BobJohnson@gmail.com" ,"Yes it has a upgraded turbo and intercooler", "03/02/2024 @ 17:55:52", "Images/BobJohnson.jpg"),
-(3, "CharlieBrown@gmail.com", "2022 Honda Civic Type R", "What brand is the turbo?", "BobJohnson@gmail.com" ,null, "03/02/2024 @ 17:57:52", "Images/CharlieBrown.jpg");
-
-
-insert into AuctionMessages(auctionID, userEmail, car, sendMessage,destinationEmail, receiveMessage, messageDateTime, profilePicture) values
-(4, "BobJohnson@gmail.com", "2022 Porsche Taycan", "How many miles can this go on a single charge?", "AliceSmith@gmail.com" ,null, "03/02/2024 @ 17:49:52", "Images/BobJohnson.jpg"),
-(4, "BobJohnson@gmail.com", "2022 Porsche Taycan", null, "AliceSmith@gmail.com" ,"It can go 250 miles depending on the amount of pressure you place on the pedal.", "03/02/2024 @ 17:55:52", "Images/AliceSmith.jpg"),
-(4, "BobJohnson@gmail.com", "2022 Porsche Taycan", "Ok Thank you.", "AliceSmith@gmail.com" ,null, "03/02/2024 @ 17:57:52", "Images/BobJohnson.jpg");
-
-
-insert into AuctionMessages(auctionID, userEmail, car, sendMessage,destinationEmail, receiveMessage, messageDateTime, profilePicture) values
-(1, "HannahTaylor@gmail.com",  "2020 Bugatti Divo", "What number version of the Bugatti is it?", "BobJohnson@gmail.com" ,null, "03/02/2024 @ 17:49:52", "Images/Default.jpg");
+insert into ConversationCount(conversationID, auctionID, userEmail, destinationEmail) values
+	(1, 1, "AliceSmith@gmail.com","BobJohnson@gmail.com"),
+    (2, 3,  "EthanWilson@gmail.com", "BobJohnson@gmail.com"),
+    (3, 3,  "CharlieBrown@gmail.com", "BobJohnson@gmail.com"),
+    (4, 4,  "BobJohnson@gmail.com", "AliceSmith@gmail.com");
 
 
 

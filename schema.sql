@@ -39,9 +39,6 @@ alter table Auction add bidderEmail varchar(50);
 create table Messages(messageID int AUTO_INCREMENT, userEmail varchar(50), sendMessage varchar(150), destinationEmail varchar(50),receiveMessage varchar(150), messageDateTime varchar(50), profilePicture varchar(150),
 Foreign Key (userEmail) references Users(userEmail), Primary Key(messageID) );
 
-create table AuctionMessages(messageID int AUTO_INCREMENT, auctionID int ,userEmail varchar(50), car varchar(50),sendMessage varchar(150), destinationEmail varchar(50),receiveMessage varchar(150), messageDateTime varchar(50), profilePicture varchar(150),
-Foreign Key (userEmail) references Users(userEmail), Foreign Key (auctionID) references Auction(auctionID), Primary Key(messageID) );
-
 create table AuctionMessagesConversation(messageID int AUTO_INCREMENT, conversationID int, auctionID int ,userEmail varchar(50),profilePicture varchar(150), car varchar(50),sendMessage varchar(150), destinationEmail varchar(50), messageDateTime varchar(50), 
 Foreign Key (userEmail) references Users(userEmail), Foreign Key (auctionID) references Auction(auctionID), Primary Key(messageID) );
 
